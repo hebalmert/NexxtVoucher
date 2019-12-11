@@ -1,0 +1,112 @@
+﻿@model NexxtVoucher.Models.OrderTicket
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDelete;
+}
+
+    <h2>@Resources.Resource.ViewDelete</h2>
+
+    <h3>@Resources.Resource.MsgDelete</h3>
+<div>
+    <h4>@Resources.Resource.OrderTicket_Index_Titulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanTicket.Plan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Server.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Server.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdenNumero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdenNumero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Server.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Server.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mikrotik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mikrotik)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@Resources.Resource.ButtonDelete class="btn btn-primary btn-sm" /> |
+            @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class="btn btn-success btn-sm"})
+        </div>
+    }
+</div>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Nexxt Voucher</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="background-image: url(@Url.Content("~/Content/Imagen/blanco.jpg")); background-repeat: no-repeat; background-attachment: fixed; background-position: center center;">
+ 
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("NexxtVoucher", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink(@Resources.Resource.MenuHome, "Index", "Home")</li>
+                        <li>@Html.ActionLink(@Resources.Resource.MenuAbout, "About", "Home")</li>
+                        <li>@Html.ActionLink(@Resources.Resource.MenuContact, "Contact", "Home")</li>*@
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.MenuAdministrador<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink(@Resources.Resource.MenuAdministrador_Company, "Index", "Companies")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuAdministrador_User, "Index", "Users")</li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.MenuData_Data<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink(@Resources.Resource.MenuData_Download, "Index", "SpeedDowns")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuData_Upload, "Index", "SpeedUps")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuData_TiempoTicket, "Index", "TicketTimes")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuData_TiempoInactivo, "Index", "TicketInactives")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuData_TiempoRefrescar, "Index", "TicketRefreshes")</li>
+                                <li><hr noshade="noshade" /></li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("User"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.MenuArchivo_Archivo<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink(@Resources.Resource.MenuArchivo_Ciudad, "Index", "Cities")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuArchivo_Zona, "Index", "Zones")</li>
+                                <li><hr noshade="noshade" /></li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuArchivo_Servidores, "Index", "Servers")</li>
+                                <li><hr noshade="noshade" /></li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuArchivo_CategoriaPlan, "Index", "PlanCategories")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuArchivo_Plan, "Index", "PlanTickets")</li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("User"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.MenuOperation_Operation<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink(@Resources.Resource.MenuOperation_CrearTicket, "Index", "Ordertickets")</li>
+                                <li><hr noshade="noshade" /></li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuOperation_VentaTicket, "Index", "SellTicketOnes")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuOperacion_DespachoTicket, "Index", "SellTickets")</li>
+                            </ul>
+                        </li>
+                    }
+
+
+                    @if (User.IsInRole("User"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Resource.MenuSystem_System<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink(@Resources.Resource.MenuSystem_Consecutivo, "Index", "Registers")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuSystem_DocumentType, "Index", "Identifications")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuSystem_TextoEncabezado, "Index", "HeadTexts")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuSystem_Impuesto, "Index", "Taxes")</li>
+                                <li>@Html.ActionLink(@Resources.Resource.MenuSystem_ChainCode, "Index", "ChainCodes")</li>
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Nexxt Voucher</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

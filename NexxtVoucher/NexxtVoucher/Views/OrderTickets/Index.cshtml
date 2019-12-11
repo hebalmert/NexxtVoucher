@@ -1,0 +1,77 @@
+﻿@model IEnumerable<NexxtVoucher.Models.OrderTicket>
+
+@{
+    ViewBag.Title = @Resources.Resource.OrderTicket_Index_Titulo;
+}
+
+    <h2>@Resources.Resource.OrderTicket_Index_Titulo</h2>
+
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenNumero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Server.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mikrotik)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrdenNumero)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Server.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Plan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cantidad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Total)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Mikrotik)
+    </td>
+    <td>
+        @if (item.Creados == 0)
+        {@Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.OrderTicketId }, new { @class = "btn btn-warning btn-sm" })} |
+        @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.OrderTicketId }, new { @class = "btn btn-info btn-sm" }) |
+        @if (item.Creados == 0)
+        {@Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id = item.OrderTicketId }, new { @class = "btn btn-danger btn-sm" })}
+    </td>
+</tr>
+}
+
+</table>

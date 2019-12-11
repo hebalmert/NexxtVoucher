@@ -1,0 +1,90 @@
+﻿@model NexxtVoucher.Models.Server
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDelete;
+}
+
+    <h2>@Resources.Resource.ViewDelete</h2>
+
+    <h3>@Resources.Resource.MsgDelete</h3>
+    <div>
+        <h4>@Resources.Resource.Server_Index_Titulo</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IpServer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IpServer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zone.Zona)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zone.Zona)
+        </dd>
+    </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value=@Resources.Resource.ButtonDelete class="btn btn-primary btn-sm" /> |
+                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" })
+            </div>
+        }
+    </div>

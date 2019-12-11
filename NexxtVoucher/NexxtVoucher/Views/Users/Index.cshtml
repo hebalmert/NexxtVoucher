@@ -1,0 +1,78 @@
+﻿@model IEnumerable<NexxtVoucher.Models.User>
+
+@{
+    ViewBag.Title = @Resources.Resource.User_ViewIndex_Titulo1;
+}
+
+    <h2>@Resources.Resource.User_ViewIndex_Titulo1</h2>
+
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Company.Compania)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puesto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Company.Compania)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @if (!string.IsNullOrEmpty(item.Photo))
+        {
+            <img src="@Url.Content(item.Photo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Puesto)
+    </td>
+    <td>
+        @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.UserId }, new { @class = "btn btn-warning btn-sm" }) |
+        @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.UserId }, new { @class = "btn btn-info btn-sm" }) |
+        @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id = item.UserId }, new { @class = "btn btn-danger btn-sm" })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model NexxtVoucher.Models.Register
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+    <h2>@Resources.Resource.ViewDetail</h2>
+
+<div>
+    <h4>@Resources.Resource.Register_ViewIndex_Titulo1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTickets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderTickets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tickets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tickets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VentaOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VentaOne)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.RegisterId }, new { @class="btn btn-primary btn-sm"}) |
+    @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class="btn btn-success btn-sm"})
+</p>

@@ -1,0 +1,35 @@
+﻿@model NexxtVoucher.Models.SpeedDown
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDelete;
+}
+
+    <h2>@Resources.Resource.ViewDelete</h2>
+
+    <h3>@Resources.Resource.MsgDelete</h3>
+    <div>
+        <h4>@Resources.Resource.SpeedDown_Titulo</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.VelocidadDown)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VelocidadDown)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value=@Resources.Resource.ButtonDelete class="btn btn-primary btn-sm" /> |
+                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" })
+            </div>
+        }
+    </div>

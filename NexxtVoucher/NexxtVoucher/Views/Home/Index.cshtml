@@ -1,0 +1,39 @@
+﻿@model NexxtVoucher.Models.User
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    @if (Model == null)
+    {
+        <h1>NexxtVoucher</h1>
+    }
+
+    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+    {
+        <h1>@Model.Company.Compania</h1>
+        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Resources.Resource.Link1</h2>
+        <p>
+            @Resources.Resource.Link1Text
+        </p>
+        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-4">
+        <h2>@Resources.Resource.Link2</h2>
+        <p>
+            @Resources.Resource.Link2Text
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Resources.Resource.Link3</h2>
+        <p>
+            @Resources.Resource.Link3Text
+        </p>
+    </div>
+</div>

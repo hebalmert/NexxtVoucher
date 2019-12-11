@@ -1,0 +1,106 @@
+﻿@model NexxtVoucher.Models.PlanTicket
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+    <h2>@Resources.Resource.ViewDetail</h2>
+
+<div>
+    <h4>@Resources.Resource.PlanTicket_Model_Titulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanCategory.Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanCategory.Categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Server.IpServer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Server.IpServer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpeedUp.VelocidadUp) / @Html.DisplayNameFor(model => model.SpeedDown.VelocidadDown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpeedUp.VelocidadUp) / @Html.DisplayFor(model => model.SpeedDown.VelocidadDown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketInactive.TiempoInactivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketInactive.TiempoInactivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketRefresh.TiempoRefrescar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketRefresh.TiempoRefrescar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketTime.TiempoTicket)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketTime.TiempoTicket)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShareUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShareUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tax.Impuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tax.Impuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detalle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.PlanTicketId }, new { @class="btn btn-primary btn-sm"}) |
+    @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class="btn btn-success btn-sm"})
+</p>

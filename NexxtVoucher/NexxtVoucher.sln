@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexxtVoucher", "NexxtVoucher\NexxtVoucher.csproj", "{B056322A-7871-4A28-9DBC-160483E069AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B056322A-7871-4A28-9DBC-160483E069AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B056322A-7871-4A28-9DBC-160483E069AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B056322A-7871-4A28-9DBC-160483E069AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B056322A-7871-4A28-9DBC-160483E069AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C101DAF3-CABB-40E2-AE4F-47F0D98C6B2F}
+	EndGlobalSection
+EndGlobal

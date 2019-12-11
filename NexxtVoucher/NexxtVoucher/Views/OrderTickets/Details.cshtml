@@ -1,0 +1,155 @@
+﻿@model NexxtVoucher.Models.OrderTicket
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+    <h2>@Resources.Resource.ViewDetail</h2>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <h4>@Resources.Resource.OrderTicket_Index_Titulo</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrdenNumero)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrdenNumero)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Server.Modelo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Server.Modelo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Server.ServerId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Server.Nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Plan)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Plan)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Precio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cantidad)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Creados)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Creados)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Total)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Total)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Mikrotik)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Mikrotik)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @if (Model.Creados == 0)
+            {@Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.OrderTicketId }, new { @class = "btn btn-primary btn-sm" })} |
+            @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
+            @if (Model.Creados == 0)
+            {
+                @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { id = Model.OrderTicketId, up = Model.PlanTicket.SpeedUp.VelocidadUp, down = Model.PlanTicket.SpeedDown.VelocidadDown }, new { @class = "btn btn-success btn-sm" })}
+        </p>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <h4>Codigos Creados</h4>
+            <hr>
+            @if (Model.OrderTicketDetails.Count == 0)
+            {
+                <h5>No Hay Tickets Creados</h5>
+            }
+            else
+            {
+                <table class="table table-bordered">
+                    <tr class="table-secondary">
+                        <th>
+                            Ticket #
+                        </th>
+                        <th>
+                            Codigo
+                        </th>
+                        <th>
+                            Mikrotik
+                        </th>
+                        @*<th>
+
+                        </th>*@
+                    </tr>
+
+                    @foreach (var item in Model.OrderTicketDetails.ToList())
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketNumero)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MikrotikId)
+                    </td>
+                    @*<td align="right">
+                        @Html.ActionLink("Borrar", "DeleteIpNet", new { id = item.OrderTicketDetailId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Desea Eliminar este Registro?')" })
+                    </td>*@
+                </tr>
+                    }
+                </table>
+
+            }
+        </div>
+    </div>
+</div>

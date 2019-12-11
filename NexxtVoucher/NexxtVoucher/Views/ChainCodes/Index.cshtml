@@ -1,0 +1,39 @@
+﻿@model IEnumerable<NexxtVoucher.Models.ChainCode>
+
+@{
+    ViewBag.Title = @Resources.Resource.ChainCode_Intext_Titulo;
+}
+
+    <h2>@Resources.Resource.ChainCode_Intext_Titulo</h2>
+
+<p>
+    @*@Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cadena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Largo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cadena)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Largo)
+    </td>
+    <td>
+        @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.ChainCodeId }, new { @class = "btn btn-warning btn-sm" }) |
+        @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.ChainCodeId }, new { @class = "btn btn-info btn-sm" })
+        @*@Html.ActionLink("Delete", "Delete", new { id=item.ChainCodeId })*@
+    </td>
+</tr>
+}
+
+</table>

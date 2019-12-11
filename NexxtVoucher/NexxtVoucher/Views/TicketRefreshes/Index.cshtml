@@ -1,0 +1,33 @@
+﻿@model IEnumerable<NexxtVoucher.Models.TicketRefresh>
+
+@{
+    ViewBag.Title = @Resources.Resource.Model_TicketRefresh;
+}
+
+    <h2>@Resources.Resource.Model_TicketRefresh</h2>
+
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TiempoRefrescar)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TiempoRefrescar)
+        </td>
+        <td>
+            @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id=item.TicketRefreshId }, new { @class="btn btn-warning btn-sm"}) |
+            @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id=item.TicketRefreshId }, new { @class="btn btn-info btn-sm"}) |
+            @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id=item.TicketRefreshId }, new { @class="btn btn-danger btn-sm"})
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,28 @@
+﻿@model NexxtVoucher.Models.SpeedDown
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+    <h2>@Resources.Resource.ViewDetail</h2>
+
+<div>
+    <h4>@Resources.Resource.SpeedDown_Titulo</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VelocidadDown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VelocidadDown)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.SpeedDownId }, new { @class="btn btn-primary btn-sm"}) |
+    @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class="btn btn-success btn-sm"})
+</p>

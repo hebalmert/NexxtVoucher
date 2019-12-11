@@ -1,0 +1,40 @@
+﻿@model NexxtVoucher.Models.HeadText
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewEdit;
+}
+
+    <h2>@Resources.Resource.ViewEdit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>@Resources.Resource.TextHead_ViewIndex_Titulo1</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.HeadTextId)
+    @Html.HiddenFor(model => model.CompanyId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TextoEncabezado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TextoEncabezado, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TextoEncabezado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value=@Resources.Resource.ButtonSave class="btn btn-primary btn-sm" /> |
+            @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class="btn btn-success btn-sm"})
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

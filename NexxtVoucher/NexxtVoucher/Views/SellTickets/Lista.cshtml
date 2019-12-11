@@ -1,0 +1,51 @@
+﻿@model IList<NexxtVoucher.Models.SellTicketDetail>
+@{
+    ViewBag.Title = @Resources.Resource.ButtonList;
+}
+    <h2>@Resources.Resource.ButtonList</h2>
+
+    <br />
+
+    <br />
+
+    <h2>
+        @Resources.Resource.ExportExcel_Titulo
+    </h2>
+
+    <table style="background-color: white; width: 100%;">
+        <tr>
+            <th style="border: 1px solid black; text-align: left; width: 20%; padding-left: 20px;">
+                @Resources.Resource.Print_Ticket
+            </th>
+            <th style="border: 2px solid black; text-align: center; width: 20%">
+                @Resources.Resource.Print_Plan
+            </th>
+            <th style="border: 2px solid black; text-align: center; width: 20%">
+                @Resources.Resource.Print_Codigo
+            </th>
+        </tr>
+        @foreach (var itm in Model)
+        {
+
+    <tr>
+        <td style="padding-left: 20px;">
+            @Html.DisplayFor(m => itm.TicketNumero)
+        </td>
+        <td style="padding-left: 20px;">
+            @Html.DisplayFor(m => itm.Plan)
+        </td>
+        <td style="padding-left: 20px;">
+            @Html.DisplayFor(m => itm.Usuario)
+        </td>
+    </tr>
+
+        }
+
+        @*<tr>
+            <td colspan="4">
+                <br />
+                <br />
+                <input type="submit" value="Export to Excel" class="button" />
+            </td>
+        </tr>*@
+    </table>

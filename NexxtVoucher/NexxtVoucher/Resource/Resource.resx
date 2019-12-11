@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ButtonAdd" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="ButtonAnular" xml:space="preserve">
+    <value>Anular</value>
+  </data>
+  <data name="ButtonBack" xml:space="preserve">
+    <value>Volver</value>
+  </data>
+  <data name="ButtonConnect" xml:space="preserve">
+    <value>Conectar</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="ButtonDetail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="ButtonEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="ButtonExcel" xml:space="preserve">
+    <value>Exportar Excel</value>
+  </data>
+  <data name="ButtonList" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="ButtonNew" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="ButtonPrint" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="ButtonSearch" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="ChainCode_Intext_Titulo" xml:space="preserve">
+    <value>Codigo Encriptado</value>
+  </data>
+  <data name="ChainCode_Model_Cadena" xml:space="preserve">
+    <value>Encriptado</value>
+  </data>
+  <data name="ChainCode_Model_Largo" xml:space="preserve">
+    <value>Caracteres</value>
+  </data>
+  <data name="City_Model_City" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="City_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="ComboSelect" xml:space="preserve">
+    <value>[Seleccionar...]</value>
+  </data>
+  <data name="Company_Model_Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="Company_Model_Address" xml:space="preserve">
+    <value>Direccion</value>
+  </data>
+  <data name="Company_Model_Anulado" xml:space="preserve">
+    <value>Anulado</value>
+  </data>
+  <data name="Company_Model_Compania" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="Company_Model_Country" xml:space="preserve">
+    <value>Pais</value>
+  </data>
+  <data name="Company_Model_Desde" xml:space="preserve">
+    <value>Desde</value>
+  </data>
+  <data name="Company_Model_Hasta" xml:space="preserve">
+    <value>Hasta</value>
+  </data>
+  <data name="Company_Model_Logo" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="Company_Model_Phone" xml:space="preserve">
+    <value>Telefono</value>
+  </data>
+  <data name="Company_Model_Rif" xml:space="preserve">
+    <value>Nit / CI</value>
+  </data>
+  <data name="Company_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="ExportExcel_Titulo" xml:space="preserve">
+    <value>Exportar Excel</value>
+  </data>
+  <data name="Identification_Model_TipoDocumento" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="Identification_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="Link1" xml:space="preserve">
+    <value>Mikrotik</value>
+  </data>
+  <data name="Link1Text" xml:space="preserve">
+    <value>Registre varios Servidores Mikrotik para Acceder a ellos.  IP publicas si es acceso externo o IP Privada para acceder dentro de la Red</value>
+  </data>
+  <data name="Link2" xml:space="preserve">
+    <value>Planes</value>
+  </data>
+  <data name="Link2Text" xml:space="preserve">
+    <value>Puede crear diferentes planes de navegacion y estos agregarlos a los diferentes servidores que se han creado.</value>
+  </data>
+  <data name="Link3" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="Link3Text" xml:space="preserve">
+    <value>Puede crear una cantidad de Tickets segun el plan y el servidor seleccionado.  Estos ticketes pueden ser vendido uno a uno o exportar un lote</value>
+  </data>
+  <data name="MaxLength" xml:space="preserve">
+    <value>El Campo {0} debe ser menor de {1} characters</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>Nosotros</value>
+  </data>
+  <data name="MenuAcceso" xml:space="preserve">
+    <value>Sistema de Acceso</value>
+  </data>
+  <data name="MenuAdministrador" xml:space="preserve">
+    <value>Administrador</value>
+  </data>
+  <data name="MenuAdministrador_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="MenuAdministrador_User" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="MenuArchivo_Archivo" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="MenuArchivo_CategoriaPlan" xml:space="preserve">
+    <value>Categoria Planes</value>
+  </data>
+  <data name="MenuArchivo_Ciudad" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="MenuArchivo_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="MenuArchivo_Servidores" xml:space="preserve">
+    <value>Servidores</value>
+  </data>
+  <data name="MenuArchivo_Zona" xml:space="preserve">
+    <value>Zona</value>
+  </data>
+  <data name="MenuContact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="MenuData_Data" xml:space="preserve">
+    <value>Datos</value>
+  </data>
+  <data name="MenuData_Download" xml:space="preserve">
+    <value>Velocidad Bajada</value>
+  </data>
+  <data name="MenuData_TiempoInactivo" xml:space="preserve">
+    <value>Tiempo Inactivo</value>
+  </data>
+  <data name="MenuData_TiempoRefrescar" xml:space="preserve">
+    <value>Tiempo Refrescar</value>
+  </data>
+  <data name="MenuData_TiempoTicket" xml:space="preserve">
+    <value>Tiempo Ticket</value>
+  </data>
+  <data name="MenuData_Upload" xml:space="preserve">
+    <value>Velocidad Subida</value>
+  </data>
+  <data name="MenuHome" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="MenuLogin" xml:space="preserve">
+    <value>Ingresar Usuario</value>
+  </data>
+  <data name="MenuOperacion_DespachoTicket" xml:space="preserve">
+    <value>Despacho Ticket</value>
+  </data>
+  <data name="MenuOperation_CrearTicket" xml:space="preserve">
+    <value>Crear Tickets</value>
+  </data>
+  <data name="MenuOperation_Operation" xml:space="preserve">
+    <value>Operaciones</value>
+  </data>
+  <data name="MenuOperation_VentaTicket" xml:space="preserve">
+    <value>Venta Ticket</value>
+  </data>
+  <data name="MenuSystem_ChainCode" xml:space="preserve">
+    <value>Cadena Encriptado</value>
+  </data>
+  <data name="MenuSystem_Consecutivo" xml:space="preserve">
+    <value>Consecutivo</value>
+  </data>
+  <data name="MenuSystem_DocumentType" xml:space="preserve">
+    <value>Tipo Documento</value>
+  </data>
+  <data name="MenuSystem_Impuesto" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="MenuSystem_System" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="MenuSystem_TextoEncabezado" xml:space="preserve">
+    <value>Texto Encabezado</value>
+  </data>
+  <data name="MikrotikConnection" xml:space="preserve">
+    <value>Conexion Mikrotik</value>
+  </data>
+  <data name="MikrotikFailed" xml:space="preserve">
+    <value>Conexion Fallida</value>
+  </data>
+  <data name="MikrotikSuccess" xml:space="preserve">
+    <value>Conexion Exitosa</value>
+  </data>
+  <data name="Model_SpeedDown_Velocidad" xml:space="preserve">
+    <value>Velocidad Bajada</value>
+  </data>
+  <data name="Model_SpeedUp_Velocidad1" xml:space="preserve">
+    <value>Velocidad Subida</value>
+  </data>
+  <data name="Model_TicketInactive" xml:space="preserve">
+    <value>Tiempo Inactivo</value>
+  </data>
+  <data name="Model_TicketRefresh" xml:space="preserve">
+    <value>Tiempo Refrescar</value>
+  </data>
+  <data name="Model_TicketTime_Tiempo" xml:space="preserve">
+    <value>Tiempo Ticket</value>
+  </data>
+  <data name="MsgDelete" xml:space="preserve">
+    <value>Desea Eliminar este Registro?</value>
+  </data>
+  <data name="Msg_DoubleData" xml:space="preserve">
+    <value>Existe un Registro con el mismo Valor</value>
+  </data>
+  <data name="Msg_Range" xml:space="preserve">
+    <value>Debe Seleccionar un Item</value>
+  </data>
+  <data name="Msg_Relationship" xml:space="preserve">
+    <value>El Registo no puede ser Eliminado, porque tiene relacion con otros Datos</value>
+  </data>
+  <data name="OderTiket_Model_Precio" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="OrderTicketDetail_Model_Clave" xml:space="preserve">
+    <value>Clave</value>
+  </data>
+  <data name="OrderTicketDetail_Model_IpServer" xml:space="preserve">
+    <value>Ip Servidor</value>
+  </data>
+  <data name="OrderTicketDetail_Model_MikrotikID" xml:space="preserve">
+    <value>Mikrotik ID</value>
+  </data>
+  <data name="OrderTicketDetail_Model_OrdenTicket" xml:space="preserve">
+    <value>Orden Ticket</value>
+  </data>
+  <data name="OrderTicketDetail_Model_PlanTicketId" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="OrderTicketDetail_Model_TicketNumero" xml:space="preserve">
+    <value>Ticket #</value>
+  </data>
+  <data name="OrderTicketDetail_Model_Usuario" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="OrderTicketDetail_Model_Velocidad" xml:space="preserve">
+    <value>Velocidad</value>
+  </data>
+  <data name="OrderTicketDetail_Model_Vendido" xml:space="preserve">
+    <value>Vendido</value>
+  </data>
+  <data name="OrderTicket_Index_Titulo" xml:space="preserve">
+    <value>Orden Tickets</value>
+  </data>
+  <data name="OrderTicket_Model_Cantidad" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="OrderTicket_Model_Creados" xml:space="preserve">
+    <value>Creados</value>
+  </data>
+  <data name="OrderTicket_Model_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="OrderTicket_Model_Mikrotik" xml:space="preserve">
+    <value>Mikrotik</value>
+  </data>
+  <data name="OrderTicket_Model_OrdenNumero" xml:space="preserve">
+    <value>Orden #</value>
+  </data>
+  <data name="OrderTicket_Model_PlanTicketId" xml:space="preserve">
+    <value>Plan Ticket</value>
+  </data>
+  <data name="OrderTicket_Model_ServerId" xml:space="preserve">
+    <value>Servidor</value>
+  </data>
+  <data name="OrderTicket_Model_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="PlanCategory_Model_Categoria" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="PlanCategory_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Categoria Servicio</value>
+  </data>
+  <data name="PlanCateogry_Model_Detail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="PlanTicket_Modelo_Mikrotik" xml:space="preserve">
+    <value>Mikrotik Id</value>
+  </data>
+  <data name="PlanTicket_Modelo_upDown" xml:space="preserve">
+    <value>Subida / Bajada</value>
+  </data>
+  <data name="PlanTicket_Model_Detalle" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="PlanTicket_Model_Impuesto" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="PlanTicket_Model_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="PlanTicket_Model_Precio" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="PlanTicket_Model_Server" xml:space="preserve">
+    <value>Ip Servidor</value>
+  </data>
+  <data name="PlanTicket_Model_ShareUser" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="PlanTicket_Model_SpeedDown" xml:space="preserve">
+    <value>Velocidad Bajada</value>
+  </data>
+  <data name="PlanTicket_Model_SpeedUp" xml:space="preserve">
+    <value>Velocidad Subida</value>
+  </data>
+  <data name="PlanTicket_Model_TicketInactive" xml:space="preserve">
+    <value>Tiempo Inactivo</value>
+  </data>
+  <data name="PlanTicket_Model_TicketRefresh" xml:space="preserve">
+    <value>Tiempo Refresh</value>
+  </data>
+  <data name="PlanTicket_Model_TicketTime" xml:space="preserve">
+    <value>Tiempo Plan</value>
+  </data>
+  <data name="PlanTicket_Model_Titulo" xml:space="preserve">
+    <value>Planes Tickets</value>
+  </data>
+  <data name="Print_Codigo" xml:space="preserve">
+    <value>Codigo</value>
+  </data>
+  <data name="Print_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="Print_Ticket" xml:space="preserve">
+    <value>Ticket #</value>
+  </data>
+  <data name="Register_Model_OrderTickets" xml:space="preserve">
+    <value>Orden Tickets</value>
+  </data>
+  <data name="Register_Model_Tickets" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="Register_Model_VentaOne" xml:space="preserve">
+    <value>Venta#</value>
+  </data>
+  <data name="Register_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Consecutivo</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>El Campo {0} es Requerido</value>
+  </data>
+  <data name="SellTicket_Model_Ticket" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="SellTicket_Model_Titulo" xml:space="preserve">
+    <value>Venta Ticket</value>
+  </data>
+  <data name="Server_Index_Titulo" xml:space="preserve">
+    <value>Servidores</value>
+  </data>
+  <data name="Server_Model_Clave" xml:space="preserve">
+    <value>Clave</value>
+  </data>
+  <data name="Server_Model_Detalle" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Server_Model_IpServidor" xml:space="preserve">
+    <value>IP Servidor</value>
+  </data>
+  <data name="Server_Model_Modelo" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="Server_Model_Nombre" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Server_Model_Usuario" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="SpeedDown_Titulo" xml:space="preserve">
+    <value>Velocidad Bajada</value>
+  </data>
+  <data name="SpeedUp_Titualo" xml:space="preserve">
+    <value>Velocidad Subida</value>
+  </data>
+  <data name="Tax_Model_Impuesto" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="Tax_Model_RangeMsg" xml:space="preserve">
+    <value>EL Valor del {0} debe estar entre {1} y {2}</value>
+  </data>
+  <data name="Tax_Model_Tasa" xml:space="preserve">
+    <value>Tasa</value>
+  </data>
+  <data name="Tax_ViewIndex_Titulo" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="TextHead_Default" xml:space="preserve">
+    <value>En Sistema/Texto Encabezado, podra cambiar por la direccion, telefono y correo</value>
+  </data>
+  <data name="TextHead_Model_TextEncabezado" xml:space="preserve">
+    <value>Texto Encabezado</value>
+  </data>
+  <data name="TextHead_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Texto Encabezado</value>
+  </data>
+  <data name="TicketTime_Titulo" xml:space="preserve">
+    <value>Tiempo Ticket</value>
+  </data>
+  <data name="User_Model_Address" xml:space="preserve">
+    <value>Direccion</value>
+  </data>
+  <data name="User_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="User_Model_Email" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="User_Model_FisrtName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="User_Model_FullName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="User_Model_LastName" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="User_Model_Phone" xml:space="preserve">
+    <value>Telefono</value>
+  </data>
+  <data name="User_Model_Photo" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="User_Model_Puesto" xml:space="preserve">
+    <value>Puesto</value>
+  </data>
+  <data name="User_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="ViewCreate" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="ViewDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="ViewDetail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="ViewEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Zone_Model_Zone" xml:space="preserve">
+    <value>Zona</value>
+  </data>
+  <data name="Zone_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Zona</value>
+  </data>
+</root>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<NexxtVoucher.Models.SpeedDown>
+
+@{
+    ViewBag.Title = @Resources.Resource.SpeedDown_Titulo;
+}
+
+    <h2>@Resources.Resource.SpeedDown_Titulo</h2>
+
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})
+</p>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VelocidadDown)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VelocidadDown)
+            </td>
+            <td>
+                @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.SpeedDownId }, new { @class="btn btn-warning btn-sm"}) |
+                @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.SpeedDownId }, new { @class="btn btn-info btn-sm"}) |
+                @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id = item.SpeedDownId }, new { @class="btn btn-danger btn-sm"})
+            </td>
+        </tr>
+    }
+
+</table>

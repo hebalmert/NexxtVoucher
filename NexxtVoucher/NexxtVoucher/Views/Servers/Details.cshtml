@@ -1,0 +1,121 @@
+﻿@model NexxtVoucher.Models.Server
+
+@{
+    ViewBag.Title = @Resources.Resource.ButtonDetail;
+}
+
+<h2>@Resources.Resource.ViewDetail</h2>
+
+<div>
+    <h4>@Resources.Resource.Server_Index_Titulo</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Modelo)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Modelo)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Nombre)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Nombre)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.IpServer)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.IpServer)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Usuario)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Usuario)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Clave)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Clave)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Description)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Description)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.City.Ciudad)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.City.Ciudad)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Zone.Zona)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Zone.Zona)
+    </dd>
+
+
+</dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.ServerId }, new { @class = "btn btn-primary btn-sm" }) |
+    @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
+    @Html.ActionLink(@Resources.Resource.ButtonConnect, "MikroSuccess", new { ip = Model.IpServer, us = Model.Usuario, pss = Model.Clave, idserver = Model.ServerId }, new { @class = "dialog-window btn btn-warning btn-sm" })
+</p>
+
+<div class="modal fade" id="MikroSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#MikroSuccess .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#MikroSuccess').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#MikroSuccess .te').html(data);
+                        $('#MikroSuccess').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+}

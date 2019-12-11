@@ -1,0 +1,67 @@
+﻿@model NexxtVoucher.Models.SellTicketOne
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+    <h2>@Resources.Resource.ViewDetail</h2>
+
+<div>
+    <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VentaOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VentaOne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanCategory.Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanCategory.Categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanTicket.Plan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTicketDetail.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderTicketDetail.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.SellTicketOneId }, new { @class="btn btn-primary btn-sm"}) |*@
+    @Html.ActionLink(@Resources.Resource.ButtonPrint, "PrintTicket", new { id = Model.SellTicketOneId }, new { @class = "btn btn-warning btn-sm" }) |
+    @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" })
+</p>

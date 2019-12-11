@@ -1,0 +1,126 @@
+﻿@model NexxtVoucher.Models.SellTicket
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+    <h2>@Resources.Resource.ViewDetail</h2>
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.VentaOne)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VentaOne)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PlanCategory.Categoria)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PlanCategory.Categoria)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PlanTicket.Plan)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Precio)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink(@Resources.Resource.ButtonDetail, "Edit", new { id = Model.SellTicketId }, new { @class = "btn btn-primary btn-sm" }) |
+            @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
+            @if (Model.SellTicketDetails.Count == 0)
+            {
+                @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { planid = Model.PlanTicketId, serid = Model.ServerId, ventaN = Model.VentaOne, sellid = Model.SellTicketId, com = Model.CompanyId }, new { @class = "btn btn-warning btn-sm" })}
+            @Html.ActionLink(@Resources.Resource.ButtonList, "Lista", new { id = Model.SellTicketId }, new { @class = "btn btn-info btn-sm" }) |
+            @Html.ActionLink(@Resources.Resource.ButtonExcel, "ExportToExcel", new { seid = Model.SellTicketId }, new { @class = "btn btn-warning btn-sm" }) |
+
+            </p>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <h4>Codigos Creados</h4>
+            <hr>
+            @if (Model.SellTicketDetails.Count == 0)
+            {
+                <h5>No Hay Tickets Creados</h5>
+            }
+            else
+            {
+                <table class="table table-bordered">
+                    <tr class="table-secondary">
+                        <th>
+                            Ticket #
+                        </th>
+                        <th>
+                            Plan
+                        </th>
+                        <th>
+                            Usuario
+                        </th>
+                    </tr>
+
+                    @{
+                        int registros = 0;
+                    }
+
+                    @foreach (var item in Model.SellTicketDetails.ToList())
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TicketNumero)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Usuario)
+                            </td>
+                            @{
+                                registros += +1;
+                            }
+                        </tr>
+                    }
+                    <tr>
+                        <td align="center">
+                            <strong>Tickets</strong>
+                        </td>
+                        <td align="right">
+                            Registros: @registros
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+</div>
