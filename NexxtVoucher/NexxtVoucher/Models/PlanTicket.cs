@@ -15,23 +15,24 @@ namespace NexxtVoucher.Models
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Index("PlanTicket_Company_Plan_Index", 1, IsUnique = true)]
+        [Index("PlanTicket_Company_Plan_Server_Index", 1, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "Company_Model_Compania")]
         public int CompanyId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
-        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]        
         [Display(ResourceType = typeof(Resource), Name = "PlanCategory_Model_Categoria")]
         public int PlanCategoryId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Index("PlanTicket_Company_Plan_Server_Index", 2, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_Server")]
         public int ServerId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
-        [Index("PlanTicket_Company_Plan_Index", 2, IsUnique = true)]
+        [Index("PlanTicket_Company_Plan_Server_Index", 3, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_Plan")]
         public string Plan { get; set; }
 
