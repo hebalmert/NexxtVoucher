@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Server.Nombre)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Categoria)
         </th>
         <th>
@@ -21,19 +24,22 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Detalle)
-        </td>
-        <td>
-            @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id=item.PlanCategoryId }, new { @class="btn btn-warning btn-sm"}) |
-            @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id=item.PlanCategoryId }, new { @class="btn btn-info btn-sm"}) |
-            @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id=item.PlanCategoryId }, new { @class="btn btn-danger btn-sm"})
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Server.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Categoria)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Detalle)
+    </td>
+    <td>
+        @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.PlanCategoryId }, new { @class = "btn btn-warning btn-sm" }) |
+        @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.PlanCategoryId }, new { @class = "btn btn-info btn-sm" }) |
+        @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id = item.PlanCategoryId }, new { @class = "btn btn-danger btn-sm" })
+    </td>
+</tr>
 }
 
 </table>

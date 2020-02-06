@@ -517,7 +517,7 @@
     <value>Modelo</value>
   </data>
   <data name="Server_Model_Nombre" xml:space="preserve">
-    <value>Nombre</value>
+    <value>Servidor</value>
   </data>
   <data name="Server_Model_Usuario" xml:space="preserve">
     <value>Usuario</value>

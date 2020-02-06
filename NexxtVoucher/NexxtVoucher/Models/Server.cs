@@ -77,5 +77,7 @@ namespace NexxtVoucher.Models
         public virtual ICollection<OrderTicketDetail> OrderTicketDetails { get; set; }
 
         public virtual ICollection<SellTicket> SellTickets { get; set; }
+
+        public virtual ICollection<PlanCategory> PlanCategories { get; set; }
     }
 }

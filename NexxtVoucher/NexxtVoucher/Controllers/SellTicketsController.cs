@@ -112,7 +112,7 @@ namespace NexxtVoucher.Controllers
                 .Include(s => s.PlanCategory)
                 .Include(s => s.PlanTicket)
                 .Include(s => s.Server);
-            return View(sellTickets.ToList());
+            return View(sellTickets.OrderBy(o=> o.ServerId).ThenByDescending(o=> o.VentaOne).ToList());
         }
 
         // GET: SellTickets/Details/5
@@ -324,6 +324,14 @@ namespace NexxtVoucher.Controllers
             decimal precio = planes.Precio;
 
             return Json(precio);
+        }
+
+        public JsonResult GetCategory(int ServerId)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
+
+            return Json(categories);
         }
 
         protected override void Dispose(bool disposing)

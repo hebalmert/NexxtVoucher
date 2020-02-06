@@ -11,25 +11,32 @@
         <h4>@Resources.Resource.PlanCategory_ViewIndex_Titulo1</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <dl class="dl-horizontal">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Server.Nombre)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Server.Nombre)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Categoria)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Detalle)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Detalle)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </dt>
 
-        </dl>
+        <dd>
+            @Html.DisplayFor(model => model.Detalle)
+        </dd>
+
+    </dl>
 
         @using (Html.BeginForm())
         {

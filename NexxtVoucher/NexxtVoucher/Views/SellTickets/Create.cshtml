@@ -76,6 +76,35 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ServerId").change(function ()
+            {
+                $("#PlanCategoryId").empty();
+                $("#PlanCategoryId").append('<option value="0">[Select Item...]</option>');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCategory")',
+                    dataType: 'json',
+                    data: { ServerId: $("#ServerId").val() },
+                    success: function (data)
+                    {
+                        $.each(data, function (i, data) {
+                            $("#PlanCategoryId").append('<option value="'
+                             + data.PlanCategoryId + '">'
+                             + data.Categoria + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Error de Lectura de Relacion' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#PlanCategoryId").change(function () {
@@ -104,30 +133,30 @@
 
 
     @*<script type="text/javascript">
-            $(document).ready(function () {
-                $("#PlanTicketId").change(function () {
-                    $("#OrderTicketDetailId").empty();
-                    $("#OrderTicketDetailId").append('<option value="0">[Select Item...]</option>');
-                    $.ajax({
-                        type: 'POST',
-                        url: '@Url.Action("GetTickets")',
-                        dataType: 'json',
-                        data: { categoriaId: $("#PlanCategoryId").val(), servidorId: $("#ServerId").val() },
-                        success: function (data) {
-                            $.each(data, function (i, data) {
-                                $("#OrderTicketDetailId").append('<option value="'
-                                 + data.OrderTicketDetailId + '">'
-                                 + data.Usuario + '</option>');
-                            });
-                        },
-                        error: function (ex) {
-                            alert('Error de Lectura de Relacion' + ex);
-                        }
-                    });
-                    return false;
-                })
-            });
-    </script>*@
+                $(document).ready(function () {
+                    $("#PlanTicketId").change(function () {
+                        $("#OrderTicketDetailId").empty();
+                        $("#OrderTicketDetailId").append('<option value="0">[Select Item...]</option>');
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("GetTickets")',
+                            dataType: 'json',
+                            data: { categoriaId: $("#PlanCategoryId").val(), servidorId: $("#ServerId").val() },
+                            success: function (data) {
+                                $.each(data, function (i, data) {
+                                    $("#OrderTicketDetailId").append('<option value="'
+                                     + data.OrderTicketDetailId + '">'
+                                     + data.Usuario + '</option>');
+                                });
+                            },
+                            error: function (ex) {
+                                alert('Error de Lectura de Relacion' + ex);
+                            }
+                        });
+                        return false;
+                    })
+                });
+        </script>*@
 
     <script type="text/javascript">
                 $(document).ready(function () {

@@ -42,13 +42,13 @@ namespace NexxtVoucher.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var sellTicketOnes = db.SellTicketOnes
+            var sellTicketOnes = db.SellTicketOnes.Where(c=> c.CompanyId == user.CompanyId)
                 .Include(s => s.OrderTicketDetail)
                 .Include(s => s.PlanCategory)
                 .Include(s => s.PlanTicket)
                 .Include(s => s.Server);
 
-            return View(sellTicketOnes.ToList());
+            return View(sellTicketOnes.OrderBy(o=> o.ServerId).ThenByDescending(o=> o.VentaOne).ToList());
         }
 
         // GET: SellTicketOnes/Details/5
@@ -278,6 +278,14 @@ namespace NexxtVoucher.Controllers
             decimal precio = orderdetail.Precio;
 
             return Json(precio);
+        }
+
+        public JsonResult GetCategory(int ServerId)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
+
+            return Json(categories);
         }
 
         protected override void Dispose(bool disposing)

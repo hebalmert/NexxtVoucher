@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NexxtVoucher.Classes;
 using NexxtVoucher.Models;
 
 namespace NexxtVoucher.Controllers
@@ -55,6 +56,7 @@ namespace NexxtVoucher.Controllers
             }
             var plancategories = new PlanCategory { CompanyId = user.CompanyId };
 
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(user.CompanyId), "ServerId", "Nombre");
             return View(plancategories);
         }
 
@@ -88,6 +90,7 @@ namespace NexxtVoucher.Controllers
                 }
             }
 
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(planCategory.CompanyId), "ServerId", "Nombre", planCategory.ServerId);
             return View(planCategory);
         }
 
@@ -104,6 +107,7 @@ namespace NexxtVoucher.Controllers
                 return HttpNotFound();
             }
 
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(planCategory.CompanyId), "ServerId", "Nombre", planCategory.ServerId);
             return View(planCategory);
         }
 
@@ -137,6 +141,7 @@ namespace NexxtVoucher.Controllers
                 }
             }
 
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(planCategory.CompanyId), "ServerId", "Nombre", planCategory.ServerId);
             return View(planCategory);
         }
 

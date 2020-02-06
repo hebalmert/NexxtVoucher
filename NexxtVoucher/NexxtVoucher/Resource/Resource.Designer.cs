@@ -1258,7 +1258,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nombre.
+        ///   Looks up a localized string similar to Servidor.
         /// </summary>
         public static string Server_Model_Nombre {
             get {

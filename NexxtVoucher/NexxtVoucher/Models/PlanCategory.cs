@@ -19,6 +19,11 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "Company_Model_Compania")]
         public int CompanyId { get; set; }
 
+        //[Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
+        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Display(ResourceType = typeof(Resource), Name = "Server_Index_Titulo")]
+        public int ServerId { get; set; }
+
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
         [Index("PlanCategory_Company_Categoria_Index", 2, IsUnique = true)]
@@ -31,6 +36,8 @@ namespace NexxtVoucher.Models
         public string Detalle { get; set; }
 
         public virtual Company Company { get; set; }
+
+        public virtual Server Server { get; set; }
 
         public virtual ICollection<PlanTicket> PlanTickets { get; set; }
 

@@ -4,7 +4,7 @@
     ViewBag.Title = @Resources.Resource.ViewCreate;
 }
 
-    <h2>@Resources.Resource.ViewCreate</h2>
+<h2>@Resources.Resource.ViewCreate</h2>
 
 
 @using (Html.BeginForm())
@@ -76,7 +76,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value=@Resources.Resource.ButtonSave class="btn btn-primary btn-sm" /> |
-                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class="btn btn-success btn-sm"})
+                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" })
             </div>
         </div>
     </div>
@@ -84,6 +84,34 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ServerId").change(function ()
+            {
+                $("#PlanCategoryId").empty();
+                $("#PlanCategoryId").append('<option value="0">[Select Item...]</option>');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCategory")',
+                    dataType: 'json',
+                    data: { ServerId: $("#ServerId").val() },
+                    success: function (data)
+                    {
+                        $.each(data, function (i, data) {
+                            $("#PlanCategoryId").append('<option value="'
+                             + data.PlanCategoryId + '">'
+                             + data.Categoria + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Error de Lectura de Relacion' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -136,7 +164,7 @@
                     return false;
                 })
             });
-        </script>
+    </script>
 
     <script type="text/javascript">
                 $(document).ready(function () {
@@ -159,5 +187,5 @@
                         return false;
                     })
                 });
-        </script>
+    </script>
 }
