@@ -149,7 +149,7 @@
                         type: 'POST',
                         url: '@Url.Action("GetTickets")',
                         dataType: 'json',
-                        data: { categoriaId: $("#PlanCategoryId").val(), servidorId: $("#ServerId").val() },
+                        data: { PlanTicketId: $("#PlanTicketId").val(), servidorId: $("#ServerId").val() },
                         success: function (data) {
                             $.each(data, function (i, data) {
                                 $("#OrderTicketDetailId").append('<option value="'

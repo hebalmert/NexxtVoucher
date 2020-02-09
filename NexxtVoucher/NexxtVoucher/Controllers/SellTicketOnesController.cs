@@ -263,10 +263,10 @@ namespace NexxtVoucher.Controllers
             return Json(planticket);
         }
 
-        public JsonResult GetTickets(int categoriaId, int servidorId)
+        public JsonResult GetTickets(int PlanTicketId, int servidorId)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var orderticketdeatil = db.OrderTicketDetails.Where(o => o.ServerId == servidorId && o.PlanCategoryId == categoriaId && o.Vendido == false);
+            var orderticketdeatil = db.OrderTicketDetails.Where(o => o.ServerId == servidorId && o.PlanTicketId == PlanTicketId && o.Vendido == false);
 
             return Json(orderticketdeatil);
         }
