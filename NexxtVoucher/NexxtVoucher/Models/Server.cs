@@ -43,7 +43,7 @@ namespace NexxtVoucher.Models
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [MaxLength(25, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
-        //[DataType(DataType.Password)]
+        [DataType(DataType.Password)]
         [Display(ResourceType = typeof(Resource), Name = "Server_Model_Clave")]
         public string Clave { get; set; }
 
