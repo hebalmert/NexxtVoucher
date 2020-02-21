@@ -340,6 +340,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ticket WIFI Mikrotik.
+        /// </summary>
+        public static string HomeIndex_Titulo1 {
+            get {
+                return ResourceManager.GetString("HomeIndex_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seleccion Multiples Servidores.
+        /// </summary>
+        public static string HomeIndex_Titulo2 {
+            get {
+                return ResourceManager.GetString("HomeIndex_Titulo2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venta por Cajero.
+        /// </summary>
+        public static string HomeIndex_Titulo3 {
+            get {
+                return ResourceManager.GetString("HomeIndex_Titulo3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document Type.
         /// </summary>
         public static string Identification_Model_TipoDocumento {

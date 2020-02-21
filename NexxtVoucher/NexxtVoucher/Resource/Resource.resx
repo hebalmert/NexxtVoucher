@@ -210,6 +210,15 @@
   <data name="ExportExcel_Titulo" xml:space="preserve">
     <value>Exportar Excel</value>
   </data>
+  <data name="HomeIndex_Titulo1" xml:space="preserve">
+    <value>Ticket WIFI Mikrotik</value>
+  </data>
+  <data name="HomeIndex_Titulo2" xml:space="preserve">
+    <value>Seleccion Multiples Servidores</value>
+  </data>
+  <data name="HomeIndex_Titulo3" xml:space="preserve">
+    <value>Venta por Cajero</value>
+  </data>
   <data name="Identification_Model_TipoDocumento" xml:space="preserve">
     <value>Document Type</value>
   </data>

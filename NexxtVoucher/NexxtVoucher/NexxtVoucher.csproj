@@ -440,6 +440,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Imagen\" />
+    <Folder Include="Content\images\" />
     <Folder Include="Content\Logos\" />
     <Folder Include="Content\Users\" />
   </ItemGroup>
