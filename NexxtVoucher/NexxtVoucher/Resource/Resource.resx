@@ -337,10 +337,10 @@
     <value>Conexion Exitosa</value>
   </data>
   <data name="Model_SpeedDown_Velocidad" xml:space="preserve">
-    <value>Velocidad Bajada</value>
+    <value>Donwload</value>
   </data>
   <data name="Model_SpeedUp_Velocidad1" xml:space="preserve">
-    <value>Velocidad Subida</value>
+    <value>Upload</value>
   </data>
   <data name="Model_TicketInactive" xml:space="preserve">
     <value>Tiempo Inactivo</value>
@@ -454,10 +454,10 @@
     <value>Usuarios</value>
   </data>
   <data name="PlanTicket_Model_SpeedDown" xml:space="preserve">
-    <value>Velocidad Bajada</value>
+    <value>Download</value>
   </data>
   <data name="PlanTicket_Model_SpeedUp" xml:space="preserve">
-    <value>Velocidad Subida</value>
+    <value>Upload</value>
   </data>
   <data name="PlanTicket_Model_TicketInactive" xml:space="preserve">
     <value>Tiempo Inactivo</value>
@@ -523,10 +523,10 @@
     <value>Usuario</value>
   </data>
   <data name="SpeedDown_Titulo" xml:space="preserve">
-    <value>Velocidad Bajada</value>
+    <value>Download</value>
   </data>
   <data name="SpeedUp_Titualo" xml:space="preserve">
-    <value>Velocidad Subida</value>
+    <value>UpLoad</value>
   </data>
   <data name="Tax_Model_Impuesto" xml:space="preserve">
     <value>Impuesto</value>

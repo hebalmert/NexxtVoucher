@@ -4,10 +4,13 @@
     ViewBag.Title = @Resources.Resource.Server_Index_Titulo;
 }
 
-    <h2>@Resources.Resource.Server_Index_Titulo</h2>
+<h2>@Resources.Resource.Server_Index_Titulo</h2>
 
 <p>
-    @Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})
+    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "Servers", new { })'">
+        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+    </button>
 </p>
 <table class="table">
     <tr>
@@ -26,26 +29,76 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Modelo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.City.Ciudad)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Zone.Zona)
-    </td>
-    <td>
-        @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.ServerId }, new { @class="btn btn-warning btn-sm"}) |
-        @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.ServerId }, new { @class="btn btn-info btn-sm"}) |
-        @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id = item.ServerId }, new { @class="btn btn-danger btn-sm"})
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Ciudad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone.Zona)
+            </td>
+            <td>
+                <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", "Servers", new { id = item.ServerId})'">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+
+                <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", "Servers", new { id = item.ServerId})'">
+                    <span class="glyphicon glyphicon-list"></span>
+                </button>
+
+                <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+                   '@Url.Action("Delete", "Servers", new { id = item.ServerId})'">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                @Html.ActionLink(@Resources.Resource.ButtonConnect, "MikroSuccess", new { ip = item.IpServer, us = item.Usuario, pss = item.Clave, idserver = item.ServerId }, new { @class = "dialog-window btn btn-warning btn-sm" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<div class="modal fade" id="MikroSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#MikroSuccess .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#MikroSuccess').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#MikroSuccess .te').html(data);
+                        $('#MikroSuccess').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+}

@@ -62,7 +62,7 @@
             @if (Model.SellTicketDetails.Count == 0)
             {
                 @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { planid = Model.PlanTicketId, serid = Model.ServerId, ventaN = Model.VentaOne, sellid = Model.SellTicketId, com = Model.CompanyId }, new { @class = "btn btn-warning btn-sm" })}
-            @Html.ActionLink(@Resources.Resource.ButtonList, "Lista", new { id = Model.SellTicketId }, new { @class = "btn btn-info btn-sm" }) |
+            @*@Html.ActionLink(@Resources.Resource.ButtonList, "Lista", new { id = Model.SellTicketId }, new { @class = "btn btn-info btn-sm" }) |*@
             @Html.ActionLink(@Resources.Resource.ButtonExcel, "ExportToExcel", new { seid = Model.SellTicketId }, new { @class = "btn btn-warning btn-sm" }) |
 
             </p>

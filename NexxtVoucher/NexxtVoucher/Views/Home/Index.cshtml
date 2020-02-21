@@ -10,9 +10,9 @@
     }
 
     @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
-    {
-        <h1>@Model.Company.Compania</h1>
+    {        
         <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+        <samall>@Model.Company.Compania</samall>
     }
 </div>
 

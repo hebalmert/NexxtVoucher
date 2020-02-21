@@ -718,7 +718,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Velocidad Bajada.
+        ///   Looks up a localized string similar to Donwload.
         /// </summary>
         public static string Model_SpeedDown_Velocidad {
             get {
@@ -727,7 +727,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Velocidad Subida.
+        ///   Looks up a localized string similar to Upload.
         /// </summary>
         public static string Model_SpeedUp_Velocidad1 {
             get {
@@ -1051,7 +1051,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Velocidad Bajada.
+        ///   Looks up a localized string similar to Download.
         /// </summary>
         public static string PlanTicket_Model_SpeedDown {
             get {
@@ -1060,7 +1060,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Velocidad Subida.
+        ///   Looks up a localized string similar to Upload.
         /// </summary>
         public static string PlanTicket_Model_SpeedUp {
             get {
@@ -1276,7 +1276,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Velocidad Bajada.
+        ///   Looks up a localized string similar to Download.
         /// </summary>
         public static string SpeedDown_Titulo {
             get {
@@ -1285,7 +1285,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Velocidad Subida.
+        ///   Looks up a localized string similar to UpLoad.
         /// </summary>
         public static string SpeedUp_Titualo {
             get {

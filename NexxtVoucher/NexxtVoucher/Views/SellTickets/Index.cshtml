@@ -6,9 +6,12 @@
 
     <h2>@Resources.Resource.SellTicket_Model_Titulo</h2>
 
-<p>
-    @Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})
-</p>
+    <p>
+        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "SellTickets", new { })'">
+            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+        </button>
+    </p>
 <table class="table">
     <tr>
         <th>
@@ -47,10 +50,25 @@
         @Html.DisplayFor(modelItem => item.Precio)
     </td>
     <td>
-        @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.SellTicketId }, new { @class = "btn btn-warning btn-sm" }) |
-        @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.SellTicketId }, new { @class = "btn btn-info btn-sm" }) |
-        @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id = item.SellTicketId }, new { @class = "btn btn-danger btn-sm" })
-    </td>
+        @if (item.SellTicketDetails.Count == 0)
+        {
+            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", "SellTickets", new { id = item.ServerId })'">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+        }
+        <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", "SellTickets", new { id = item.ServerId})'">
+            <span class="glyphicon glyphicon-list"></span>
+        </button>
+        @if (item.SellTicketDetails.Count == 0)
+        {
+            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+                   '@Url.Action("Delete", "SellTickets", new { id = item.ServerId })'">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        }
+        </td>
 </tr>
 }
 

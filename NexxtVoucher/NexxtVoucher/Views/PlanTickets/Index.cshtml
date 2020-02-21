@@ -6,9 +6,12 @@
 
     <h2>@Resources.Resource.PlanTicket_Model_Titulo</h2>
 
-<p>
-    @Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})
-</p>
+    <p>
+        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "PlanTickets", new { })'">
+            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+        </button>
+    </p>
 <table class="table">
     <tr>
         <th>
@@ -53,9 +56,20 @@
         @Html.DisplayFor(modelItem => item.MikrotikId)
     </td>
     <td>
-        @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.PlanTicketId }, new { @class = "btn btn-warning btn-sm" }) |
-        @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.PlanTicketId }, new { @class = "btn btn-info btn-sm" }) |
-        @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id = item.PlanTicketId }, new { @class = "btn btn-danger btn-sm" })
+        <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "PlanTickets", new { id = item.PlanTicketId})'">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+
+        <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+            '@Url.Action("Details", "PlanTickets", new { id = item.PlanTicketId})'">
+            <span class="glyphicon glyphicon-list"></span>
+        </button>
+
+        <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "PlanTickets", new { id = item.PlanTicketId})'">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
     </td>
 </tr>
 }
