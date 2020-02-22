@@ -179,6 +179,19 @@ namespace NexxtVoucher.Classes
             return res.ToString();
         }
 
+
+        //Combos de Identification
+        public static List<Identification> GetIdentifications(int companyid)
+        {
+            var identification = db.Identifications.Where(c => c.CompanyId == companyid).ToList();
+            identification.Add(new Identification
+            {
+                IdentificationId = 0,
+                TipoDocumento = @Resources.Resource.ComboSelect,
+            });
+            return identification.OrderBy(d => d.TipoDocumento).ToList();
+        }
+
         public void Dispose()
         {
             db.Dispose();

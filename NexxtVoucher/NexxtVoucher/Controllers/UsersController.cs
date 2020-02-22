@@ -197,6 +197,7 @@ namespace NexxtVoucher.Controllers
             try
             {
                 db.SaveChanges();
+                UsersHelper.DeleteUser(user.UserName);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

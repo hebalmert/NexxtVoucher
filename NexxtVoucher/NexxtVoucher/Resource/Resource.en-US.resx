@@ -156,6 +156,48 @@
   <data name="ButtonSearch" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="Cachier_Model_Activo" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Cachier_Model_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Cachier_Model_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Cachier_Model_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="Cachier_Model_DocuType" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="Cachier_Model_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Cachier_Model_FirstName" xml:space="preserve">
+    <value>FirstName</value>
+  </data>
+  <data name="Cachier_Model_FullName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Cachier_Model_Identification" xml:space="preserve">
+    <value>Identification Number</value>
+  </data>
+  <data name="Cachier_Model_LastName" xml:space="preserve">
+    <value>LastName</value>
+  </data>
+  <data name="Cachier_Model_Movil" xml:space="preserve">
+    <value>Cell</value>
+  </data>
+  <data name="Cachier_Model_Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Cachier_Model_Zona" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+  <data name="Cachier_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Cachiers</value>
+  </data>
   <data name="ChainCode_Intext_Titulo" xml:space="preserve">
     <value>Encrypted Code</value>
   </data>
@@ -317,6 +359,9 @@
   </data>
   <data name="MenuOperation_VentaTicket" xml:space="preserve">
     <value>Sell Ticket</value>
+  </data>
+  <data name="MenuSystem_Cajeros" xml:space="preserve">
+    <value>Cachiers</value>
   </data>
   <data name="MenuSystem_ChainCode" xml:space="preserve">
     <value>Encrypted Code</value>

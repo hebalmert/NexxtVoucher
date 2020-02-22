@@ -29,6 +29,7 @@ namespace NexxtVoucher
         {
             UsersHelper.CheckRole("Admin");
             UsersHelper.CheckRole("User");
+            UsersHelper.CheckRole("Cobros");
             UsersHelper.CheckSuperUser();
         }
     }

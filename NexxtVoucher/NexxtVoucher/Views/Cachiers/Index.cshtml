@@ -1,0 +1,75 @@
+﻿@model IEnumerable<NexxtVoucher.Models.Cachier>
+
+@{
+    ViewBag.Title = @Resources.Resource.Cachier_ViewIndex_Titulo1;
+}
+
+    <h2>@Resources.Resource.Cachier_ViewIndex_Titulo1</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "Cachiers", new { })'">
+        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City.Ciudad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zone.Zona)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.City.Ciudad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Zone.Zona)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Activo)
+    </td>
+    <td>
+        @*@Html.ActionLink("Edit", "Edit", new { id = item.CachierId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CachierId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CachierId })*@
+        <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", "Cachiers", new { id = item.CachierId})'">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+
+        <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", "Cachiers", new { id = item.CachierId})'">
+            <span class="glyphicon glyphicon-list"></span>
+        </button>
+
+        <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+                   '@Url.Action("Delete", "Cachiers", new { id = item.CachierId})'">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </td>
+</tr>
+}
+
+</table>

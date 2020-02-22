@@ -94,5 +94,7 @@ namespace NexxtVoucher.Models
         public virtual ICollection<SellTicket> SellTickets { get; set; }
 
         public virtual ICollection<SellTicketDetail> SellTicketDetails { get; set; }
+
+        public virtual ICollection<Cachier> Cachiers { get; set; }
     }
 }

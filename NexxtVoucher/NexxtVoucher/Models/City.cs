@@ -30,5 +30,7 @@ namespace NexxtVoucher.Models
         public virtual ICollection<Zone> Zones { get; set; }
 
         public virtual ICollection<Server> Servers { get; set; }
+
+        public virtual ICollection<Cachier> Cachiers { get; set; }
     }
 }

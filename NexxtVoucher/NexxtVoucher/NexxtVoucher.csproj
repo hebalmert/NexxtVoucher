@@ -214,6 +214,7 @@
     <Compile Include="Classes\MK.cs" />
     <Compile Include="Classes\UsersHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CachiersController.cs" />
     <Compile Include="Controllers\ChainCodesController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
@@ -241,6 +242,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cachier.cs" />
     <Compile Include="Models\ChainCode.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Company.cs" />
@@ -436,6 +438,11 @@
     <Content Include="Views\SellTickets\Edit.cshtml" />
     <Content Include="Views\SellTickets\Index.cshtml" />
     <Content Include="Views\SellTickets\Lista.cshtml" />
+    <Content Include="Views\Cachiers\Create.cshtml" />
+    <Content Include="Views\Cachiers\Delete.cshtml" />
+    <Content Include="Views\Cachiers\Details.cshtml" />
+    <Content Include="Views\Cachiers\Edit.cshtml" />
+    <Content Include="Views\Cachiers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

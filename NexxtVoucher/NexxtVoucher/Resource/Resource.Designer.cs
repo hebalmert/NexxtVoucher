@@ -178,6 +178,132 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activo.
+        /// </summary>
+        public static string Cachier_Model_Activo {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Activo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direccion.
+        /// </summary>
+        public static string Cachier_Model_Address {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ciudad.
+        /// </summary>
+        public static string Cachier_Model_City {
+            get {
+                return ResourceManager.GetString("Cachier_Model_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Campañia.
+        /// </summary>
+        public static string Cachier_Model_Company {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tipo Documento.
+        /// </summary>
+        public static string Cachier_Model_DocuType {
+            get {
+                return ResourceManager.GetString("Cachier_Model_DocuType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correo.
+        /// </summary>
+        public static string Cachier_Model_Email {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string Cachier_Model_FirstName {
+            get {
+                return ResourceManager.GetString("Cachier_Model_FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string Cachier_Model_FullName {
+            get {
+                return ResourceManager.GetString("Cachier_Model_FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numero Indentidad.
+        /// </summary>
+        public static string Cachier_Model_Identification {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Identification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellido.
+        /// </summary>
+        public static string Cachier_Model_LastName {
+            get {
+                return ResourceManager.GetString("Cachier_Model_LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Celular.
+        /// </summary>
+        public static string Cachier_Model_Movil {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Movil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefono.
+        /// </summary>
+        public static string Cachier_Model_Phone {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zona.
+        /// </summary>
+        public static string Cachier_Model_Zona {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Zona", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cajeros.
+        /// </summary>
+        public static string Cachier_ViewIndex_Titulo1 {
+            get {
+                return ResourceManager.GetString("Cachier_ViewIndex_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Codigo Encriptado.
         /// </summary>
         public static string ChainCode_Intext_Titulo {
@@ -660,6 +786,15 @@ namespace Resources {
         public static string MenuOperation_VentaTicket {
             get {
                 return ResourceManager.GetString("MenuOperation_VentaTicket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cajeros.
+        /// </summary>
+        public static string MenuSystem_Cajeros {
+            get {
+                return ResourceManager.GetString("MenuSystem_Cajeros", resourceCulture);
             }
         }
         

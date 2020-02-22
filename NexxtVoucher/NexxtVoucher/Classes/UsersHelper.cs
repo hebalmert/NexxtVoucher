@@ -15,7 +15,7 @@ namespace NexxtVoucher.Classes
         private static ApplicationDbContext userContext = new ApplicationDbContext();
         private static NexxtVouContext db = new NexxtVouContext();
 
-        public static bool DeleteUser(string userName, string rolName)
+        public static bool DeleteUser(string userName)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
             var userAsp = userManager.FindByEmail(userName);
@@ -23,7 +23,7 @@ namespace NexxtVoucher.Classes
             {
                 return false;
             }
-            var response = userManager.RemoveFromRole(userAsp.Id, rolName);
+            var response = userManager.Delete(userAsp);
             return response.Succeeded;
         }
 
