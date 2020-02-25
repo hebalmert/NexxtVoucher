@@ -20,7 +20,12 @@ namespace NexxtVoucher.Models
         public int CompanyId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
-        [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength"]
+        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Display(ResourceType = typeof(Resource), Name = "Server_Model_Nombre")]
+        public int ServerId { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
+        [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
         [Display(ResourceType = typeof(Resource), Name = "Cachier_Model_FirstName")]
         public string FirstName { get; set; }
 
@@ -86,10 +91,15 @@ namespace NexxtVoucher.Models
 
         public virtual Company Company { get; set; }
 
+        public virtual Server Server { get; set; }
+
         public virtual Identification Identification { get; set; }
 
         public virtual City City { get; set; }
 
         public virtual Zone Zone { get; set; }
+        public virtual ICollection<SellTicketOneCachier> SellTicketOneCachiers { get; set; }
+
+        public virtual ICollection<OrderTicketDetail> OrderTicketDetails { get; set; }
     }
 }

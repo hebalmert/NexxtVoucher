@@ -126,6 +126,9 @@
   <data name="ButtonBack" xml:space="preserve">
     <value>Volver</value>
   </data>
+  <data name="ButtonClear" xml:space="preserve">
+    <value>Limpiar</value>
+  </data>
   <data name="ButtonConnect" xml:space="preserve">
     <value>Conectar</value>
   </data>
@@ -360,6 +363,9 @@
   <data name="MenuOperation_VentaTicket" xml:space="preserve">
     <value>Venta Ticket</value>
   </data>
+  <data name="MenuOperation_VentaTicketCajero" xml:space="preserve">
+    <value>Venta Cajero</value>
+  </data>
   <data name="MenuSystem_Cajeros" xml:space="preserve">
     <value>Cajeros</value>
   </data>
@@ -446,6 +452,9 @@
   </data>
   <data name="OrderTicketDetail_Model_Vendido" xml:space="preserve">
     <value>Vendido</value>
+  </data>
+  <data name="OrderTicketDetail_Model_VendidoCajero" xml:space="preserve">
+    <value>Cajero</value>
   </data>
   <data name="OrderTicket_Index_Titulo" xml:space="preserve">
     <value>Orden Tickets</value>
@@ -539,6 +548,9 @@
   </data>
   <data name="Register_Model_Tickets" xml:space="preserve">
     <value>Tickets</value>
+  </data>
+  <data name="Register_Model_VentaCachier" xml:space="preserve">
+    <value>Venta Cajero</value>
   </data>
   <data name="Register_Model_VentaOne" xml:space="preserve">
     <value>Venta#</value>

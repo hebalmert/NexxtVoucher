@@ -1,0 +1,101 @@
+﻿@model NexxtVoucher.Models.SellTicketOneCachier
+
+@{
+    ViewBag.Title =  @Resources.Resource.ViewDelete;
+}
+
+    <h2> @Resources.Resource.ViewDelete</h2>
+
+    <h3> @Resources.Resource.MsgDelete</h3>
+<div>
+    <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cachier.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cachier.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Compania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Compania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTicketDetail.Velocidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderTicketDetail.Velocidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanCategory.Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanCategory.Categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanTicket.Plan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Server.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Server.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VentaCachier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VentaCachier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+                <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+            </button>
+            <button type="submit" class="btn btn-danger btn-sm">
+                <span class="glyphicon glyphicon-trash"></span> @Resources.Resource.ButtonDelete
+            </button>
+        </div>
+    }
+</div>

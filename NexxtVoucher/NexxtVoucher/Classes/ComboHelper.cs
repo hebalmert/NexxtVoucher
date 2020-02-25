@@ -34,6 +34,17 @@ namespace NexxtVoucher.Classes
             return cities.OrderBy(d => d.Ciudad).ToList();
         }
 
+        //Combos de Cajeros
+        public static List<Cachier> GetCachier(int companyid)
+        {
+            var cajero = db.Cachiers.Where(c => c.CompanyId == companyid).ToList();
+            cajero.Add(new Cachier
+            {
+                CachierId = 0,
+                FullName = @Resources.Resource.ComboSelect,
+            });
+            return cajero.OrderBy(d => d.FullName).ToList();
+        }
 
         //Combos de Zonas
         public static List<Zone> GetZone(int companyid)
@@ -140,7 +151,7 @@ namespace NexxtVoucher.Classes
                 ServerId = 0,
                 Nombre = @Resources.Resource.ComboSelect,
             });
-            return server.OrderBy(d => d.IpServer).ToList();
+            return server.OrderBy(d => d.Nombre).ToList();
         }
 
         //Combos de Zonas
@@ -154,6 +165,22 @@ namespace NexxtVoucher.Classes
             });
             return plantikes.OrderBy(d => d.Plan).ToList();
         }
+
+        //Combos para solo Cajeros que venderan Tickets
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        public static List<PlanTicket> GetPlanTicketCajero(int companyid, int serverid)
+        {
+            var plantikes = db.PlanTickets.Where(c => c.CompanyId == companyid && c.ServerId == serverid).ToList();
+            plantikes.Add(new PlanTicket
+            {
+                PlanTicketId = 0,
+                Plan = @Resources.Resource.ComboSelect,
+            });
+            return plantikes.OrderBy(d => d.Plan).ToList();
+        }
+
+        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         //Combos de Orderticketdeatil
         public static List<OrderTicketDetail> GetOrderticketdetail(int companyid)

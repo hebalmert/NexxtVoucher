@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Limpiar.
+        /// </summary>
+        public static string ButtonClear {
+            get {
+                return ResourceManager.GetString("ButtonClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conectar.
         /// </summary>
         public static string ButtonConnect {
@@ -790,6 +799,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Venta Cajero.
+        /// </summary>
+        public static string MenuOperation_VentaTicketCajero {
+            get {
+                return ResourceManager.GetString("MenuOperation_VentaTicketCajero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cajeros.
         /// </summary>
         public static string MenuSystem_Cajeros {
@@ -1132,6 +1150,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cajero.
+        /// </summary>
+        public static string OrderTicketDetail_Model_VendidoCajero {
+            get {
+                return ResourceManager.GetString("OrderTicketDetail_Model_VendidoCajero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Categoria.
         /// </summary>
         public static string PlanCategory_Model_Categoria {
@@ -1326,6 +1353,15 @@ namespace Resources {
         public static string Register_Model_Tickets {
             get {
                 return ResourceManager.GetString("Register_Model_Tickets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venta Cajero.
+        /// </summary>
+        public static string Register_Model_VentaCachier {
+            get {
+                return ResourceManager.GetString("Register_Model_VentaCachier", resourceCulture);
             }
         }
         

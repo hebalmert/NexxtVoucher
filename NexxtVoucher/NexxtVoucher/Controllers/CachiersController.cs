@@ -12,6 +12,8 @@ using PagedList;
 
 namespace NexxtVoucher.Controllers
 {
+    [Authorize(Roles = "User")]
+
     public class CachiersController : Controller
     {
         private NexxtVouContext db = new NexxtVouContext();
@@ -74,6 +76,7 @@ namespace NexxtVoucher.Controllers
                 Activo = true
             };
 
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(user.CompanyId), "ServerId", "Nombre");
             ViewBag.CityId = new SelectList(ComboHelper.GetCities(user.CompanyId), "CityId", "Ciudad");
             ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(user.CompanyId), "IdentificationId", "TipoDocumento");
             ViewBag.ZoneId = new SelectList(ComboHelper.GetZone(user.CompanyId), "ZoneId", "Zona");
@@ -135,6 +138,7 @@ namespace NexxtVoucher.Controllers
                 }
             }
 
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(cachier.CompanyId), "ServerId", "Nombre", cachier.ServerId);
             ViewBag.CityId = new SelectList(ComboHelper.GetCities(cachier.CompanyId), "CityId", "Ciudad", cachier.CityId);
             ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(cachier.CompanyId), "IdentificationId", "TipoDocumento", cachier.IdentificationId);
             ViewBag.ZoneId = new SelectList(ComboHelper.GetZone(cachier.CompanyId), "ZoneId", "Zona", cachier.ZoneId);
@@ -155,6 +159,7 @@ namespace NexxtVoucher.Controllers
                 return HttpNotFound();
             }
 
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(cachier.CompanyId), "ServerId", "Nombre", cachier.ServerId);
             ViewBag.CityId = new SelectList(ComboHelper.GetCities(cachier.CompanyId), "CityId", "Ciudad", cachier.CityId);
             ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(cachier.CompanyId), "IdentificationId", "TipoDocumento", cachier.IdentificationId);
             ViewBag.ZoneId = new SelectList(ComboHelper.GetZone(cachier.CompanyId), "ZoneId", "Zona", cachier.ZoneId);
@@ -294,6 +299,7 @@ namespace NexxtVoucher.Controllers
                 }
             }
 
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(cachier.CompanyId), "ServerId", "Nombre", cachier.ServerId);
             ViewBag.CityId = new SelectList(ComboHelper.GetCities(cachier.CompanyId), "CityId", "Ciudad", cachier.CityId);
             ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(cachier.CompanyId), "IdentificationId", "TipoDocumento", cachier.IdentificationId);
             ViewBag.ZoneId = new SelectList(ComboHelper.GetZone(cachier.CompanyId), "ZoneId", "Zona", cachier.ZoneId);

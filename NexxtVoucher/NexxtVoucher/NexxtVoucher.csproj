@@ -226,6 +226,7 @@
     <Compile Include="Controllers\PlanCategoriesController.cs" />
     <Compile Include="Controllers\PlanTicketsController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
+    <Compile Include="Controllers\SellTicketOneCachiersController.cs" />
     <Compile Include="Controllers\SellTicketOnesController.cs" />
     <Compile Include="Controllers\SellTicketsController.cs" />
     <Compile Include="Controllers\ServersController.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Models\SellTicket.cs" />
     <Compile Include="Models\SellTicketDetail.cs" />
     <Compile Include="Models\SellTicketOne.cs" />
+    <Compile Include="Models\SellTicketOneCachier.cs" />
     <Compile Include="Models\Server.cs" />
     <Compile Include="Models\SpeedDown.cs" />
     <Compile Include="Models\SpeedUp.cs" />
@@ -443,6 +445,12 @@
     <Content Include="Views\Cachiers\Details.cshtml" />
     <Content Include="Views\Cachiers\Edit.cshtml" />
     <Content Include="Views\Cachiers\Index.cshtml" />
+    <Content Include="Views\SellTicketOneCachiers\Create.cshtml" />
+    <Content Include="Views\SellTicketOneCachiers\Delete.cshtml" />
+    <Content Include="Views\SellTicketOneCachiers\Details.cshtml" />
+    <Content Include="Views\SellTicketOneCachiers\Edit.cshtml" />
+    <Content Include="Views\SellTicketOneCachiers\Index.cshtml" />
+    <Content Include="Views\SellTicketOneCachiers\PrintTicket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

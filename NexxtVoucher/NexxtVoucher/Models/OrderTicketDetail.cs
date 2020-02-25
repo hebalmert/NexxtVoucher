@@ -65,13 +65,37 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "OrderTicketDetail_Model_MikrotikID")]
         public string MikrotikId { get; set; }
 
+        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //Se Marca si el ticket esta vendido o no y se coloca la fecha en caso de Vendido = true
         [Display(ResourceType = typeof(Resource), Name = "OrderTicketDetail_Model_Vendido")]
         public bool Vendido { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(ResourceType = typeof(Resource), Name = "OrderTicket_Model_Date")]
+        public DateTime? Date { get; set; }
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //Este numero es de la venta hecha por un Usuario Administrador
 
         [MaxLength(15, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
         [Display(ResourceType = typeof(Resource), Name = "Register_Model_VentaOne")]
         public string VentaNumero { get; set; }
+        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //Datos en caso que se haya vendido por un Cajero
+        [Display(ResourceType = typeof(Resource), Name = "OrderTicketDetail_Model_VendidoCajero")]
+        public bool VendidoCajero { get; set; }
+
+        [Display(ResourceType = typeof(Resource), Name = "Cachier_Model_FullName")]
+        public int? CachierId { get; set; }
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        
         public virtual Company Company { get; set; }
 
         public virtual OrderTicket OrderTicket { get; set; }
@@ -82,8 +106,12 @@ namespace NexxtVoucher.Models
 
         public virtual PlanTicket PlanTicket { get; set; }
 
+        public virtual Cachier Cachier { get; set; }
+
         public virtual ICollection<SellTicketOne> SellTicketOnes { get; set; }
 
         public virtual ICollection<SellTicketDetail> SellTicketDetails { get; set; }
+
+        public virtual ICollection<SellTicketOneCachier> SellTicketOneCachiers { get; set; }
     }
 }

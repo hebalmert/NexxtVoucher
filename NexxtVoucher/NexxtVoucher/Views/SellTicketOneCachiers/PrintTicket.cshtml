@@ -1,0 +1,99 @@
+﻿@model NexxtVoucher.Models.SellTicketOneCachier
+
+@{
+    ViewBag.Title = @Resources.Resource.SellTicket_Model_Titulo;
+}
+
+<div id="dvmismatch">
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <table class="table" align="center">
+                    <tr>
+                        <td width="100" align="center">
+                            @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                            {
+                                <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:60px;height:60px;max-width: 100%; height: auto;" />
+                            }
+                        </td>
+                    <tr />
+                </table>
+                <table class="table" align="center">
+                    <tr>
+                        <td align="center">
+                            @Model.Company.Compania
+                            @*<h6>@Model.TipoDocumento:@Model.Rif</h6>*@
+                        </td>
+                    <tr />
+                </table>
+                @*<table class="table table-borderless">
+                        <tr class="text-center">
+                            <th>
+                                <small>@Model.HeadTexts.TextoEncabezado</small>
+                            </th>
+                        <tr />
+                    </table>*@
+                @*<h4>
+                        @Resources.Resource.SellTicket_Model_Titulo
+                    </h4>*@
+                <p>
+                    <strong>@Html.DisplayNameFor(model => model.VentaCachier):</strong>
+                    <strong>@Html.DisplayFor(model => model.VentaCachier)</strong>
+                </p>
+                <p>
+                    <strong>@Html.DisplayNameFor(model => model.Date):</strong>
+                    <strong>@Html.DisplayFor(model => model.Date)</strong>
+                </p>
+                <hr />
+                <p>
+                    <strong>@Html.DisplayFor(model => model.PlanTicket.Plan)</strong>
+                </p>
+                <table class="table" align="center">
+                    <tr>
+                        <td align="center">
+                            <strong><font size=5> @Html.DisplayFor(model => model.OrderTicketDetail.Usuario) </font></strong>
+                        </td>
+                    <tr />
+                </table>
+                <hr />
+                <table class="table" align="right">
+                    <tr>
+                        <td align="right">
+                            <strong><font size=3>@Html.DisplayNameFor(model => model.Precio):</font></strong>
+                            <strong><font size=3>@Html.DisplayFor(model => model.Precio)</font></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = Model.SellTicketOneCachierId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink(@Resources.Resource.ButtonPrint, "PrintTicket", new { }, new { @class = "btn btn-primary", onclick = "printContent()" })
+</p>
+
+<script type="text/javascript">
+    function printContent() {
+        var divContents = $("#dvmismatch").html();
+        var printWindow = window.open('', '', 'height=400,width=300');
+        printWindow.document.write('<html><head><title>DIV Contents</title>');
+        printWindow.document.write('</head><body >');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+        q('.print default').trigger('click');
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}
+

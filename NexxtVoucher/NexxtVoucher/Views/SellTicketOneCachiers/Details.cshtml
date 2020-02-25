@@ -1,0 +1,63 @@
+﻿@model NexxtVoucher.Models.SellTicketOneCachier
+
+@{
+    ViewBag.Title =  @Resources.Resource.ViewDetail;
+}
+
+    <h2> @Resources.Resource.ViewDetail</h2>
+
+<div>
+    <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cachier.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cachier.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VentaCachier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VentaCachier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanTicket.Plan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+        <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+    </button>
+    @Html.ActionLink(@Resources.Resource.ButtonPrint, "PrintTicket", new { id = Model.SellTicketOneCachierId }, new { @class = "btn btn-warning btn-sm" }) |
+    @*<button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.SellTicketOneCachierId})'">
+        <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
+    </button>*@
+</p>

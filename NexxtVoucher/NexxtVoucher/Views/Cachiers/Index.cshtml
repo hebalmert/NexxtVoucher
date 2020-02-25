@@ -19,6 +19,9 @@
             @Html.DisplayNameFor(model => model.FullName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Server.Nombre)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
@@ -37,6 +40,9 @@
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Server.Nombre)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.UserName)

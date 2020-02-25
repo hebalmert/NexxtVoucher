@@ -63,5 +63,7 @@ namespace NexxtVoucher.Models
         public System.Data.Entity.DbSet<NexxtVoucher.Models.SellTicketDetail> SellTicketDetails { get; set; }
 
         public System.Data.Entity.DbSet<NexxtVoucher.Models.Cachier> Cachiers { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtVoucher.Models.SellTicketOneCachier> SellTicketOneCachiers { get; set; }
     }
 }

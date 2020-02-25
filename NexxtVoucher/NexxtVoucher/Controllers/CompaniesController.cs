@@ -87,7 +87,8 @@ namespace NexxtVoucher.Controllers
                         CompanyId = company.CompanyId,
                         Tickets = 0,
                         OrderTickets = 0,
-                        VentaOne = 0
+                        VentaOne = 0,
+                        VentaCachier = 0
                     };
                     db2.Registers.Add(registro);
                     db2.SaveChanges();
