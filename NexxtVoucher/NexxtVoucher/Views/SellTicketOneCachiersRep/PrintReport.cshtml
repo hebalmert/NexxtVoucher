@@ -1,0 +1,81 @@
+﻿@model IEnumerable<NexxtVoucher.Models.SellTicketOneCachier>
+
+@{
+    ViewBag.Title = @Resources.Resource.SellTicketCachier_Titulo;
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <h2>@Resources.Resource.SellTicketCachier_Titulo</h2>
+        </p>
+        <p>
+            <button title=@Resources.Resource.ButtonBack class="btn btn-success btn-sm" onclick="location.href =
+            '@Url.Action("PrintReportCachier", "SellTicketOneCachiersRep", new { })'">
+                <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+            </button>
+        </p>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VentaCachier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+    </tr>
+
+    @{
+        decimal TotalTotal = 0;
+        int registros = 0;
+    }
+
+    @foreach (var item in Model)
+    {
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.VentaCachier)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PlanTicket.Plan)
+    </td>
+    <td align="right">
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+    @{
+        TotalTotal += item.Precio;
+        registros += +1;
+    }
+</tr>
+    }
+    <tr>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td align="center">
+        </td>
+        <td align="right">
+            Registros: @registros
+        </td>
+
+        <td align="right">
+            Vendido: @TotalTotal
+        </td>
+    </tr>
+</table>

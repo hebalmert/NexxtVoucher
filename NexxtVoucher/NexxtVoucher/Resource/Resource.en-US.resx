@@ -153,6 +153,9 @@
   <data name="ButtonPrint" xml:space="preserve">
     <value>Print</value>
   </data>
+  <data name="ButtonReport" xml:space="preserve">
+    <value>Report</value>
+  </data>
   <data name="ButtonSave" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -366,6 +369,12 @@
   <data name="MenuOperation_VentaTicketCajero" xml:space="preserve">
     <value>Cachier Tickets</value>
   </data>
+  <data name="MenuReport_Reportes" xml:space="preserve">
+    <value>Reportes</value>
+  </data>
+  <data name="MenuReport_TicketCajero" xml:space="preserve">
+    <value>Tickets by Cachiers</value>
+  </data>
   <data name="MenuSystem_Cajeros" xml:space="preserve">
     <value>Cachiers</value>
   </data>
@@ -483,6 +492,9 @@
   <data name="OrderTicket_Model_Total" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="PirntView_Model_DateEnd" xml:space="preserve">
+    <value>End</value>
+  </data>
   <data name="PlanCategory_Model_Categoria" xml:space="preserve">
     <value>Category</value>
   </data>
@@ -534,6 +546,12 @@
   <data name="PlanTicket_Model_Titulo" xml:space="preserve">
     <value>Tickets Plan</value>
   </data>
+  <data name="PrintView_Model_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="PrintView_Model_DateStar" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="Print_Codigo" xml:space="preserve">
     <value>Code</value>
   </data>
@@ -542,6 +560,9 @@
   </data>
   <data name="Print_Ticket" xml:space="preserve">
     <value>Ticket #</value>
+  </data>
+  <data name="PrinView_Model_Cachier" xml:space="preserve">
+    <value>Cachier</value>
   </data>
   <data name="Register_Model_OrderTickets" xml:space="preserve">
     <value>Order Tickets</value>
@@ -560,6 +581,9 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>The Field {0} is Required</value>
+  </data>
+  <data name="SellTicketCachier_Titulo" xml:space="preserve">
+    <value>Tickets by Cachiers</value>
   </data>
   <data name="SellTicket_Model_Ticket" xml:space="preserve">
     <value>Tickets</value>

@@ -53,7 +53,7 @@
     </dl>
 </div>
 <p>
-    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Create", new {})'">
         <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
     </button>
     @Html.ActionLink(@Resources.Resource.ButtonPrint, "PrintTicket", new { id = Model.SellTicketOneCachierId }, new { @class = "btn btn-warning btn-sm" }) |

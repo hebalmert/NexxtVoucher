@@ -169,6 +169,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reporte.
+        /// </summary>
+        public static string ButtonReport {
+            get {
+                return ResourceManager.GetString("ButtonReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Guardar.
         /// </summary>
         public static string ButtonSave {
@@ -808,6 +817,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reportes.
+        /// </summary>
+        public static string MenuReport_Reportes {
+            get {
+                return ResourceManager.GetString("MenuReport_Reportes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ticket por Cajero.
+        /// </summary>
+        public static string MenuReport_TicketCajero {
+            get {
+                return ResourceManager.GetString("MenuReport_TicketCajero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cajeros.
         /// </summary>
         public static string MenuSystem_Cajeros {
@@ -1159,6 +1186,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hasta.
+        /// </summary>
+        public static string PirntView_Model_DateEnd {
+            get {
+                return ResourceManager.GetString("PirntView_Model_DateEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Categoria.
         /// </summary>
         public static string PlanCategory_Model_Categoria {
@@ -1339,6 +1375,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string PrintView_Model_Company {
+            get {
+                return ResourceManager.GetString("PrintView_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desde.
+        /// </summary>
+        public static string PrintView_Model_DateStar {
+            get {
+                return ResourceManager.GetString("PrintView_Model_DateStar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cajero.
+        /// </summary>
+        public static string PrinView_Model_Cachier {
+            get {
+                return ResourceManager.GetString("PrinView_Model_Cachier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Orden Tickets.
         /// </summary>
         public static string Register_Model_OrderTickets {
@@ -1407,6 +1470,15 @@ namespace Resources {
         public static string SellTicket_Model_Titulo {
             get {
                 return ResourceManager.GetString("SellTicket_Model_Titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venta Tickets por Cajero.
+        /// </summary>
+        public static string SellTicketCachier_Titulo {
+            get {
+                return ResourceManager.GetString("SellTicketCachier_Titulo", resourceCulture);
             }
         }
         

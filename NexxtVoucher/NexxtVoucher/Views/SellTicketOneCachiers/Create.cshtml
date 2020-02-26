@@ -88,7 +88,10 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
-                    <span class="glyphicon glyphicon-refresh"></span> @Resources.Resource.ButtonBack
+                    <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonList
+                </button>
+                <button type="button" class="btn btn-warning btn-sm" onclick="location.href ='@Url.Action("Create", new {})'">
+                    <span class="glyphicon glyphicon-refresh"></span> @Resources.Resource.ButtonClear
                 </button>
                 <button type="submit" class="btn btn-primary btn-sm">
                     <span class="glyphicon glyphicon-floppy-disk"></span> @Resources.Resource.ButtonSave

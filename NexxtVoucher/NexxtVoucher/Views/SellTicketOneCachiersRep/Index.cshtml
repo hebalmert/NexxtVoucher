@@ -1,0 +1,78 @@
+﻿@model IEnumerable<NexxtVoucher.Models.SellTicketOneCachier>
+
+@{
+    ViewBag.Title = @Resources.Resource.SellTicket_Model_Titulo;
+}
+
+<h2> @Resources.Resource.SellTicket_Model_Titulo</h2>
+
+<p>
+    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "SellTicketOneCachiers", new { })'">
+        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VentaCachier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cachier.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderTicketDetail.Velocidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VentaCachier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cachier.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanTicket.Plan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTicketDetail.Velocidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @*<button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+                           '@Url.Action("Edit", "SellTicketOneCachiers", new { id = item.SellTicketOneCachierId})'">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>*@
+
+                <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", "SellTicketOneCachiers", new { id = item.SellTicketOneCachierId})'">
+                    <span class="glyphicon glyphicon-list"></span>
+                </button>
+
+                @*<button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+                           '@Url.Action("Delete", "SellTicketOneCachiers", new { id = item.SellTicketOneCachierId})'">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>*@
+            </td>
+        </tr>
+    }
+
+</table>
