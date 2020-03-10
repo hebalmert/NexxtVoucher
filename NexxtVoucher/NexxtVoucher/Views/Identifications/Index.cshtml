@@ -3,31 +3,44 @@
 @{
     ViewBag.Title = @Resources.Resource.Identification_ViewIndex_Titulo1;
 }
-
+    <p></p>
     <h2>@Resources.Resource.Identification_ViewIndex_Titulo1</h2>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoDocumento)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDocumento)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoDocumento)
+                </td>
+                <td>
+                    <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.IdentificationId})'">
+                        <i class="fa fa-pencil-alt"></i>
+                    </button>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoDocumento)
-        </td>
-        <td>
-            @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id=item.IdentificationId }, new { @class="btn btn-warning btn-sm"}) |
-            @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id=item.IdentificationId }, new { @class="btn btn-info btn-sm"}) 
-            @*@Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id=item.IdentificationId }, new { @class="btn btn-danger btn-sm"})*@
-        </td>
-    </tr>
-}
+                    <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.IdentificationId})'">
+                        <i class="fa fa-clipboard-list"></i>
+                    </button>
+
+                    <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.IdentificationId})'">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        }
 
 </table>

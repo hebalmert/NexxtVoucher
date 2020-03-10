@@ -89,13 +89,16 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
-                <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
-            </button>
-            <button type="submit" class="btn btn-danger btn-sm">
-                <span class="glyphicon glyphicon-trash"></span> @Resources.Resource.ButtonDelete
-            </button>
-        </div>
+<div class="form-actions no-color">
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+        <i class="fa fa-backspace"></i>
+        @Resources.Resource.ButtonBack
+    </button>
+
+    <button type="submit" class="btn btn-danger btn-sm">
+        <i class="fa fa-trash"></i>
+        @Resources.Resource.ButtonDelete
+    </button>
+</div>
     }
 </div>

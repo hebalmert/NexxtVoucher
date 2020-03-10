@@ -6,55 +6,66 @@
 @{
     ViewBag.Title = @Resources.Resource.City_ViewIndex_Titulo1;
 }
-
+<p></p>
 <h2>@Resources.Resource.City_ViewIndex_Titulo1</h2>
 
 <p>
-    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
-            '@Url.Action("Create", "Cities", new { })'">
-        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <i class="fa fa-plus"></i>
+        @Resources.Resource.ButtonNew
     </button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Ciudad)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table table-striped">
+    <thead class="thead-light">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ciudad)
-            </td>
-            <td>
-                <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
-                   '@Url.Action("Edit", "Cities", new { id = item.CityId})'">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-
-                <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
-                   '@Url.Action("Details", "Cities", new { id = item.CityId})'">
-                    <span class="glyphicon glyphicon-list"></span>
-                </button>
-
-                <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
-                   '@Url.Action("Delete", "Cities", new { id = item.CityId})'">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </button>
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Ciudad)
+            </th>
+            <th></th>
         </tr>
-    }
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ciudad)
+                </td>
+                <td>
+                    <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.CityId})'">
+                        <i class="fa fa-pencil-alt"></i>
+                    </button>
+
+                    <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.CityId})'">
+                        <i class="fa fa-clipboard-list"></i>
+                    </button>
+
+                    <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.CityId})'">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        }
 
 </table>
 
-Página: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), de: @Model.PageCount
 @Html.PagedListPager(Model, page => Url.Action("Index", new
 {
     page,
     sortOrder =
-    ViewBag.CurrentSort,
-    currentFilter = ViewBag.CurrentFilter
-}))
+         ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter,
+    @class = "page-link"
+}), new PagedListRenderOptions
+{
+    FunctionToTransformEachPageLink = (liTag, aTag) =>
+    {
+        aTag.Attributes.Add("class", "page-link");
+            liTag.InnerHtml = aTag.ToString();
+            return liTag;
+        },
+        LiElementClasses = new[] { "page-item" },
+        UlElementClasses = new[] { "pagination justify-content-center" }
+    })

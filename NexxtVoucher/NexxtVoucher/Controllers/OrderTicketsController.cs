@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using NexxtVoucher.Classes;
 using NexxtVoucher.Models;
+using PagedList;
 
 namespace NexxtVoucher.Controllers
 {
@@ -139,7 +140,7 @@ namespace NexxtVoucher.Controllers
         }
 
         // GET: OrderTickets
-        public ActionResult Index()
+        public ActionResult Index(int? page = null)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -147,11 +148,13 @@ namespace NexxtVoucher.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            page = (page ?? 1);
+
             var orderTickets = db.OrderTickets.Where(c=> c.CompanyId == user.CompanyId)
                 .Include(o => o.PlanCategory)
                 .Include(o => o.PlanTicket)
                 .Include(o => o.Server);
-            return View(orderTickets.OrderByDescending(o=> o.OrdenNumero).ToList());
+            return View(orderTickets.OrderByDescending(o=> o.OrdenNumero).ToList().ToPagedList((int)page, 10));
         }
 
         // GET: OrderTickets/Details/5

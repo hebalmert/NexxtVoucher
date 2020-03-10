@@ -1,93 +1,115 @@
-﻿@model IEnumerable<NexxtVoucher.Models.OrderTicket>
-
+﻿@*@model IEnumerable<NexxtVoucher.Models.OrderTicket>*@
+@model PagedList.IPagedList<NexxtVoucher.Models.OrderTicket>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = @Resources.Resource.OrderTicket_Index_Titulo;
 }
+<p></p>
+<h2>@Resources.Resource.OrderTicket_Index_Titulo</h2>
 
-    <h2>@Resources.Resource.OrderTicket_Index_Titulo</h2>
-
-    <p>
-        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
-            '@Url.Action("Create", "OrderTickets", new { })'">
-            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
-        </button>
-    </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OrdenNumero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Server.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Plan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mikrotik)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.OrdenNumero)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Date)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Server.Nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Plan)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Precio)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Cantidad)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Total)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Mikrotik)
-    </td>
-    <td>
-        @if (item.Creados == 0)
-        {
-            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
-                   '@Url.Action("Edit", "OrderTickets", new { id = item.OrderTicketId})'">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>
-        } 
-        <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
-                   '@Url.Action("Details", "OrderTickets", new { id = item.OrderTicketId})'">
-            <span class="glyphicon glyphicon-list"></span>
-        </button> 
-        @if (item.Creados == 0)
-        {
-            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
-                   '@Url.Action("Delete", "OrderTickets", new { id = item.OrderTicketId})'">
-                <span class="glyphicon glyphicon-trash"></span>
-            </button>
-        }
-    </td>
-</tr>
-}
+<p>
+    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <i class="fa fa-plus"></i>
+        @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().OrdenNumero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Server.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Plan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Mikrotik)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdenNumero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Server.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mikrotik)
+            </td>
+            <td>
+                @if (item.Creados == 0)
+                {
+                    <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.OrderTicketId})'">
+                        <i class="fa fa-pencil-alt"></i>
+                    </button>
+                }
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.OrderTicketId})'">
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
+                @if (item.Creados == 0)
+                {
+                    <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.OrderTicketId})'">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder =
+         ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter,
+    @class = "page-link"
+}), new PagedListRenderOptions
+{
+    FunctionToTransformEachPageLink = (liTag, aTag) =>
+    {
+        aTag.Attributes.Add("class", "page-link");
+            liTag.InnerHtml = aTag.ToString();
+            return liTag;
+        },
+        LiElementClasses = new[] { "page-item" },
+        UlElementClasses = new[] { "pagination justify-content-center" }
+    })

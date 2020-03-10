@@ -109,10 +109,13 @@
     </dl>
 </div>
 <p>
-    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
-        <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+        <i class="fa fa-backspace"></i>
+        @Resources.Resource.ButtonBack
     </button>
-    <button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.CachierId})'">
-        <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
+
+    <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.CachierId })'">
+        <i class="fa fa-pencil-alt"></i>
+        @Resources.Resource.ButtonEdit
     </button>
 </p>

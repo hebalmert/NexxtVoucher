@@ -3,84 +3,99 @@
 @{
     ViewBag.Title = @Resources.Resource.Company_ViewIndex_Titulo1;
 }
-
+    <p></p>
     <h2>@Resources.Resource.Company_ViewIndex_Titulo1</h2>
 
-<p>
-    @Html.ActionLink(@Resources.Resource.ButtonNew, "Create", new { }, new { @class="btn btn-primary btn-sm"})
-</p>
-<table class="table">
-    <tr>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Compania)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rif)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Logo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateDesde)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateHasta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Activo)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+            <i class="fa fa-plus"></i>
+            @Resources.Resource.ButtonNew
+        </button>
+    </p>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Compania)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rif)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Logo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateDesde)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateHasta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Activo)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Compania)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rif)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.Logo))
+                        {
+                            <img src="@Url.Content(item.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateDesde)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateHasta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activo)
+                    </td>
+                    <td>
+                        <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.CompanyId})'">
+                            <i class="fa fa-pencil-alt"></i>
+                        </button>
 
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Compania)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Rif)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Phone)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Address)
-    </td>
-    <td>
-        @if (!string.IsNullOrEmpty(item.Logo))
-        {
-            <img src="@Url.Content(item.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
-        }
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Country)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DateDesde)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DateHasta)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Activo)
-    </td>
-    <td>
-        @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = item.CompanyId }, new { @class="btn btn-warning btn-sm"}) |
-        @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = item.CompanyId }, new { @class="btn btn-info btn-sm"}) |
-        @Html.ActionLink(@Resources.Resource.ButtonDelete, "Delete", new { id = item.CompanyId }, new { @class="btn btn-danger btn-sm"})
-    </td>
-</tr>
-    }
+                        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.CompanyId})'">
+                            <i class="fa fa-clipboard-list"></i>
+                        </button>
 
-</table>
+                        <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.CompanyId})'">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+    </table>

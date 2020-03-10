@@ -4,7 +4,7 @@
     ViewBag.Title = @Resources.Resource.ViewDetail;
 }
 
-    <h2>@Resources.Resource.ViewDetail</h2>
+<h2>@Resources.Resource.ViewDetail</h2>
 
 
 <div class="row">
@@ -12,96 +12,100 @@
         <div>
             <h4>@Resources.Resource.OrderTicket_Index_Titulo</h4>
             <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Date)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Date)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.OrdenNumero)
-                </dt>
-
-                <dd>
+            <div class="form-row">
+                <div class="col-md-6 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.OrdenNumero)</strong>
                     @Html.DisplayFor(model => model.OrdenNumero)
-                </dd>
+                </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Server.Modelo)
-                </dt>
-
-                <dd>
+                <div class="col-md-6 mb-2">
+                    <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                    @Html.DisplayFor(model => model.Date)
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <div class="col-md-6 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.Server.Modelo)</strong>
                     @Html.DisplayFor(model => model.Server.Modelo)
-                </dd>
+                </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Server.ServerId)
-                </dt>
-
-                <dd>
+                <div class="col-md-6 mb-2">
+                    <strong> @Html.DisplayNameFor(model => model.Server.Nombre)</strong>
                     @Html.DisplayFor(model => model.Server.Nombre)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Plan)
-                </dt>
-
-                <dd>
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <div class="col-md-10 mb-2">
+                    <strong> @Html.DisplayNameFor(model => model.Plan)</strong>
                     @Html.DisplayFor(model => model.Plan)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Precio)
-                </dt>
-
-                <dd>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.Precio)</strong>
                     @Html.DisplayFor(model => model.Precio)
-                </dd>
+                </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Cantidad)
-                </dt>
-
-                <dd>
+                <div class="col-md-6 mb-2">
+                    <strong> @Html.DisplayNameFor(model => model.Cantidad)</strong>
                     @Html.DisplayFor(model => model.Cantidad)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Creados)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Creados)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Total)
-                </dt>
-
-                <dd>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-2">
+                    <strong> @Html.DisplayNameFor(model => model.Total)</strong>
                     @Html.DisplayFor(model => model.Total)
-                </dd>
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <div class="col-md-6 mb-2">
+                    <strong> @Html.DisplayNameFor(model => model.Creados)</strong>
+                    @Html.DisplayFor(model => model.Creados)
+                </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Mikrotik)
-                </dt>
-
-                <dd>
+                <div class="col-md-6 mb-2">
+                    <strong> @Html.DisplayNameFor(model => model.Mikrotik)</strong>
                     @Html.DisplayFor(model => model.Mikrotik)
-                </dd>
-
-            </dl>
+                </div>
+            </div>
         </div>
+        <hr />
+        <p></p>
         <p>
-            @if (Model.Creados == 0)
-            {@Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.OrderTicketId }, new { @class = "btn btn-primary btn-sm" })} |
-            @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href =
+                '@Url.Action("Index", new { })'">
+                <i class="fa fa-backspace"></i>
+                @Resources.Resource.ButtonBack
+            </button>
+
             @if (Model.Creados == 0)
             {
-                @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { id = Model.OrderTicketId, up = Model.PlanTicket.SpeedUp.VelocidadUp, down = Model.PlanTicket.SpeedDown.VelocidadDown }, new { @class = "btn btn-success btn-sm" })}
+                <button type="button" class="btn btn-warning btn-sm" onclick="location.href =
+                '@Url.Action("Edit", new { id = Model.OrderTicketId })'">
+                    <i class="fa fa-pencil-alt"></i>
+                    @Resources.Resource.ButtonEdit
+                </button>
+            }
+
+            @if (Model.Creados == 0)
+            {
+                <button type="button" class="btn btn-primary btn-sm" onclick="location.href =
+                '@Url.Action("AddTicket", new { id = Model.OrderTicketId, up = Model.PlanTicket.SpeedUp.VelocidadUp, down = Model.PlanTicket.SpeedDown.VelocidadDown })'">
+                    <i class="fa fa-plus"></i>
+                    @Resources.Resource.ButtonAdd
+                </button>
+            }
+            @*@if (Model.Creados == 0)
+                {@Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.OrderTicketId }, new { @class = "btn btn-primary btn-sm" })} |
+
+                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
+
+                @if (Model.Creados == 0)
+                {
+                    @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { id = Model.OrderTicketId, up = Model.PlanTicket.SpeedUp.VelocidadUp, down = Model.PlanTicket.SpeedDown.VelocidadDown }, new { @class = "btn btn-success btn-sm" })}*@
         </p>
     </div>
     <div class="col-md-6">
@@ -114,39 +118,51 @@
             }
             else
             {
-                <table class="table table-bordered">
-                    <tr class="table-secondary">
-                        <th>
-                            Ticket #
-                        </th>
-                        <th>
-                            Codigo
-                        </th>
-                        <th>
-                            Mikrotik
-                        </th>
-                        @*<th>
-
-                        </th>*@
-                    </tr>
-
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr class="table-secondary">
+                            <th>
+                                Ticket #
+                            </th>
+                            <th>
+                                Codigo
+                            </th>
+                            <th>
+                                Mikrotik
+                            </th>
+                        </tr>
+                        @{
+                            int registros = 0;
+                        }
+                    </thead>
                     @foreach (var item in Model.OrderTicketDetails.ToList())
                     {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TicketNumero)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Usuario)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MikrotikId)
-                    </td>
-                    @*<td align="right">
-                        @Html.ActionLink("Borrar", "DeleteIpNet", new { id = item.OrderTicketDetailId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Desea Eliminar este Registro?')" })
-                    </td>*@
-                </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TicketNumero)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Usuario)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MikrotikId)
+                            </td>
+                            @*<td align="right">
+                                    @Html.ActionLink("Borrar", "DeleteIpNet", new { id = item.OrderTicketDetailId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Desea Eliminar este Registro?')" })
+                                </td>*@
+                            @{
+                                registros += +1;
+                            }
+                        </tr>
                     }
+                    <tr>
+                        <td align="center">
+                            <strong>Tickets</strong>
+                        </td>
+                        <td align="right">
+                            <strong>Registros: @registros</strong>
+                        </td>
+                    </tr>
                 </table>
 
             }

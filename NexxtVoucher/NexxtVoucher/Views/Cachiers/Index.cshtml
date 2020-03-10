@@ -3,79 +3,80 @@
 @{
     ViewBag.Title = @Resources.Resource.Cachier_ViewIndex_Titulo1;
 }
-
+<p></p>
     <h2>@Resources.Resource.Cachier_ViewIndex_Titulo1</h2>
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
-            '@Url.Action("Create", "Cachiers", new { })'">
-        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
-    </button>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Server.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City.Ciudad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zone.Zona)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Activo)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.FullName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Server.Nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UserName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.City.Ciudad)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Zone.Zona)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Activo)
-    </td>
-    <td>
-        @*@Html.ActionLink("Edit", "Edit", new { id = item.CachierId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CachierId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CachierId })*@
-        <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
-                   '@Url.Action("Edit", "Cachiers", new { id = item.CachierId})'">
-            <span class="glyphicon glyphicon-pencil"></span>
+    <p>
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+            <i class="fa fa-plus"></i>
+            @Resources.Resource.ButtonNew
         </button>
+    </p>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Server.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City.Ciudad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zone.Zona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Activo)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Server.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City.Ciudad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zone.Zona)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activo)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.CachierId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CachierId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CachierId })*@
+                        <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.CachierId})'">
+                            <i class="fa fa-pencil-alt"></i>
+                        </button>
 
-        <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
-                   '@Url.Action("Details", "Cachiers", new { id = item.CachierId})'">
-            <span class="glyphicon glyphicon-list"></span>
-        </button>
+                        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.CachierId})'">
+                            <i class="fa fa-clipboard-list"></i>
+                        </button>
 
-        <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
-                   '@Url.Action("Delete", "Cachiers", new { id = item.CachierId})'">
-            <span class="glyphicon glyphicon-trash"></span>
-        </button>
-    </td>
-</tr>
-}
+                        <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.CachierId})'">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
 
-</table>
+    </table>

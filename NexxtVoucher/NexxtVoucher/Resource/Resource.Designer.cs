@@ -1015,7 +1015,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Orden Tickets.
+        ///   Looks up a localized string similar to Crear Tickets.
         /// </summary>
         public static string OrderTicket_Index_Titulo {
             get {
@@ -1204,7 +1204,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Categoria Servicio.
+        ///   Looks up a localized string similar to Categoria Planes.
         /// </summary>
         public static string PlanCategory_ViewIndex_Titulo1 {
             get {
@@ -1294,7 +1294,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tiempo Inactivo.
+        ///   Looks up a localized string similar to Tiempo/Inactivo.
         /// </summary>
         public static string PlanTicket_Model_TicketInactive {
             get {
@@ -1303,7 +1303,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tiempo Refresh.
+        ///   Looks up a localized string similar to Tiempo/Refresh.
         /// </summary>
         public static string PlanTicket_Model_TicketRefresh {
             get {
@@ -1312,7 +1312,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tiempo Plan.
+        ///   Looks up a localized string similar to Tiempo/Plan.
         /// </summary>
         public static string PlanTicket_Model_TicketTime {
             get {

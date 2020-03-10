@@ -466,7 +466,7 @@
     <value>Cajero</value>
   </data>
   <data name="OrderTicket_Index_Titulo" xml:space="preserve">
-    <value>Orden Tickets</value>
+    <value>Crear Tickets</value>
   </data>
   <data name="OrderTicket_Model_Cantidad" xml:space="preserve">
     <value>Cantidad</value>
@@ -499,7 +499,7 @@
     <value>Categoria</value>
   </data>
   <data name="PlanCategory_ViewIndex_Titulo1" xml:space="preserve">
-    <value>Categoria Servicio</value>
+    <value>Categoria Planes</value>
   </data>
   <data name="PlanCateogry_Model_Detail" xml:space="preserve">
     <value>Detalle</value>
@@ -535,13 +535,13 @@
     <value>Upload</value>
   </data>
   <data name="PlanTicket_Model_TicketInactive" xml:space="preserve">
-    <value>Tiempo Inactivo</value>
+    <value>Tiempo/Inactivo</value>
   </data>
   <data name="PlanTicket_Model_TicketRefresh" xml:space="preserve">
-    <value>Tiempo Refresh</value>
+    <value>Tiempo/Refresh</value>
   </data>
   <data name="PlanTicket_Model_TicketTime" xml:space="preserve">
-    <value>Tiempo Plan</value>
+    <value>Tiempo/Plan</value>
   </data>
   <data name="PlanTicket_Model_Titulo" xml:space="preserve">
     <value>Planes Tickets</value>

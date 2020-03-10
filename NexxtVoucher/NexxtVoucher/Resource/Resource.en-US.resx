@@ -466,7 +466,7 @@
     <value>Cachier</value>
   </data>
   <data name="OrderTicket_Index_Titulo" xml:space="preserve">
-    <value>Ticket Order</value>
+    <value>Create Tickets</value>
   </data>
   <data name="OrderTicket_Model_Cantidad" xml:space="preserve">
     <value>Quantity</value>
@@ -535,13 +535,13 @@
     <value>Upload</value>
   </data>
   <data name="PlanTicket_Model_TicketInactive" xml:space="preserve">
-    <value>Innactive Ticket</value>
+    <value>Innactive/Ticket</value>
   </data>
   <data name="PlanTicket_Model_TicketRefresh" xml:space="preserve">
-    <value>Refresh Ticket</value>
+    <value>Refresh/Ticket</value>
   </data>
   <data name="PlanTicket_Model_TicketTime" xml:space="preserve">
-    <value>Plan Time</value>
+    <value>Plan/Time</value>
   </data>
   <data name="PlanTicket_Model_Titulo" xml:space="preserve">
     <value>Tickets Plan</value>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using NexxtVoucher.Classes;
 using NexxtVoucher.Models;
+using PagedList;
 
 namespace NexxtVoucher.Controllers
 {
@@ -17,13 +18,15 @@ namespace NexxtVoucher.Controllers
         private NexxtVouContext db = new NexxtVouContext();
 
         // GET: PlanTickets
-        public ActionResult Index()
+        public ActionResult Index(int? page = null)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
             }
+
+            page = (page ?? 1);
 
             var planTickets = db.PlanTickets.Where(c=> c.CompanyId == user.CompanyId)
                 .Include(p => p.SpeedDown)
@@ -34,7 +37,7 @@ namespace NexxtVoucher.Controllers
                 .Include(p => p.TicketTime)
                 .Include(p => p.PlanCategory);
 
-            return View(planTickets.OrderByDescending(o=> o.PlanCategory.Categoria).ThenByDescending(o2=> o2.Plan).ToList());
+            return View(planTickets.OrderByDescending(o=> o.PlanCategory.Categoria).ThenByDescending(o2=> o2.Plan).ToList().ToPagedList((int)page, 10));
         }
 
         // GET: PlanTickets/Details/5

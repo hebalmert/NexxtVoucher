@@ -82,9 +82,16 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value=@Resources.Resource.ButtonDelete class="btn btn-primary btn-sm" /> |
-                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" })
-            </div>
+    <div class="form-actions no-color">
+        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+            <i class="fa fa-backspace"></i>
+            @Resources.Resource.ButtonBack
+        </button>
+
+        <button type="submit" class="btn btn-danger btn-sm">
+            <i class="fa fa-trash"></i>
+            @Resources.Resource.ButtonDelete
+        </button>
+    </div>
         }
     </div>

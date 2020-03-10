@@ -27,8 +27,15 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value=@Resources.Resource.ButtonSave class="btn btn-primary btn-sm" /> |
-            @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class="btn btn-success btn-sm"})
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                <i class="fa fa-backspace"></i>
+                @Resources.Resource.ButtonBack
+            </button>
+
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-save"></i>
+                @Resources.Resource.ButtonSave
+            </button>
         </div>
     </div>
 </div>

@@ -33,15 +33,19 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                    <i class="fa fa-backspace"></i>
+                    @Resources.Resource.ButtonBack
+                </button>
+
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-save"></i>
+                    @Resources.Resource.ButtonSave
+                </button>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

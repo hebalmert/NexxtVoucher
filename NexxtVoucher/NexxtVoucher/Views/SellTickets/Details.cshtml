@@ -4,7 +4,7 @@
     ViewBag.Title = @Resources.Resource.ViewDetail;
 }
 
-    <h2>@Resources.Resource.ViewDetail</h2>
+<h2>@Resources.Resource.ViewDetail</h2>
 
 
 
@@ -13,59 +13,75 @@
         <div>
             <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
             <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.VentaOne)
-                </dt>
-
-                <dd>
+            <div class="form-row">
+                <div class="col-md-6 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.VentaOne)</strong>
                     @Html.DisplayFor(model => model.VentaOne)
-                </dd>
+                </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Date)
-                </dt>
-
-                <dd>
+                <div class="col-md-6 mb-2">
+                    <strong> @Html.DisplayNameFor(model => model.Date)</strong>
                     @Html.DisplayFor(model => model.Date)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.PlanCategory.Categoria)
-                </dt>
-
-                <dd>
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <div class="col-md-10 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.PlanCategory.Categoria)</strong>
                     @Html.DisplayFor(model => model.PlanCategory.Categoria)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.PlanTicket.Plan)
-                </dt>
-
-                <dd>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-10 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.PlanTicket.Plan)</strong>
                     @Html.DisplayFor(model => model.PlanTicket.Plan)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Precio)
-                </dt>
-
-                <dd>
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <div class="col-md-10 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.Precio)</strong>
                     @Html.DisplayFor(model => model.Precio)
-                </dd>
-
-            </dl>
+                </div>
+            </div>
         </div>
+        <hr />
+        <p></p>
         <p>
-            @Html.ActionLink(@Resources.Resource.ButtonDetail, "Edit", new { id = Model.SellTicketId }, new { @class = "btn btn-primary btn-sm" }) |
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                <i class="fa fa-backspace"></i>
+                @Resources.Resource.ButtonBack
+            </button>
+
+            @if (Model.SellTicketDetails.Count == 0)
+            {
+                <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.SellTicketId })'">
+                    <i class="fa fa-pencil-alt"></i>
+                    @Resources.Resource.ButtonEdit
+                </button>
+            }
+            @if (Model.SellTicketDetails.Count == 0)
+            {
+                <button type="submit" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("AddTicket", new { planid = Model.PlanTicketId, serid = Model.ServerId, ventaN = Model.VentaOne, sellid = Model.SellTicketId, com = Model.CompanyId })'">
+                    <i class="fa fa-pencil-alt"></i>
+                    @Resources.Resource.ButtonAdd
+                </button>
+            }
+            @if (Model.SellTicketDetails.Count != 0)
+            {
+                <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("ExportToExcel", new { seid = Model.SellTicketId })'">
+                    <i class="fa fa-file-excel"></i>
+                    @Resources.Resource.ButtonExcel
+                </button>
+            }
+            @*@Html.ActionLink(@Resources.Resource.ButtonDetail, "Edit", new { id = Model.SellTicketId }, new { @class = "btn btn-primary btn-sm" }) |
             @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
             @if (Model.SellTicketDetails.Count == 0)
             {
                 @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { planid = Model.PlanTicketId, serid = Model.ServerId, ventaN = Model.VentaOne, sellid = Model.SellTicketId, com = Model.CompanyId }, new { @class = "btn btn-warning btn-sm" })}
-            @*@Html.ActionLink(@Resources.Resource.ButtonList, "Lista", new { id = Model.SellTicketId }, new { @class = "btn btn-info btn-sm" }) |*@
-            @Html.ActionLink(@Resources.Resource.ButtonExcel, "ExportToExcel", new { seid = Model.SellTicketId }, new { @class = "btn btn-warning btn-sm" }) |
+            @Html.ActionLink(@Resources.Resource.ButtonExcel, "ExportToExcel", new { seid = Model.SellTicketId }, new { @class = "btn btn-warning btn-sm" }) |*@
 
-            </p>
+        </p>
     </div>
     <div class="col-md-6">
         <div>
@@ -77,23 +93,24 @@
             }
             else
             {
-                <table class="table table-bordered">
-                    <tr class="table-secondary">
-                        <th>
-                            Ticket #
-                        </th>
-                        <th>
-                            Plan
-                        </th>
-                        <th>
-                            Usuario
-                        </th>
-                    </tr>
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr class="table-secondary">
+                            <th>
+                                Ticket #
+                            </th>
+                            <th>
+                                Plan
+                            </th>
+                            <th>
+                                Usuario
+                            </th>
+                        </tr>
 
-                    @{
-                        int registros = 0;
-                    }
-
+                        @{
+                            int registros = 0;
+                        }
+                    </thead>
                     @foreach (var item in Model.SellTicketDetails.ToList())
                     {
                         <tr>
@@ -116,7 +133,7 @@
                             <strong>Tickets</strong>
                         </td>
                         <td align="right">
-                            Registros: @registros
+                            <strong>Registros: @registros</strong>
                         </td>
                     </tr>
                 </table>

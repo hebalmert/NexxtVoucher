@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NexxtVoucher.Classes;
 using NexxtVoucher.Models;
+using PagedList;
 
 namespace NexxtVoucher.Controllers
 {
@@ -100,7 +101,7 @@ namespace NexxtVoucher.Controllers
         }
 
         // GET: SellTickets
-        public ActionResult Index()
+        public ActionResult Index(int? page = null)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -108,11 +109,13 @@ namespace NexxtVoucher.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            page = (page ?? 1);
+
             var sellTickets = db.SellTickets.Where(o=> o.CompanyId == user.CompanyId)
                 .Include(s => s.PlanCategory)
                 .Include(s => s.PlanTicket)
                 .Include(s => s.Server);
-            return View(sellTickets.OrderBy(o=> o.ServerId).ThenByDescending(o=> o.VentaOne).ToList());
+            return View(sellTickets.OrderBy(o=> o.ServerId).ThenByDescending(o=> o.VentaOne).ToList().ToPagedList((int)page, 10));
         }
 
         // GET: SellTickets/Details/5

@@ -73,8 +73,17 @@
     </div>
 </div>
 <p>
-    @Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = Model.SellTicketOneCachierId }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink(@Resources.Resource.ButtonPrint, "PrintTicket", new { }, new { @class = "btn btn-primary", onclick = "printContent()" })
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", new  {id = Model.SellTicketOneCachierId})'">
+        <i class="fa fa-backspace"></i>
+        @Resources.Resource.ButtonDetail
+    </button>
+
+    <button type="button" class="btn btn-warning btn-sm" onclick='printContent()'>
+        <i class="fa fa-print"></i>
+        @Resources.Resource.ButtonPrint
+    </button>
+    @*@Html.ActionLink(@Resources.Resource.ButtonDetail, "Details", new { id = Model.SellTicketOneCachierId }, new { @class = "btn btn-success btn-sm" }) |
+    @Html.ActionLink(@Resources.Resource.ButtonPrint, "PrintTicket", new { }, new { @class = "btn btn-primary btn-sm", onclick = "printContent()" })*@
 </p>
 
 <script type="text/javascript">

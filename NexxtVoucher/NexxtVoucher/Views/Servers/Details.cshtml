@@ -78,9 +78,17 @@
 </dl>
 </div>
 <p>
-    @Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.ServerId }, new { @class = "btn btn-primary btn-sm" }) |
-    @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
-    @Html.ActionLink(@Resources.Resource.ButtonConnect, "MikroSuccess", new { ip = Model.IpServer, us = Model.Usuario, pss = Model.Clave, idserver = Model.ServerId }, new { @class = "dialog-window btn btn-warning btn-sm" })
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+        <i class="fa fa-backspace"></i>
+        @Resources.Resource.ButtonBack
+    </button>
+
+    <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.ServerId })'">
+        <i class="fa fa-pencil-alt"></i>
+        @Resources.Resource.ButtonEdit
+    </button>
+
+    @Html.ActionLink(@Resources.Resource.ButtonConnect, "MikroSuccess", new { ip = Model.IpServer, us = Model.Usuario, pss = Model.Clave, idserver = Model.ServerId }, new { @class = "dialog-window btn btn-secondary btn-sm" })
 </p>
 
 <div class="modal fade" id="MikroSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">

@@ -4,111 +4,98 @@
     ViewBag.Title = @Resources.Resource.ViewDelete;
 }
 
-    <h2>@Resources.Resource.ViewDelete</h2>
+<h2>@Resources.Resource.ViewDelete</h2>
 
-    <h3>@Resources.Resource.MsgDelete</h3>
+<h3>@Resources.Resource.MsgDelete</h3>
 <div>
     <h4>@Resources.Resource.PlanTicket_Model_Titulo</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.PlanCategory.Categoria)
-    </dt>
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.Server.Nombre)</strong>
+            @Html.DisplayFor(model => model.Server.Nombre)
+        </div>
 
-    <dd>
-        @Html.DisplayFor(model => model.PlanCategory.Categoria)
-    </dd>
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.PlanCategory.Categoria)</strong>
+            @Html.DisplayFor(model => model.PlanCategory.Categoria)
+        </div>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.Server.IpServer)
-    </dt>
+    </div>
+    <hr />
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.Plan)</strong>
+            @Html.DisplayFor(model => model.Plan)
+        </div>
 
-    <dd>
-        @Html.DisplayFor(model => model.Server.IpServer)
-    </dd>
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.ShareUser)</strong>
+            @Html.DisplayFor(model => model.ShareUser)
+        </div>
+    </div>
+    <hr />
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.Detalle)</strong>
+            @Html.DisplayFor(model => model.Detalle)
+        </div>
+    </div>
+    <hr />
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.SpeedUp.VelocidadUp) / @Html.DisplayNameFor(model => model.SpeedDown.VelocidadDown)</strong>
+            @Html.DisplayFor(model => model.SpeedUp.VelocidadUp) / @Html.DisplayFor(model => model.SpeedDown.VelocidadDown)
+        </div>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.Plan)
-    </dt>
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.TicketInactive.TiempoInactivo)</strong>
+            @Html.DisplayFor(model => model.TicketInactive.TiempoInactivo)
+        </div>
 
-    <dd>
-        @Html.DisplayFor(model => model.Plan)
-    </dd>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.TicketRefresh.TiempoRefrescar)</strong>
+            @Html.DisplayFor(model => model.TicketRefresh.TiempoRefrescar)
+        </div>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.SpeedUp.VelocidadUp) / @Html.DisplayNameFor(model => model.SpeedDown.VelocidadDown)
-    </dt>
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.TicketTime.TiempoTicket)</strong>
+            @Html.DisplayFor(model => model.TicketTime.TiempoTicket)
+        </div>
 
-    <dd>
-        @Html.DisplayFor(model => model.SpeedUp.VelocidadUp) / @Html.DisplayFor(model => model.SpeedDown.VelocidadDown)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.TicketInactive.TiempoInactivo)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.TicketInactive.TiempoInactivo)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.TicketRefresh.TiempoRefrescar)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.TicketRefresh.TiempoRefrescar)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.TicketTime.TiempoTicket)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.TicketTime.TiempoTicket)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.ShareUser)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.ShareUser)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Tax.Impuesto)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Tax.Impuesto)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Precio)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Precio)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Detalle)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Detalle)
-    </dd>
-
-</dl>
-
+    </div>
+    <hr />
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.Tax.Impuesto)</strong>
+            @Html.DisplayFor(model => model.Tax.Impuesto)
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
+            <strong>@Html.DisplayNameFor(model => model.Precio)</strong>
+            @Html.DisplayFor(model => model.Precio)
+        </div>
+    </div>
+    <hr />
+    <p></p>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value=@Resources.Resource.ButtonDelete class="btn btn-primary btn-sm" /> |
-            @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class="btn btn-success btn-sm"})
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                <i class="fa fa-backspace"></i>
+                @Resources.Resource.ButtonBack
+            </button>
+
+            <button type="submit" class="btn btn-danger btn-sm">
+                <i class="fa fa-trash"></i>
+                @Resources.Resource.ButtonDelete
+            </button>
         </div>
     }
 </div>

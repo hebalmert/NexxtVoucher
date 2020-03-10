@@ -3,37 +3,39 @@
 @{
     ViewBag.Title = @Resources.Resource.ViewCreate;
 }
-
+<p></p>
 <h2>@Resources.Resource.ViewCreate</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
-        <hr />
+    <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
+    <hr />
+    <div class="form-row">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CompanyId)
+        @Html.HiddenFor(model => model.Date)
 
-        <div class="form-group">
+        @*<div class="col-md-4 mb-2">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @readonly = "true", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        <div class="col-md-10 mb-2">
             @Html.LabelFor(model => model.VentaOne, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VentaOne, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.EditorFor(model => model.VentaOne, new { htmlAttributes = new { @readonly = "true", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VentaOne, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
+    </div>
+    <hr />
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
             @Html.LabelFor(model => model.ServerId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ServerId", null, htmlAttributes: new { @class = "form-control" })
@@ -41,15 +43,17 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="col-md-4 mb-2">
             @Html.LabelFor(model => model.PlanCategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("PlanCategoryId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PlanCategoryId, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
+    </div>
+    <hr />
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
             @Html.LabelFor(model => model.PlanTicketId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("PlanTicketId", null, htmlAttributes: new { @class = "form-control" })
@@ -57,18 +61,27 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="col-md-4 mb-2">
             @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @readonly = "true", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
+    </div>
+    <hr />
+    <div class="form-row">
+        <div class="col-md-10 mb-2">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value=@Resources.Resource.ButtonSave class="btn btn-primary btn-sm" /> |
-                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" })
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                    <i class="fa fa-backspace"></i>
+                    @Resources.Resource.ButtonList
+                </button>
+
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-save"></i>
+                    @Resources.Resource.ButtonSave
+                </button>
             </div>
         </div>
     </div>
