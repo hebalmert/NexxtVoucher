@@ -313,7 +313,7 @@
     <value>Archive</value>
   </data>
   <data name="MenuArchivo_CategoriaPlan" xml:space="preserve">
-    <value>Categoria Planes</value>
+    <value>Category Planes</value>
   </data>
   <data name="MenuArchivo_Ciudad" xml:space="preserve">
     <value>City</value>
@@ -370,7 +370,7 @@
     <value>Cachier Tickets</value>
   </data>
   <data name="MenuReport_Reportes" xml:space="preserve">
-    <value>Reportes</value>
+    <value>Reports</value>
   </data>
   <data name="MenuReport_TicketCajero" xml:space="preserve">
     <value>Tickets by Cachiers</value>

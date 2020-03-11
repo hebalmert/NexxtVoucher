@@ -158,11 +158,10 @@ namespace NexxtVoucher.Controllers
                         mikrotik.Send("=session-timeout=" + tiempo);
                         mikrotik.Send("=keepalive-timeout=" + tiempo);
                         mikrotik.Send("=rate-limit=" + Vup + "/" + Vdown);
-                        mikrotik.Send("=shared-users=" + "unlimited");
+                        mikrotik.Send("=shared-users=" + planTicket.ShareUser);
                         mikrotik.Send("=idle-timeout=" + inactivo);
                         mikrotik.Send("=status-autorefresh=" + refrescar);
                         mikrotik.Send("=add-mac-cookie=no");
-                        mikrotik.Send("=shared-users=" + 1);
                         mikrotik.Send("/ip/hotspot/user/profile/print", true);
 
                         int total = 0;
@@ -321,10 +320,9 @@ namespace NexxtVoucher.Controllers
                         mikrotik.Send("=session-timeout=" + tiempo);
                         mikrotik.Send("=keepalive-timeout=" + tiempo);
                         mikrotik.Send("=rate-limit=" + Vup + "/" + Vdown);
-                        mikrotik.Send("=shared-users=" + "unlimited");
+                        mikrotik.Send("=shared-users=" + planTicket.ShareUser);
                         mikrotik.Send("=idle-timeout=" + inactivo);
                         mikrotik.Send("=status-autorefresh=" + refrescar);
-                        mikrotik.Send("=shared-users=" + 1);
                         mikrotik.Send("/ip/hotspot/user/profile/print", true);
 
                         int total = 0;
