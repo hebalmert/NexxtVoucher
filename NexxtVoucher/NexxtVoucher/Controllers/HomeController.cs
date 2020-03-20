@@ -1,4 +1,6 @@
-﻿using NexxtVoucher.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using NexxtVoucher.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,8 @@ namespace NexxtVoucher.Controllers
 
                 if (comActivo == false)
                 {
-                    return RedirectToAction("Login", "Account");
+                    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                    return RedirectToAction("Index", "Home");
                 }
             }
 
@@ -43,6 +46,14 @@ namespace NexxtVoucher.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
         }
 
         protected override void Dispose(bool disposing)
