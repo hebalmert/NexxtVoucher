@@ -62,6 +62,9 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "Company_Model_Hasta")]
         public DateTime DateHasta { get; set; }
 
+        [Display(ResourceType = typeof(Resource), Name = "Company_Model_SoftwarePC")]
+        public bool SoftwarePC { get; set; }
+
         [Display(ResourceType = typeof(Resource), Name = "Company_Model_Active")]
         public bool Activo { get; set; }
 

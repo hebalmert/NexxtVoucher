@@ -30,6 +30,11 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "User_Model_LastName")]
         public string LastName { get; set; }
 
+        [MaxLength(15, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
+        [DataType(DataType.PhoneNumber)]
+        [Display(ResourceType = typeof(Resource), Name = "User_Model_ClavePc")]
+        public string ClavePc { get; set; }
+
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [MaxLength(20, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
         [DataType(DataType.PhoneNumber)]

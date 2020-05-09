@@ -11,83 +11,91 @@
         <h4>@Resources.Resource.Company_ViewIndex_Titulo1</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Compania)
-            </dt>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Compania)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Compania)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Compania)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Rif)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rif)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Rif)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Rif)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Phone)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Phone)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Address)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Address)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Logo)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
 
-            <dd>
-                @if (!string.IsNullOrEmpty(Model.Logo))
-                {
-                    <img src="@Url.Content(Model.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
-                }
-            </dd>
+        <dd>
+            @if (!string.IsNullOrEmpty(Model.Logo))
+            {
+                <img src="@Url.Content(Model.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+            }
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Country)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Country)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DateDesde)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDesde)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.DateDesde)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.DateDesde)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DateHasta)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateHasta)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.DateHasta)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.DateHasta)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Activo)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoftwarePC)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Activo)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.SoftwarePC)
+        </dd>
 
-        </dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+    </dl>
 
         @using (Html.BeginForm())
         {

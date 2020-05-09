@@ -466,6 +466,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Software PC.
+        /// </summary>
+        public static string Company_Model_SoftwarePC {
+            get {
+                return ResourceManager.GetString("Company_Model_SoftwarePC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compañia.
         /// </summary>
         public static string Company_ViewIndex_Titulo1 {
@@ -538,7 +547,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registre varios Servidores Mikrotik para Acceder a ellos.  IP publicas si es acceso externo o IP Privada para acceder dentro de la Red.
+        ///   Looks up a localized string similar to Maneja Multiples Servidores Mikrotik.  Servicios de Creacion de Ticket para redes Privadas y Manejo Individual si cuenta con IP Publicas..
         /// </summary>
         public static string Link1Text {
             get {
@@ -556,7 +565,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Puede crear diferentes planes de navegacion y estos agregarlos a los diferentes servidores que se han creado..
+        ///   Looks up a localized string similar to Puedes crear Planes diferentes para cada servidor registrado en el software.  Organizarlos por Categorias que definen cada Servidor. .
         /// </summary>
         public static string Link2Text {
             get {
@@ -574,7 +583,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Puede crear una cantidad de Tickets segun el plan y el servidor seleccionado.  Estos ticketes pueden ser vendido uno a uno o exportar un lote.
+        ///   Looks up a localized string similar to Crea Pool de Ticket en un solo acceso y crea cajeros para vendan estos tickets.  Los cajeros solo venderan los tickets que el sistema tiene disponibles..
         /// </summary>
         public static string Link3Text {
             get {
@@ -1002,6 +1011,15 @@ namespace Resources {
         public static string MsgDelete {
             get {
                 return ResourceManager.GetString("MsgDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software Ticket WIFI para Mikrotik.
+        /// </summary>
+        public static string NombreSoftware {
+            get {
+                return ResourceManager.GetString("NombreSoftware", resourceCulture);
             }
         }
         
@@ -1641,6 +1659,15 @@ namespace Resources {
         public static string User_Model_Address {
             get {
                 return ResourceManager.GetString("User_Model_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clave PC.
+        /// </summary>
+        public static string User_Model_ClavePc {
+            get {
+                return ResourceManager.GetString("User_Model_ClavePc", resourceCulture);
             }
         }
         

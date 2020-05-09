@@ -252,6 +252,9 @@
   <data name="Company_Model_Rif" xml:space="preserve">
     <value>Nit / CI</value>
   </data>
+  <data name="Company_Model_SoftwarePC" xml:space="preserve">
+    <value>Software PC</value>
+  </data>
   <data name="Company_ViewIndex_Titulo1" xml:space="preserve">
     <value>Company</value>
   </data>
@@ -431,6 +434,9 @@
   </data>
   <data name="Msg_Relationship" xml:space="preserve">
     <value>The Registration cannot be Eliminated, because it is related to other Data</value>
+  </data>
+  <data name="NombreSoftware" xml:space="preserve">
+    <value>Software Ticket WIFI to Mikrotik</value>
   </data>
   <data name="OderTiket_Model_Precio" xml:space="preserve">
     <value>Price</value>
@@ -644,6 +650,9 @@
   </data>
   <data name="User_Model_Address" xml:space="preserve">
     <value>Address</value>
+  </data>
+  <data name="User_Model_ClavePc" xml:space="preserve">
+    <value>PC PassWord</value>
   </data>
   <data name="User_Model_Company" xml:space="preserve">
     <value>Company</value>
