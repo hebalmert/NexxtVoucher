@@ -5,14 +5,54 @@
     ViewBag.Title = @Resources.Resource.PlanTicket_Model_Titulo;
 }
 <p></p>
-<h2>@Resources.Resource.PlanTicket_Model_Titulo</h2>
 
-<p>
-    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
-        <i class="fa fa-plus"></i>
-        @Resources.Resource.ButtonNew
-    </button>
-</p>
+<p></p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">      
+            <p></p>
+            <div class="card-body">
+                <h2>@Resources.Resource.PlanTicket_Model_Titulo</h2>
+                <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+                    <i class="fa fa-plus"></i>
+                    @Resources.Resource.ButtonNew
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "PlanTickets"))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <p></p>
+                        <div class="col-md-8 mb-2">
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder="Lista por Servidor" />
+                                        <input type="hidden" id="item_list" name="servidorid" /><br />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-search"></i>
+                                @Resources.Resource.ButtonSearch
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<p></p>
 <table class="table table-striped">
     <thead class="thead-light">
         <tr>
@@ -22,11 +62,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Server.Nombre)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().TicketTime.TiempoTicket)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().SpeedUp.VelocidadUp) / @Html.DisplayNameFor(model => model.FirstOrDefault().SpeedDown.VelocidadDown)
+            <th align="center">
+                Time / Up / Down
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Precio)
@@ -47,10 +84,7 @@
                 @Html.DisplayFor(modelItem => item.Server.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TicketTime.TiempoTicket)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpeedUp.VelocidadUp) / @Html.DisplayFor(modelItem => item.SpeedDown.VelocidadDown)
+                @Html.DisplayFor(modelItem => item.TicketTime.TiempoTicket) / @Html.DisplayFor(modelItem => item.SpeedUp.VelocidadUp) / @Html.DisplayFor(modelItem => item.SpeedDown.VelocidadDown)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Precio)
@@ -97,3 +131,46 @@
         LiElementClasses = new[] { "page-item" },
         UlElementClasses = new[] { "pagination justify-content-center" }
     })
+
+<link href="~/Content/JquerySearch/jquery-ui.css" rel="stylesheet" />
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Content/JquerySearch/jquery-1.12.4.js"></script>
+    <script src="~/Content/JquerySearch/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txt_search").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/PlanTickets/Search/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#item_list").val(i.item.val);
+                },
+                minLength: 1
+            });
+
+        });
+    </script>
+
+}

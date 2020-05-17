@@ -17,8 +17,27 @@ namespace NexxtVoucher.Controllers
     {
         private NexxtVouContext db = new NexxtVouContext();
 
+
+        [HttpPost]
+        public JsonResult Search(string Prefix)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var servidores = (from servidor in db.Servers
+                            where servidor.Nombre.StartsWith(Prefix) && servidor.CompanyId == user.CompanyId
+                            select new
+                            {
+                                label = servidor.Nombre,
+                                val = servidor.ServerId
+                            }).ToList();
+
+            return Json(servidores);
+
+        }
+
         // GET: PlanTickets
-        public ActionResult Index(int? page = null)
+        public ActionResult Index(int? servidorid, int? page = null)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -28,16 +47,32 @@ namespace NexxtVoucher.Controllers
 
             page = (page ?? 1);
 
-            var planTickets = db.PlanTickets.Where(c=> c.CompanyId == user.CompanyId)
-                .Include(p => p.SpeedDown)
-                .Include(p => p.SpeedUp)
-                .Include(p => p.Tax)
-                .Include(p => p.TicketInactive)
-                .Include(p => p.TicketRefresh)
-                .Include(p => p.TicketTime)
-                .Include(p => p.PlanCategory);
+            if (servidorid != null)
+            {
+                var planTickets = db.PlanTickets.Where(c => c.CompanyId == user.CompanyId && c.ServerId == servidorid)
+                    .Include(p => p.SpeedDown)
+                    .Include(p => p.SpeedUp)
+                    .Include(p => p.Tax)
+                    .Include(p => p.TicketInactive)
+                    .Include(p => p.TicketRefresh)
+                    .Include(p => p.TicketTime)
+                    .Include(p => p.PlanCategory);
 
-            return View(planTickets.OrderByDescending(o=> o.PlanCategory.Categoria).ThenByDescending(o2=> o2.Plan).ToList().ToPagedList((int)page, 10));
+                return View(planTickets.OrderByDescending(o => o.PlanCategory.Categoria).ThenByDescending(o2 => o2.Plan).ToList().ToPagedList((int)page, 20));
+            }
+            else
+            {
+                var planTickets = db.PlanTickets.Where(c => c.CompanyId == user.CompanyId)
+                    .Include(p => p.SpeedDown)
+                    .Include(p => p.SpeedUp)
+                    .Include(p => p.Tax)
+                    .Include(p => p.TicketInactive)
+                    .Include(p => p.TicketRefresh)
+                    .Include(p => p.TicketTime)
+                    .Include(p => p.PlanCategory);
+
+                return View(planTickets.OrderByDescending(o => o.PlanCategory.Categoria).ThenByDescending(o2 => o2.Plan).ToList().ToPagedList((int)page, 20));
+            }
         }
 
         // GET: PlanTickets/Details/5

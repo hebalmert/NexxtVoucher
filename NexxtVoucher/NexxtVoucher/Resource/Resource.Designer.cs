@@ -1474,6 +1474,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Despacho Tickets.
+        /// </summary>
+        public static string SellTicket_Model_Despacho {
+            get {
+                return ResourceManager.GetString("SellTicket_Model_Despacho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tickets.
         /// </summary>
         public static string SellTicket_Model_Ticket {

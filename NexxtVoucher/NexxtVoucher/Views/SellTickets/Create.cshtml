@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
+    <h4>@Resources.Resource.SellTicket_Model_Despacho</h4>
     <hr />
     <div class="form-row">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -18,12 +18,12 @@
         @Html.HiddenFor(model => model.Date)
 
         @*<div class="col-md-4 mb-2">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @readonly = "true", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @readonly = "true", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="col-md-10 mb-2">
             @Html.LabelFor(model => model.VentaOne, htmlAttributes: new { @class = "control-label col-md-2" })

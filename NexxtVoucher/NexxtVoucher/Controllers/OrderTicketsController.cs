@@ -17,6 +17,23 @@ namespace NexxtVoucher.Controllers
     {
         private NexxtVouContext db = new NexxtVouContext();
 
+        [HttpPost]
+        public JsonResult Search(string Prefix)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var servidores = (from servidor in db.Servers
+                              where servidor.Nombre.StartsWith(Prefix) && servidor.CompanyId == user.CompanyId
+                              select new
+                              {
+                                  label = servidor.Nombre,
+                                  val = servidor.ServerId
+                              }).ToList();
+
+            return Json(servidores);
+
+        }
 
         // GET: OrderTickets
         public ActionResult AddTicket(int id, string up, string down) //id = OrderTicketId
@@ -140,7 +157,7 @@ namespace NexxtVoucher.Controllers
         }
 
         // GET: OrderTickets
-        public ActionResult Index(int? page = null)
+        public ActionResult Index(int? servidorid, int? page = null)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -150,11 +167,22 @@ namespace NexxtVoucher.Controllers
 
             page = (page ?? 1);
 
-            var orderTickets = db.OrderTickets.Where(c=> c.CompanyId == user.CompanyId)
-                .Include(o => o.PlanCategory)
-                .Include(o => o.PlanTicket)
-                .Include(o => o.Server);
-            return View(orderTickets.OrderByDescending(o=> o.OrdenNumero).ToList().ToPagedList((int)page, 10));
+            if (servidorid != null)
+            {
+                var orderTickets = db.OrderTickets.Where(c => c.CompanyId == user.CompanyId && c.ServerId == servidorid)
+                    .Include(o => o.PlanCategory)
+                    .Include(o => o.PlanTicket)
+                    .Include(o => o.Server);
+                return View(orderTickets.OrderByDescending(o => o.OrdenNumero).ToList().ToPagedList((int)page, 20));
+            }
+            else
+            {
+                var orderTickets = db.OrderTickets.Where(c => c.CompanyId == user.CompanyId)
+                    .Include(o => o.PlanCategory)
+                    .Include(o => o.PlanTicket)
+                    .Include(o => o.Server);
+                return View(orderTickets.OrderByDescending(o => o.OrdenNumero).ToList().ToPagedList((int)page, 20));
+            }
         }
 
         // GET: OrderTickets/Details/5

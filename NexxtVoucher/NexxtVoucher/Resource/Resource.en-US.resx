@@ -591,6 +591,9 @@
   <data name="SellTicketCachier_Titulo" xml:space="preserve">
     <value>Tickets by Cachiers</value>
   </data>
+  <data name="SellTicket_Model_Despacho" xml:space="preserve">
+    <value>Wholesale tickets</value>
+  </data>
   <data name="SellTicket_Model_Ticket" xml:space="preserve">
     <value>Tickets</value>
   </data>
