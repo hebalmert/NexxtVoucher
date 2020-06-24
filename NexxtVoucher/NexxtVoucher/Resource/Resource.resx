@@ -504,6 +504,9 @@
   <data name="PlanCategory_Model_Categoria" xml:space="preserve">
     <value>Categoria</value>
   </data>
+  <data name="PlanCategory_Model_TransparentProxy" xml:space="preserve">
+    <value>Proxy Transparente</value>
+  </data>
   <data name="PlanCategory_ViewIndex_Titulo1" xml:space="preserve">
     <value>Categoria Planes</value>
   </data>

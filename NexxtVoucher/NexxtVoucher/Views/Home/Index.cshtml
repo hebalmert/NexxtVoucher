@@ -26,63 +26,57 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <div class="jumbotron jumbotron-fluid jumbotron1">
-                <div class="container">
-                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
-                    {
-                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
-                    }
-                    @if (Model != null)
-                    {<h1 class="display-5"><strong>@Html.DisplayFor(model => model.Company.Compania)</strong></h1>
-                    <p class="lead">@Resources.Resource.NombreSoftware</p>
+            <div class="jumbotron jumbotron1">
+                @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                {
+                    <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
                 }
-                else
-                {<h1 class="display-4"><strong>Infoplanet-Team</strong></h1>}
+                @if (Model != null)
+                {<h1>@Html.DisplayFor(Model => Model.Company.Compania)</h1>}
+            else
+            {
+                <img src="~/Content/Imagen/NexxtLink.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+                <h1>Nexxt Link</h1>}
 
-                    @if (Model == null)
-                    {
-                        <p class="lead">@Resources.Resource.NombreSoftware</p>}
-                </div>
+                @if (Model == null)
+                {
+                    <p class="lead">Sistema Proveedores de Internet</p>}
             </div>
         </div>
         <div class="carousel-item">
-            <div class="jumbotron jumbotron-fluid jumbotron2">
-                <div class="container">
-                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
-                    {
-                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
-                    }
-                    @if (Model != null)
-                    {<h1 class="display-5"><strong>@Html.DisplayFor(model => model.Company.Compania)</strong></h1>
-                    <p class="lead">@Resources.Resource.NombreSoftware</p>
+            <div class="jumbotron jumbotron2">
+                @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                {
+                    <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
                 }
-                else
-                {<h1 class="display-4"><strong>Infoplanet-Team</strong></h1>}
+                @if (Model != null)
+                {<h1>@Html.DisplayFor(Model=> Model.Company.Compania)</h1>}
+            else
+            {
+                <img src="~/Content/Imagen/NexxtLink.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+                <h1>Nexxt Link</h1>}
 
-                    @if (Model == null)
-                    {
-                        <p class="lead">@Resources.Resource.NombreSoftware</p>}
-                </div>
+                @if (Model == null)
+                {
+                    <p class="lead">Sistema Proveedores de Internet</p>}
             </div>
         </div>
         <div class="carousel-item">
-            <div class="jumbotron jumbotron-fluid jumbotron3">
-                <div class="container">
-                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
-                    {
-                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
-                    }
-                    @if (Model != null)
-                    {<h1 class="display-5"><strong>@Html.DisplayFor(model => model.Company.Compania)</strong></h1>
-                    <p class="lead">@Resources.Resource.NombreSoftware</p>
+            <div class="jumbotron jumbotron2">
+                @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                {
+                    <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
                 }
-                else
-                {<h1 class="display-4"><strong>Infoplanet-Team</strong></h1>}
+                @if (Model != null)
+                {<h1>@Html.DisplayFor(Model => Model.Company.Compania)</h1>}
+            else
+            {
+                <img src="~/Content/Imagen/NexxtLink.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+                <h1>Nexxt Link</h1>}
 
-                    @if (Model == null)
-                    {
-                        <p class="lead">@Resources.Resource.NombreSoftware</p>}
-                </div>
+                @if (Model == null)
+                {
+                    <p class="lead">Sistema Proveedores de Internet</p>}
             </div>
         </div>
     </div>

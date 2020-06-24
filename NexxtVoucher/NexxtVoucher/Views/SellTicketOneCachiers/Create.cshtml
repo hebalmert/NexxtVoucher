@@ -85,15 +85,15 @@
         <div class="col-md-4 mb-2">
             @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
     <hr />
     <div class="form-row">
-        <div class="col-md-4 mb-2">
-            <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-4 mb-3">
+            <div class="col-md-offset-3 col-md-12">
                 @*<button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
                         <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonList
                     </button>

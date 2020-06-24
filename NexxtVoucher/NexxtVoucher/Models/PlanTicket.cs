@@ -69,6 +69,7 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_ShareUser")]
         public int ShareUser { get; set; }
 
+
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_Impuesto")]

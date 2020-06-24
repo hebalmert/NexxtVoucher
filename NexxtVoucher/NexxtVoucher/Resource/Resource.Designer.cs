@@ -1222,6 +1222,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Proxy Transparente.
+        /// </summary>
+        public static string PlanCategory_Model_TransparentProxy {
+            get {
+                return ResourceManager.GetString("PlanCategory_Model_TransparentProxy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Categoria Planes.
         /// </summary>
         public static string PlanCategory_ViewIndex_Titulo1 {
