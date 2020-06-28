@@ -277,7 +277,13 @@
     <value>Tipo Documento</value>
   </data>
   <data name="Link1" xml:space="preserve">
-    <value>Mikrotik</value>
+    <value>Mikrotik Web</value>
+  </data>
+  <data name="Link11" xml:space="preserve">
+    <value>Mikrotik PC</value>
+  </data>
+  <data name="Link11Text" xml:space="preserve">
+    <value>Manage Multiple Mikrotik Servers. Ticket Creation Services for LAN and Tickes will be available on the Web</value>
   </data>
   <data name="Link1Text" xml:space="preserve">
     <value>Register several Mikrotik Servers to Access them. Public IP if it is external access or Private IP to access within the Network.</value>
@@ -285,11 +291,23 @@
   <data name="Link2" xml:space="preserve">
     <value>Plans</value>
   </data>
+  <data name="Link21" xml:space="preserve">
+    <value>Compatibility</value>
+  </data>
+  <data name="Link21Text" xml:space="preserve">
+    <value>The Web system and PC System have the compatibility of Mikrotik Firmware 6.43 or higher.</value>
+  </data>
   <data name="Link2Text" xml:space="preserve">
     <value>You can create different navigation plans and add them to the different servers that have been created.</value>
   </data>
   <data name="Link3" xml:space="preserve">
     <value>Tickets</value>
+  </data>
+  <data name="Link31" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Link31Text" xml:space="preserve">
+    <value>It has support via WhatApps or Remote Support by AnyDesk to help them with doubts in Software or Mikrotik.</value>
   </data>
   <data name="Link3Text" xml:space="preserve">
     <value>You can create a number of Tickets according to the plan and the selected server. These tickets can be sold one by one or export a lot.</value>

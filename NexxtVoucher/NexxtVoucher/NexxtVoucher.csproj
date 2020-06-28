@@ -300,10 +300,13 @@
     <Content Include="Content\ImgCarrusel\banner1.svg" />
     <Content Include="Content\ImgCarrusel\banner2.svg" />
     <Content Include="Content\ImgCarrusel\banner3.svg" />
+    <Content Include="Content\ImgHomePage\ImgConfiguracion.gif" />
     <Content Include="Content\ImgHomePage\ImgMercadoPago.gif" />
     <Content Include="Content\ImgHomePage\ImgMikrotik.gif" />
+    <Content Include="Content\ImgHomePage\ImgNetwork.gif" />
     <Content Include="Content\ImgHomePage\ImgPayPal.gif" />
     <Content Include="Content\ImgHomePage\ImgPlanes.gif" />
+    <Content Include="Content\ImgHomePage\ImgService.gif" />
     <Content Include="Content\ImgHomePage\ImgTicket.gif" />
     <Content Include="Content\JquerySearch\jquery-1.12.4.js" />
     <Content Include="Content\JquerySearch\jquery-ui.css" />
@@ -332,6 +335,7 @@
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
     <Content Include="webfonts\fa-solid-900.svg" />
+    <Content Include="Content\SoftwarePC\VoucherPC.rar" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

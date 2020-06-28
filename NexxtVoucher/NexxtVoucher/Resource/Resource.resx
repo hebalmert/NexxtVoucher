@@ -279,17 +279,35 @@
   <data name="Link1" xml:space="preserve">
     <value>Mikrotik</value>
   </data>
+  <data name="Link11" xml:space="preserve">
+    <value>Mikrotik PC</value>
+  </data>
+  <data name="Link11Text" xml:space="preserve">
+    <value>Multiples Servidores Mikrotik de Ticket para redes LAN y Tickes disponibles en la Web.</value>
+  </data>
   <data name="Link1Text" xml:space="preserve">
     <value>Maneja Multiples Servidores Mikrotik.  Servicios de Creacion de Ticket para redes Privadas y Manejo Individual si cuenta con IP Publicas.</value>
   </data>
   <data name="Link2" xml:space="preserve">
     <value>Planes</value>
   </data>
+  <data name="Link21" xml:space="preserve">
+    <value>Compatibilidad</value>
+  </data>
+  <data name="Link21Text" xml:space="preserve">
+    <value>El sistema Web y Sistema PC cuenta con la compatibilidad de los Firmware 6.43 o superior de Mikrotik.</value>
+  </data>
   <data name="Link2Text" xml:space="preserve">
     <value>Puedes crear Planes diferentes para cada servidor registrado en el software.  Organizarlos por Categorias que definen cada Servidor. </value>
   </data>
   <data name="Link3" xml:space="preserve">
     <value>Tickets</value>
+  </data>
+  <data name="Link31" xml:space="preserve">
+    <value>Soporte</value>
+  </data>
+  <data name="Link31Text" xml:space="preserve">
+    <value>Soporte WhatApps o Remoto por AnyDesk, Video Tutorial disponible para manejar el Software.</value>
   </data>
   <data name="Link3Text" xml:space="preserve">
     <value>Crea Pool de Ticket en un solo acceso y crea cajeros para vendan estos tickets.  Los cajeros solo venderan los tickets que el sistema tiene disponibles.</value>

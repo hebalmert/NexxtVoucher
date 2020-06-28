@@ -50,7 +50,7 @@
                     <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
                 }
                 @if (Model != null)
-                {<h1>@Html.DisplayFor(Model=> Model.Company.Compania)</h1>}
+                {<h1>@Html.DisplayFor(Model => Model.Company.Compania)</h1>}
             else
             {
                 <img src="~/Content/Imagen/NexxtLink.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
@@ -134,7 +134,81 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">@Resources.Resource.Link3</h5>
-                <p class="card-text">@Resources.Resource.Link2Text</p>
+                <p class="card-text">@Resources.Resource.Link3Text</p>
+                @if (Model != null)
+                {
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            @Html.ActionLink("Crear", "Index", "Ordertickets", new { }, new { @class = "btn btn-outline-info btn-sm" })
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            @Html.ActionLink("Venta", "Create", "SellTicketOnes", new { }, new { @class = "btn btn-outline-info btn-sm" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Segunda ilera de Cards Informativos -->
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/ImgNetwork.gif" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Resources.Resource.Link11</h5>
+                <p class="card-text">@Resources.Resource.Link11Text</p>
+                @if (Model != null)
+                {
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            @Html.ActionLink("Servidor", "Index", "Servers", new { }, new { @class = "btn btn-outline-info btn-sm" })
+                        </div>
+                    </div>
+                }
+                <a href="~/Content/SoftwarePC/VoucherPC.rar" class="card-link">Software PC</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/ImgConfiguracion.gif" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Resources.Resource.Link21</h5>
+                <p class="card-text">@Resources.Resource.Link21Text</p>
+                @if (Model != null)
+                {
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            @Html.ActionLink("Categoria", "Index", "PlanCategories", new { }, new { @class = "btn btn-outline-info btn-sm" })
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            @Html.ActionLink("Planes", "Index", "PlanTickets", new { }, new { @class = "btn btn-outline-info btn-sm" })
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/ImgService.gif" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Resources.Resource.Link31</h5>
+                <p class="card-text">@Resources.Resource.Link31Text</p>
                 @if (Model != null)
                 {
                     <div class="row">

@@ -547,6 +547,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mikrotik PC.
+        /// </summary>
+        public static string Link11 {
+            get {
+                return ResourceManager.GetString("Link11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiples Servidores Mikrotik de Ticket para redes LAN y Tickes disponibles en la Web..
+        /// </summary>
+        public static string Link11Text {
+            get {
+                return ResourceManager.GetString("Link11Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maneja Multiples Servidores Mikrotik.  Servicios de Creacion de Ticket para redes Privadas y Manejo Individual si cuenta con IP Publicas..
         /// </summary>
         public static string Link1Text {
@@ -565,6 +583,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compatibilidad.
+        /// </summary>
+        public static string Link21 {
+            get {
+                return ResourceManager.GetString("Link21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El sistema Web y Sistema PC cuenta con la compatibilidad de los Firmware 6.43 o superior de Mikrotik..
+        /// </summary>
+        public static string Link21Text {
+            get {
+                return ResourceManager.GetString("Link21Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Puedes crear Planes diferentes para cada servidor registrado en el software.  Organizarlos por Categorias que definen cada Servidor. .
         /// </summary>
         public static string Link2Text {
@@ -579,6 +615,24 @@ namespace Resources {
         public static string Link3 {
             get {
                 return ResourceManager.GetString("Link3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soporte.
+        /// </summary>
+        public static string Link31 {
+            get {
+                return ResourceManager.GetString("Link31", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soporte WhatApps o Remoto por AnyDesk, Video Tutorial disponible para manejar el Software..
+        /// </summary>
+        public static string Link31Text {
+            get {
+                return ResourceManager.GetString("Link31Text", resourceCulture);
             }
         }
         
