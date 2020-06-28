@@ -164,14 +164,6 @@
             <div class="card-body">
                 <h5 class="card-title">@Resources.Resource.Link11</h5>
                 <p class="card-text">@Resources.Resource.Link11Text</p>
-                @if (Model != null)
-                {
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            @Html.ActionLink("Servidor", "Index", "Servers", new { }, new { @class = "btn btn-outline-info btn-sm" })
-                        </div>
-                    </div>
-                }
                 <a href="~/Content/SoftwarePC/VoucherPC.rar" class="card-link">Software PC</a>
             </div>
 
@@ -185,18 +177,6 @@
             <div class="card-body">
                 <h5 class="card-title">@Resources.Resource.Link21</h5>
                 <p class="card-text">@Resources.Resource.Link21Text</p>
-                @if (Model != null)
-                {
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            @Html.ActionLink("Categoria", "Index", "PlanCategories", new { }, new { @class = "btn btn-outline-info btn-sm" })
-                        </div>
-
-                        <div class="col-md-6 mb-2">
-                            @Html.ActionLink("Planes", "Index", "PlanTickets", new { }, new { @class = "btn btn-outline-info btn-sm" })
-                        </div>
-                    </div>
-                }
             </div>
 
         </div>
@@ -209,18 +189,6 @@
             <div class="card-body">
                 <h5 class="card-title">@Resources.Resource.Link31</h5>
                 <p class="card-text">@Resources.Resource.Link31Text</p>
-                @if (Model != null)
-                {
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            @Html.ActionLink("Crear", "Index", "Ordertickets", new { }, new { @class = "btn btn-outline-info btn-sm" })
-                        </div>
-
-                        <div class="col-md-6 mb-2">
-                            @Html.ActionLink("Venta", "Create", "SellTicketOnes", new { }, new { @class = "btn btn-outline-info btn-sm" })
-                        </div>
-                    </div>
-                }
             </div>
         </div>
 
