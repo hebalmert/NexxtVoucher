@@ -259,6 +259,7 @@
     <Compile Include="Models\OrderTicketDetail.cs" />
     <Compile Include="Models\PlanCategory.cs" />
     <Compile Include="Models\PlanTicket.cs" />
+    <Compile Include="Models\PrintReportDate.cs" />
     <Compile Include="Models\PrintViewCachier.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\SellTicket.cs" />
@@ -604,6 +605,8 @@
     <Content Include="webfonts\fa-solid-900.ttf" />
     <Content Include="webfonts\fa-solid-900.woff" />
     <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\OrderTickets\IndexView.cshtml" />
+    <Content Include="Views\OrderTickets\DetailView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

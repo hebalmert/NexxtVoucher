@@ -3,121 +3,101 @@
 @{
     ViewBag.Title = @Resources.Resource.ViewCreate;
 }
-    <p></p>
-<h2> @Resources.Resource.ViewCreate</h2>
-
+<p></p>
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
-    <hr />
     <div class="form-row">
+        <div class="col-md-5">
+            @Html.AntiForgeryToken()
+            <h2> @Resources.Resource.ViewCreate</h2>
+            <h4>@Resources.Resource.SellTicket_Model_Titulo</h4>
+            <hr />
+            <div class="shadow p-1 mb-1 bg-white rounded">
+                <div class="card text-white bg-primary col-md-12">
+                    <p></p>
+                    <div class="form-row">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.CompanyId)
+                        @Html.HiddenFor(model => model.CachierId)
+                        @Html.HiddenFor(model => model.ServerId)
+                        @Html.HiddenFor(model => model.PlanCategoryId)
+                        @Html.HiddenFor(model => model.Date)
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        @Html.HiddenFor(model => model.CompanyId)
-        @Html.HiddenFor(model => model.CachierId)
-        @Html.HiddenFor(model => model.ServerId)
-        @Html.HiddenFor(model => model.PlanCategoryId)
-        @Html.HiddenFor(model => model.Date)
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        <div class="col-md-12 mb-2">
+                            @Html.LabelFor(model => model.VentaCachier, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.VentaCachier, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.VentaCachier, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
                 </div>
-            </div>*@
-
-        <div class="col-md-6 mb-2">
-            @Html.LabelFor(model => model.VentaCachier, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VentaCachier, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.VentaCachier, "", new { @class = "text-danger" })
             </div>
-        </div>
-    </div>
-    <hr />
-    <div class="form-row">
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.CachierId, "CachierId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("CachierId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.CachierId, "", new { @class = "text-danger" })
+            <p></p>
+            <div class="shadow p-1 mb-1 bg-white rounded">
+                <div class="card bg-light col-md-12">
+                    <p></p>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                            @Html.LabelFor(model => model.PlanTicketId, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.DropDownList("PlanTicketId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.PlanTicketId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                            @Html.LabelFor(model => model.OrderTicketDetailId, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.DropDownList("OrderTicketDetailId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.OrderTicketDetailId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
                 </div>
-            </div>*@
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.ServerId, "ServerId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("ServerId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ServerId, "", new { @class = "text-danger" })
+            </div>
+            <p></p>
+            <div class="shadow p-1 mb-1 bg-white rounded">
+                <div class="card text-white bg-primary col-md-12">
+                    <p></p>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                            @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
                 </div>
-            </div>*@
+            </div>
+            <p></p>
+            <div class="form-row">
+                <div class="col-md-12 mb-2">
+                    <p></p>
+                    <div class="col-md-offset-3 col-md-12">
 
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.PlanCategoryId, "PlanCategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("PlanCategoryId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PlanCategoryId, "", new { @class = "text-danger" })
+                        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                            <i class="fa fa-backspace"></i>
+                            @Resources.Resource.ButtonList
+                        </button>
+
+                        <button type="button" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Create", new  {})'">
+                            <i class="fa fa-sync-alt"></i>
+                            @Resources.Resource.ButtonClear
+                        </button>
+
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-save"></i>
+                            @Resources.Resource.ButtonSave
+                        </button>
+                    </div>
                 </div>
-            </div>*@
-
-        <div class="col-md-4 mb-2">
-            @Html.LabelFor(model => model.PlanTicketId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("PlanTicketId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PlanTicketId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-2">
-            @Html.LabelFor(model => model.OrderTicketDetailId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("OrderTicketDetailId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.OrderTicketDetailId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-    <hr />
-    <div class="form-row">
-        <div class="col-md-4 mb-2">
-            @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-    <hr />
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <div class="col-md-offset-3 col-md-12">
-                @*<button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
-                        <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonList
-                    </button>
-                    <button type="button" class="btn btn-warning btn-sm" onclick="location.href ='@Url.Action("Create", new {})'">
-                        <span class="glyphicon glyphicon-refresh"></span> @Resources.Resource.ButtonClear
-                    </button>
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <span class="glyphicon glyphicon-floppy-disk"></span> @Resources.Resource.ButtonSave
-                    </button>*@
-
-                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
-                    <i class="fa fa-backspace"></i>
-                    @Resources.Resource.ButtonList
-                </button>
-
-                <button type="button" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Create", new  {})'">
-                    <i class="fa fa-sync-alt"></i>
-                    @Resources.Resource.ButtonClear
-                </button>
-
-                <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fa fa-save"></i>
-                    @Resources.Resource.ButtonSave
-                </button>
             </div>
         </div>
     </div>

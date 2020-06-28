@@ -26,11 +26,9 @@ namespace NexxtVoucher.Classes
         }
         public bool Login(string username, string password)
         {
-            Send("/login", true);
-            string hash = Read()[0].Split(new string[] { "ret=" }, StringSplitOptions.None)[1];
             Send("/login");
             Send("=name=" + username);
-            Send("=response=00" + EncodePassword(password, hash), true);
+            Send("=password=" + password, true);
             if (Read()[0] == "!done")
             {
                 return true;

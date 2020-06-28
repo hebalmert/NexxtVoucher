@@ -103,6 +103,13 @@ namespace NexxtVoucher.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SellTicketOneCachier sellTicketOneCachier)
         {
+            if (sellTicketOneCachier.Precio == 0)
+            {
+                ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOneCachier.CompanyId), "OrderTicketDetailId", "Velocidad", sellTicketOneCachier.OrderTicketDetailId);
+                ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachier.CompanyId, sellTicketOneCachier.ServerId), "PlanTicketId", "Plan", sellTicketOneCachier.PlanTicketId);
+                
+                return View(sellTicketOneCachier);
+            }
             if (ModelState.IsValid)
             {
                 db.SellTicketOneCachiers.Add(sellTicketOneCachier);

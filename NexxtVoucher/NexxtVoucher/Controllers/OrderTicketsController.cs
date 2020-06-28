@@ -156,6 +156,55 @@ namespace NexxtVoucher.Controllers
             return RedirectToAction("Details", new { id = ordenticket.OrderTicketId });
         }
 
+        [HttpPost]
+        public JsonResult Search2(string Prefix)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var ticketdetail = (from codigos in db.OrderTicketDetails
+                              where codigos.Usuario.StartsWith(Prefix) && codigos.CompanyId == user.CompanyId
+                              select new
+                              {
+                                  label = codigos.Usuario,
+                                  val = codigos.OrderTicketDetailId
+                              }).ToList();
+
+            return Json(ticketdetail);
+
+        }
+
+        // GET: OrderTickets
+        public ActionResult IndexView(int? ticketdetailid, int? page = null)
+        {
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            page = (page ?? 1);
+
+            if (ticketdetailid != null)
+            {
+                var orderTicketsdetail = db.OrderTicketDetails.Where(c => c.CompanyId == user.CompanyId && c.OrderTicketDetailId == ticketdetailid)
+                    .Include(o => o.PlanCategory)
+                    .Include(o => o.PlanTicket)
+                    .Include(o => o.OrderTicket)
+                    .Include(o => o.Server);
+                return View(orderTicketsdetail.OrderByDescending(o => o.OrderTicket.Date).ToList().ToPagedList((int)page, 20));
+            }
+            else
+            {
+                var orderTicketsdetail = db.OrderTicketDetails.Where(c => c.CompanyId == user.CompanyId)
+                    .Include(o => o.PlanCategory)
+                    .Include(o => o.PlanTicket)
+                    .Include(o => o.OrderTicket)
+                    .Include(o => o.Server);
+                return View(orderTicketsdetail.OrderByDescending(o => o.Date).ToList().ToPagedList((int)page, 20));
+            }
+        }
+
         // GET: OrderTickets
         public ActionResult Index(int? servidorid, int? page = null)
         {
@@ -187,6 +236,21 @@ namespace NexxtVoucher.Controllers
 
         // GET: OrderTickets/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            OrderTicket orderTicket = db.OrderTickets.Find(id);
+            if (orderTicket == null)
+            {
+                return HttpNotFound();
+            }
+            return View(orderTicket);
+        }
+
+        // GET: OrderTickets/Details/5
+        public ActionResult DetailView(int? id)
         {
             if (id == null)
             {

@@ -907,6 +907,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reporte por Tickets.
+        /// </summary>
+        public static string MenuSystem_TicketsReport {
+            get {
+                return ResourceManager.GetString("MenuSystem_TicketsReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conexion Mikrotik.
         /// </summary>
         public static string MikrotikConnection {

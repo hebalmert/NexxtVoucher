@@ -399,6 +399,9 @@
   <data name="MenuSystem_TextoEncabezado" xml:space="preserve">
     <value>Texto Encabezado</value>
   </data>
+  <data name="MenuSystem_TicketsReport" xml:space="preserve">
+    <value>Reporte por Tickets</value>
+  </data>
   <data name="MikrotikConnection" xml:space="preserve">
     <value>Conexion Mikrotik</value>
   </data>

@@ -1,0 +1,171 @@
+﻿@*@model IEnumerable<NexxtVoucher.Models.OrderTicketDetail>*@
+
+@model PagedList.IPagedList<NexxtVoucher.Models.OrderTicketDetail>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = @Resources.Resource.OrderTicketDetail_Model_OrdenTicket;
+}
+<p></p>
+<h2>@Resources.Resource.OrderTicketDetail_Model_OrdenTicket</h2>
+
+<p></p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("IndexView", "OrderTickets"))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <p></p>
+                        <div class="col-md-8 mb-2">
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder="Lista por Servidor" />
+                                        <input type="hidden" id="item_list" name="ticketdetailid" /><br />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-search"></i>
+                                @Resources.Resource.ButtonSearch
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+<p></p>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().OrderTicket.OrdenNumero)
+            </th>
+            <th>
+                Ticket
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().PlanTicket.Plan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Vendido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().VendidoCajero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Cachier.FullName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderTicket.OrdenNumero)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Usuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PlanTicket.Plan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vendido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VendidoCajero)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cachier.FullName)
+    </td>
+    <td>
+        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("DetailView", new { id = item.OrderTicketId})'">
+            <i class="fa fa-clipboard-list"></i>
+        </button>
+    </td>
+</tr>
+    }
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("IndexView", new
+{
+    page,
+    sortOrder =
+         ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter,
+    @class = "page-link"
+}), new PagedListRenderOptions
+{
+    FunctionToTransformEachPageLink = (liTag, aTag) =>
+    {
+        aTag.Attributes.Add("class", "page-link");
+            liTag.InnerHtml = aTag.ToString();
+            return liTag;
+        },
+        LiElementClasses = new[] { "page-item" },
+        UlElementClasses = new[] { "pagination justify-content-center" }
+    })
+
+<link href="~/Content/JquerySearch/jquery-ui.css" rel="stylesheet" />
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Content/JquerySearch/jquery-1.12.4.js"></script>
+    <script src="~/Content/JquerySearch/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txt_search").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/OrderTickets/Search2/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#item_list").val(i.item.val);
+                },
+                minLength: 1
+            });
+
+        });
+    </script>
+
+}

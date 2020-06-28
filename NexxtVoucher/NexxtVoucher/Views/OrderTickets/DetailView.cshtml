@@ -75,39 +75,6 @@
         </div>
         <hr />
         <p></p>
-        <p>
-            <button type="button" class="btn btn-success btn-sm" onclick="location.href =
-                '@Url.Action("Index", new { })'">
-                <i class="fa fa-backspace"></i>
-                @Resources.Resource.ButtonBack
-            </button>
-
-            @if (Model.Creados == 0)
-            {
-                <button type="button" class="btn btn-warning btn-sm" onclick="location.href =
-                '@Url.Action("Edit", new { id = Model.OrderTicketId })'">
-                    <i class="fa fa-pencil-alt"></i>
-                    @Resources.Resource.ButtonEdit
-                </button>
-            }
-
-            @if (Model.Creados == 0)
-            {
-                <button type="button" class="btn btn-primary btn-sm" onclick="location.href =
-                '@Url.Action("AddTicket", new { id = Model.OrderTicketId, up = Model.PlanTicket.SpeedUp.VelocidadUp, down = Model.PlanTicket.SpeedDown.VelocidadDown })'">
-                    <i class="fa fa-plus"></i>
-                    @Resources.Resource.ButtonAdd
-                </button>
-            }
-            @*@if (Model.Creados == 0)
-                {@Html.ActionLink(@Resources.Resource.ButtonEdit, "Edit", new { id = Model.OrderTicketId }, new { @class = "btn btn-primary btn-sm" })} |
-
-                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
-
-                @if (Model.Creados == 0)
-                {
-                    @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { id = Model.OrderTicketId, up = Model.PlanTicket.SpeedUp.VelocidadUp, down = Model.PlanTicket.SpeedDown.VelocidadDown }, new { @class = "btn btn-success btn-sm" })}*@
-        </p>
     </div>
     <div class="col-md-6">
         <div>
@@ -149,8 +116,8 @@
                                 @Html.DisplayFor(modelItem => item.MikrotikId)
                             </td>
                             @*<td align="right">
-                                    @Html.ActionLink("Borrar", "DeleteIpNet", new { id = item.OrderTicketDetailId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Desea Eliminar este Registro?')" })
-                                </td>*@
+                            @Html.ActionLink("Borrar", "DeleteIpNet", new { id = item.OrderTicketDetailId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Desea Eliminar este Registro?')" })
+                        </td>*@
                             @{
                                 registros += +1;
                             }
@@ -165,7 +132,6 @@
                         </td>
                     </tr>
                 </table>
-
             }
         </div>
     </div>
