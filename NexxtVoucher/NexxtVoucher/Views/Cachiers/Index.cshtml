@@ -4,79 +4,93 @@
     ViewBag.Title = @Resources.Resource.Cachier_ViewIndex_Titulo1;
 }
 <p></p>
-    <h2>@Resources.Resource.Cachier_ViewIndex_Titulo1</h2>
+<h2>@Resources.Resource.Cachier_ViewIndex_Titulo1</h2>
 
-    <p>
-        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
-            <i class="fa fa-plus"></i>
-            @Resources.Resource.ButtonNew
-        </button>
-    </p>
-    <table class="table table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FullName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Server.Nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.City.Ciudad)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Zone.Zona)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Activo)
-                </th>
-                <th></th>
-            </tr>
-            </thead>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FullName)
-                    </td>
-                    <td>
+<p>
+    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <i class="fa fa-plus"></i>
+        @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Server.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City.Ciudad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zone.Zona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MultiServer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @{
+                    string servidor = "Multi";
+                    if (item.MultiServer == true)
+                    {
+                        @servidor
+                    }
+                    else
+                    {
                         @Html.DisplayFor(modelItem => item.Server.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.City.Ciudad)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Zone.Zona)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Activo)
-                    </td>
-                    <td>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.CachierId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CachierId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CachierId })*@
-                        <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Ciudad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone.Zona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MultiServer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+
+                <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
                    '@Url.Action("Edit", new { id = item.CachierId})'">
-                            <i class="fa fa-pencil-alt"></i>
-                        </button>
+                    <i class="fa fa-pencil-alt"></i>
+                </button>
 
-                        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
                    '@Url.Action("Details", new { id = item.CachierId})'">
-                            <i class="fa fa-clipboard-list"></i>
-                        </button>
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
 
-                        <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
                     '@Url.Action("Delete", new { id = item.CachierId})'">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            }
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    }
 
-    </table>
+</table>

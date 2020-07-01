@@ -1,79 +1,92 @@
 ﻿@model IEnumerable<NexxtVoucher.Models.SellTicketOneCachier>
 
 @{
-    ViewBag.Title =  @Resources.Resource.SellTicket_Model_Titulo;
+    ViewBag.Title = @Resources.Resource.SellTicket_Model_Titulo;
 }
-    <p></p>
-    <h2> @Resources.Resource.SellTicket_Model_Titulo</h2>
+<p></p>
+<h2> @Resources.Resource.SellTicket_Model_Titulo</h2>
 
+@if (User.IsInRole("Cobros"))
+{
     <p>
-        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", "SellTicketOneCachiers", new { })'">
             <i class="fa fa-plus"></i>
             @Resources.Resource.ButtonNew
         </button>
     </p>
-    <table class="table table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.VentaCachier)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cachier.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PlanTicket.Plan)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OrderTicketDetail.Velocidad)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Precio)
-                </th>
-                <th></th>
-            </tr>
-            </thead>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VentaCachier)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cachier.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PlanTicket.Plan)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderTicketDetail.Velocidad)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Precio)
-                    </td>
-                    <td>
-                        @*<button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
-                                   '@Url.Action("Edit", new { id = item.SellTicketOneCachierId})'">
-                            <i class="fa fa-pencil-alt"></i>
-                        </button>*@
+}
 
-                        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+@if (User.IsInRole("CobrosMulti"))
+{
+    <p>
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("CreateMulti", "SellTicketOneCachiers", new { })'">
+            <i class="fa fa-plus"></i>
+            @Resources.Resource.ButtonNew
+        </button>
+    </p>
+}
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VentaCachier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cachier.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+            </th>
+            <th>
+                Ticket
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VentaCachier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cachier.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanTicket.Plan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTicketDetail.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @*<button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                               '@Url.Action("Edit", new { id = item.SellTicketOneCachierId})'">
+                        <i class="fa fa-pencil-alt"></i>
+                    </button>*@
+
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
                    '@Url.Action("Details", new { id = item.SellTicketOneCachierId})'">
-                            <i class="fa fa-clipboard-list"></i>
-                        </button>
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
 
-                        @*<button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
-                                    '@Url.Action("Delete", new { id = item.SellTicketOneCachierId})'">
-                            <i class="fa fa-trash"></i>
-                        </button>*@
-                    </td>
-                </tr>
-            }
+                @*<button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                                '@Url.Action("Delete", new { id = item.SellTicketOneCachierId})'">
+                        <i class="fa fa-trash"></i>
+                    </button>*@
+            </td>
+        </tr>
+    }
 
-    </table>
+</table>

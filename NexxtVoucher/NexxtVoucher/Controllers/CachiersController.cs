@@ -93,6 +93,16 @@ namespace NexxtVoucher.Controllers
         {
             if (ModelState.IsValid)
             {
+                string multi;
+                if (cachier.MultiServer == true)
+                {
+                    multi = "CobrosMulti";
+                }
+                else
+                {
+                    multi = "Cobros";
+                }
+
                 db.Cachiers.Add(cachier);
                 try
                 {
@@ -103,7 +113,7 @@ namespace NexxtVoucher.Controllers
                         db.Cachiers.Add(cachier);
                         db.SaveChanges();
 
-                        UsersHelper.CreateUserASP(cachier.UserName, "Cobros");
+                        UsersHelper.CreateUserASP(cachier.UserName, multi);
 
                         var db2 = new NexxtVouContext();
                         var usuario = new User
@@ -113,7 +123,7 @@ namespace NexxtVoucher.Controllers
                             LastName = cachier.LastName,
                             Phone = cachier.Phone,
                             Address = cachier.Address,
-                            Puesto = "Cobros",
+                            Puesto = multi,
                             CompanyId = cachier.CompanyId
                         };
                         db2.Users.Add(usuario);
@@ -176,6 +186,16 @@ namespace NexxtVoucher.Controllers
         {
             if (ModelState.IsValid)
             {
+                string multi;
+                if (cachier.MultiServer == true)
+                {
+                    multi = "CobrosMulti";
+                }
+                else
+                {
+                    multi = "Cobros";
+                }
+
                 cachier.FullName = cachier.FirstName + " " + cachier.LastName;
                 db.Entry(cachier).State = EntityState.Modified;
                 try
@@ -195,7 +215,7 @@ namespace NexxtVoucher.Controllers
                                 usuarios.LastName = cachier.LastName;
                                 usuarios.Phone = cachier.Phone;
                                 usuarios.Address = cachier.Address;
-                                usuarios.Puesto = "Cobros";
+                                usuarios.Puesto = multi;
                                 usuarios.CompanyId = cachier.CompanyId;
 
                                 db3.Entry(usuarios).State = EntityState.Modified;
@@ -214,13 +234,14 @@ namespace NexxtVoucher.Controllers
                                     LastName = cachier.LastName,
                                     Phone = cachier.Phone,
                                     Address = cachier.Address,
-                                    Puesto = "Cobros",
+                                    Puesto = multi,
                                     CompanyId = cachier.CompanyId
                                 };
                                 db4.Users.Add(usuario);
                                 db4.SaveChanges();
                                 db4.Dispose();
-                                UsersHelper.CreateUserASP(cachier.UserName, "Cobros");
+
+                                UsersHelper.CreateUserASP(cachier.UserName, multi);
                             }
                             
                         }
@@ -235,7 +256,7 @@ namespace NexxtVoucher.Controllers
                                 usuarios.LastName = cachier.LastName;
                                 usuarios.Phone = cachier.Phone;
                                 usuarios.Address = cachier.Address;
-                                usuarios.Puesto = "Cobros";
+                                usuarios.Puesto = multi;
                                 usuarios.CompanyId = cachier.CompanyId;
                                 usuarios.UserName = cachier.UserName;
                                 db3.Entry(usuarios).State = EntityState.Modified;
@@ -252,13 +273,14 @@ namespace NexxtVoucher.Controllers
                                     LastName = cachier.LastName,
                                     Phone = cachier.Phone,
                                     Address = cachier.Address,
-                                    Puesto = "Cobros",
+                                    Puesto = multi,
                                     CompanyId = cachier.CompanyId
                                 };
                                 db4.Users.Add(usuario);
                                 db4.SaveChanges();
                                 db4.Dispose();
-                                UsersHelper.CreateUserASP(cachier.UserName, "Cobros");
+
+                                UsersHelper.CreateUserASP(cachier.UserName, multi);
                             }
                             
                         }

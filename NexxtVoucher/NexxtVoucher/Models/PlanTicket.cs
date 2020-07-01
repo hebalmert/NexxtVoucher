@@ -26,13 +26,13 @@ namespace NexxtVoucher.Models
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Index("PlanTicket_Company_Plan_Server_Index", 2, IsUnique = true)]
+        //[Index("PlanTicket_Company_Plan_Server_Index", 2, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_Server")]
         public int ServerId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
-        [Index("PlanTicket_Company_Plan_Server_Index", 3, IsUnique = true)]
+        [Index("PlanTicket_Company_Plan_Server_Index", 2, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_Plan")]
         public string Plan { get; set; }
 

@@ -79,7 +79,7 @@
                     </li>
                 }
 
-                @if (User.IsInRole("User") | User.IsInRole("Cobros"))
+                @if (User.IsInRole("User") | User.IsInRole("Cobros") | User.IsInRole("CobrosMulti"))
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -94,6 +94,10 @@
                             @if (User.IsInRole("Cobros"))
                             {
                                 @Html.ActionLink(@Resources.Resource.MenuOperation_VentaTicketCajero, "Create", "SellTicketOneCachiers", new { }, new { @class = "dropdown-item" })
+                            }
+                            @if (User.IsInRole("CobrosMulti"))
+                            {
+                                @Html.ActionLink(@Resources.Resource.MenuOperation_VentaTicketCajero, "CreateMulti", "SellTicketOneCachiers", new { }, new { @class = "dropdown-item" })
                             }
                             @if (User.IsInRole("User"))
                             {

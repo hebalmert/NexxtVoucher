@@ -83,6 +83,9 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "Cachier_Model_Zona")]
         public int ZoneId { get; set; }
 
+        [Display(ResourceType = typeof(Resource), Name = "Cachier_Model_MultiServer")]
+        public bool MultiServer { get; set; }
+
         [Display(ResourceType = typeof(Resource), Name = "Cachier_Model_Activo")]
         public bool Activo { get; set; }
 

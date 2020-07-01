@@ -30,6 +30,7 @@ namespace NexxtVoucher
             UsersHelper.CheckRole("Admin");
             UsersHelper.CheckRole("User");
             UsersHelper.CheckRole("Cobros");
+            UsersHelper.CheckRole("CobrosMulti");
             UsersHelper.CheckSuperUser();
         }
     }

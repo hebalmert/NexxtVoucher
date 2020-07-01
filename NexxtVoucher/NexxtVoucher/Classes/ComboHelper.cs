@@ -191,7 +191,7 @@ namespace NexxtVoucher.Classes
                 OrderTicketDetailId = 0,
                 Usuario = @Resources.Resource.ComboSelect,
             });
-            return orderticketdetail.OrderBy(d => d.Usuario).ToList();
+            return orderticketdetail.OrderBy(d => d.OrderTicketDetailId).ToList();
         }
 
 

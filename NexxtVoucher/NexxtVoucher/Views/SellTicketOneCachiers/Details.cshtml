@@ -37,6 +37,12 @@
     </div>
     <div class="form-row">
         <div class="col-md-3 mb-2">
+            Ticket:
+            @Html.DisplayFor(model => model.OrderTicketDetail.Usuario)
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-3 mb-2">
             @Html.DisplayNameFor(model => model.Precio)
             @Html.DisplayFor(model => model.Precio)
         </div>
@@ -50,10 +56,25 @@
         @Resources.Resource.ButtonBack
     </button>
 
-    <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new  {})'">
-        <i class="fa fa-plus-circle"></i>
-        @Resources.Resource.ButtonNew
-    </button>
+    @if (User.IsInRole("Cobros"))
+    {
+
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", "SellTicketOneCachiers", new { })'">
+            <i class="fa fa-plus-circle"></i>
+            @Resources.Resource.ButtonNew
+        </button>
+
+    }
+
+    @if (User.IsInRole("CobrosMulti"))
+    {
+
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("CreateMulti", "SellTicketOneCachiers", new { })'">
+            <i class="fa fa-plus-circle"></i>
+            @Resources.Resource.ButtonNew
+        </button>
+
+    }
 
     <button type="button" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("PrintTicket", new { id = Model.SellTicketOneCachierId })'">
         <i class="fa fa-print"></i>

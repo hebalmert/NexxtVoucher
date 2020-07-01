@@ -195,6 +195,9 @@
   <data name="Cachier_Model_Movil" xml:space="preserve">
     <value>Cell</value>
   </data>
+  <data name="Cachier_Model_MultiServer" xml:space="preserve">
+    <value>Multi Server</value>
+  </data>
   <data name="Cachier_Model_Phone" xml:space="preserve">
     <value>Phone</value>
   </data>

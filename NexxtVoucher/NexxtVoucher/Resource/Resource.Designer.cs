@@ -295,6 +295,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multi Servidor.
+        /// </summary>
+        public static string Cachier_Model_MultiServer {
+            get {
+                return ResourceManager.GetString("Cachier_Model_MultiServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Telefono.
         /// </summary>
         public static string Cachier_Model_Phone {
