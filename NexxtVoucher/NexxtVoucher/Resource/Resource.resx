@@ -423,6 +423,9 @@
   <data name="MenuSystem_TicketsReport" xml:space="preserve">
     <value>Reporte por Tickets</value>
   </data>
+  <data name="MenuSystem_TicketsVendidos" xml:space="preserve">
+    <value>Tickets Vendidos</value>
+  </data>
   <data name="MikrotikConnection" xml:space="preserve">
     <value>Conexion Mikrotik</value>
   </data>
@@ -494,6 +497,9 @@
   </data>
   <data name="OrderTicketDetail_Model_VendidoCajero" xml:space="preserve">
     <value>Cajero</value>
+  </data>
+  <data name="OrderTickets_Reporte" xml:space="preserve">
+    <value>Tickets Vendidos</value>
   </data>
   <data name="OrderTicket_Index_Titulo" xml:space="preserve">
     <value>Crear Tickets</value>
@@ -643,7 +649,7 @@
     <value>Modelo</value>
   </data>
   <data name="Server_Model_Nombre" xml:space="preserve">
-    <value>Servidor</value>
+    <value>Nombre Servidor</value>
   </data>
   <data name="Server_Model_Usuario" xml:space="preserve">
     <value>Usuario</value>
@@ -710,6 +716,12 @@
   </data>
   <data name="User_ViewIndex_Titulo1" xml:space="preserve">
     <value>Usuario</value>
+  </data>
+  <data name="VentaTicket_Creacion" xml:space="preserve">
+    <value>Orden</value>
+  </data>
+  <data name="VentaTicket_Venta" xml:space="preserve">
+    <value>Venta</value>
   </data>
   <data name="ViewCreate" xml:space="preserve">
     <value>Nuevo</value>

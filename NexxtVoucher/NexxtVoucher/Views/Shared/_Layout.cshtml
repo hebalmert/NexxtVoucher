@@ -117,6 +117,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @Html.ActionLink(@Resources.Resource.MenuSystem_Cajeros, "PrintReportCachier", "SellTicketOneCachiersRep", new { }, new { @class = "dropdown-item" })
                             @Html.ActionLink(@Resources.Resource.MenuSystem_TicketsReport, "IndexView", "OrderTickets", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink(@Resources.Resource.MenuSystem_TicketsVendidos, "PrintReportDate", "OrderTickets", new { }, new { @class = "dropdown-item" })
                         </div>
                     </li>
                 }

@@ -17,6 +17,49 @@ namespace NexxtVoucher.Controllers
     {
         private NexxtVouContext db = new NexxtVouContext();
 
+
+        public ActionResult PrintReportDate()
+        {
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var printviewcajero = new PrintReportDate
+            {
+                CompanyId = user.CompanyId,
+                DateFin = DateTime.Today,
+                DateInicio = DateTime.Today
+            };
+
+            return View(printviewcajero);
+        }
+
+        // Post: PrintCxCReport
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PrintReportDate(PrintReportDate printreportdate)
+        {
+
+            return RedirectToAction("PrintReport", new { fechaInicio = printreportdate.DateInicio, fechafin = printreportdate.DateFin});
+        }
+
+        // GET: PaymentChachiers
+        public ActionResult PrintReport(DateTime fechaInicio, DateTime fechafin)
+        {
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var orderticket = db.OrderTicketDetails.Where(c => c.CompanyId == user.CompanyId && c.Date >= fechaInicio && c.Date <= fechafin && c.Vendido == true)
+                .Include(s => s.Cachier)
+                .Include(s => s.PlanCategory)
+                .Include(s => s.PlanTicket)
+                .Include(s => s.Server);
+
+            return View(orderticket.OrderByDescending(c => c.Date).ToList());
+        }
+
+
         [HttpPost]
         public JsonResult Search(string Prefix)
         {
@@ -34,6 +77,7 @@ namespace NexxtVoucher.Controllers
             return Json(servidores);
 
         }
+
 
         // GET: OrderTickets
         public ActionResult AddTicket(int id, string up, string down) //id = OrderTicketId

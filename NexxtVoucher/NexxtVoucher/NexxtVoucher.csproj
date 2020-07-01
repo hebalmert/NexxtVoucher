@@ -612,6 +612,8 @@
     <Content Include="Views\OrderTickets\IndexView.cshtml" />
     <Content Include="Views\OrderTickets\DetailView.cshtml" />
     <Content Include="Views\SellTicketOneCachiers\CreateMulti.cshtml" />
+    <Content Include="Views\OrderTickets\PrintReportDate.cshtml" />
+    <Content Include="Views\OrderTickets\PrintReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

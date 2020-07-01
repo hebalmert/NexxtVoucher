@@ -21,25 +21,26 @@
 
     </div>
 </div>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.VentaCachier)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlanTicket.Plan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderTicketDetail.Clave)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-    </tr>
-
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VentaCachier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderTicketDetail.Clave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+        </tr>
+    </thead>
     @{
         decimal TotalTotal = 0;
         int registros = 0;
@@ -76,14 +77,15 @@
         </td>
         <td>
         </td>
-        <td align="center">
-        </td>
         <td>
             Registros: @registros
         </td>
+        <td>
+            <strong>Total:</strong>
+        </td>
 
         <td>
-            Vendido: @TotalTotal
+            <strong>@string.Format("{0:c}", TotalTotal)</strong>
         </td>
     </tr>
 </table>

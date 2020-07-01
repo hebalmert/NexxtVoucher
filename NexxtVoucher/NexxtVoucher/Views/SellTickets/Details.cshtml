@@ -54,21 +54,21 @@
             </button>
 
             @if (Model.SellTicketDetails.Count == 0)
-            {
+                            {
                 <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.SellTicketId })'">
                     <i class="fa fa-pencil-alt"></i>
                     @Resources.Resource.ButtonEdit
                 </button>
-            }
-            @if (Model.SellTicketDetails.Count == 0)
-            {
+                        }
+                        @if (Model.SellTicketDetails.Count == 0)
+                        {
                 <button type="submit" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("AddTicket", new { planid = Model.PlanTicketId, serid = Model.ServerId, ventaN = Model.VentaOne, sellid = Model.SellTicketId, com = Model.CompanyId })'">
                     <i class="fa fa-pencil-alt"></i>
                     @Resources.Resource.ButtonAdd
                 </button>
-            }
-            @if (Model.SellTicketDetails.Count != 0)
-            {
+                    }
+                    @if (Model.SellTicketDetails.Count != 0)
+                    {
                 <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("ExportToExcel", new { seid = Model.SellTicketId })'">
                     <i class="fa fa-file-excel"></i>
                     @Resources.Resource.ButtonExcel

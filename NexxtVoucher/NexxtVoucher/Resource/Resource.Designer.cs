@@ -979,6 +979,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tickets Vendidos.
+        /// </summary>
+        public static string MenuSystem_TicketsVendidos {
+            get {
+                return ResourceManager.GetString("MenuSystem_TicketsVendidos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conexion Mikrotik.
         /// </summary>
         public static string MikrotikConnection {
@@ -1272,6 +1281,15 @@ namespace Resources {
         public static string OrderTicketDetail_Model_VendidoCajero {
             get {
                 return ResourceManager.GetString("OrderTicketDetail_Model_VendidoCajero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tickets Vendidos.
+        /// </summary>
+        public static string OrderTickets_Reporte {
+            get {
+                return ResourceManager.GetString("OrderTickets_Reporte", resourceCulture);
             }
         }
         
@@ -1636,7 +1654,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Servidor.
+        ///   Looks up a localized string similar to Nombre Servidor.
         /// </summary>
         public static string Server_Model_Nombre {
             get {
@@ -1839,6 +1857,24 @@ namespace Resources {
         public static string User_ViewIndex_Titulo1 {
             get {
                 return ResourceManager.GetString("User_ViewIndex_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orden.
+        /// </summary>
+        public static string VentaTicket_Creacion {
+            get {
+                return ResourceManager.GetString("VentaTicket_Creacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venta.
+        /// </summary>
+        public static string VentaTicket_Venta {
+            get {
+                return ResourceManager.GetString("VentaTicket_Venta", resourceCulture);
             }
         }
         

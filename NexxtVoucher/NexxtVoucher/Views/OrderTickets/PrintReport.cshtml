@@ -1,0 +1,106 @@
+﻿@model IEnumerable<NexxtVoucher.Models.OrderTicketDetail>
+
+@{
+    ViewBag.Title = @Resources.Resource.OrderTickets_Reporte;
+}
+<br />
+
+<h2>@Resources.Resource.OrderTickets_Reporte</h2>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderTicket.OrdenNumero)
+            </th>
+            <th>
+                @Resources.Resource.VentaTicket_Creacion
+            </th>
+            <th>
+                @Resources.Resource.VentaTicket_Venta
+            </th>
+            <th>
+                Ticket
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanTicket.Plan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vendido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VendidoCajero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cachier.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+        </tr>
+    </thead>
+    @{
+        decimal TotalTotal = 0;
+        int registros = 0;
+    }
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderTicket.OrdenNumero)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderTicket.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Usuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PlanTicket.Plan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vendido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VendidoCajero)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cachier.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+    @{
+        TotalTotal += item.Precio;
+        registros += +1;
+    }
+</tr>
+    }
+<tr>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+        Registros: @registros
+    </td>
+    <td>
+        <strong>Total:</strong>
+    </td>
+
+    <td>
+        <strong>@string.Format("{0:c}", TotalTotal)</strong>
+    </td>
+</tr>
+</table>
