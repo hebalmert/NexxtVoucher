@@ -24,10 +24,22 @@ namespace NexxtVoucher.Controllers
                 bool comActivo = companyUp.Activo;
                 db2.Dispose();
 
+                DateTime hoy = DateTime.Today;
+                DateTime current = companyUp.DateHasta;
                 if (comActivo == false)
                 {
                     AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("Error", "La Cuenta Caduco o esta Bloqueada !!!");
+
+                    return RedirectToAction("Login", "Account");
+                }
+
+                if (current <= hoy)
+                {
+                    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                    ModelState.AddModelError("Error", "La Cuenta Caduco o esta Bloqueada !!!");
+
+                    return RedirectToAction("Login", "Account");
                 }
             }
 
