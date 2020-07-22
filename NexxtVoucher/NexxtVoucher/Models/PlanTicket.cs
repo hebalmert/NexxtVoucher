@@ -69,6 +69,11 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_ShareUser")]
         public int ShareUser { get; set; }
 
+        [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_Proxy")]
+        public bool proxy { get; set; }
+
+        [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_macCookies")]
+        public bool macCookies { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]

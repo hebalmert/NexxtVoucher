@@ -1357,6 +1357,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mac Cookies.
+        /// </summary>
+        public static string PlanTicket_Model_macCookies {
+            get {
+                return ResourceManager.GetString("PlanTicket_Model_macCookies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plan.
         /// </summary>
         public static string PlanTicket_Model_Plan {
@@ -1371,6 +1380,15 @@ namespace Resources {
         public static string PlanTicket_Model_Precio {
             get {
                 return ResourceManager.GetString("PlanTicket_Model_Precio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proxy Transparente.
+        /// </summary>
+        public static string PlanTicket_Model_Proxy {
+            get {
+                return ResourceManager.GetString("PlanTicket_Model_Proxy", resourceCulture);
             }
         }
         

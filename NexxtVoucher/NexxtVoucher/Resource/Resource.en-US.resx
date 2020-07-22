@@ -555,11 +555,17 @@
   <data name="PlanTicket_Model_Impuesto" xml:space="preserve">
     <value>Tax</value>
   </data>
+  <data name="PlanTicket_Model_macCookies" xml:space="preserve">
+    <value>Mac Cookies</value>
+  </data>
   <data name="PlanTicket_Model_Plan" xml:space="preserve">
     <value>Plan</value>
   </data>
   <data name="PlanTicket_Model_Precio" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="PlanTicket_Model_Proxy" xml:space="preserve">
+    <value>Proxy Transparent</value>
   </data>
   <data name="PlanTicket_Model_Server" xml:space="preserve">
     <value>Ip Server</value>

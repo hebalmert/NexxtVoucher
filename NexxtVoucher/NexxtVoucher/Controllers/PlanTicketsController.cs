@@ -177,6 +177,30 @@ namespace NexxtVoucher.Controllers
                     db8.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
+                    bool Iproxy = planTicket.proxy;
+                    bool Imaccookies = planTicket.macCookies;
+
+                    string IproxyYesNo = null;
+                    string ImacCookiesYesNo = null;
+
+                    if (Iproxy == true)
+                    {
+                        IproxyYesNo = "yes";
+                    }
+                    else
+                    {
+                        IproxyYesNo = "no";
+                    }
+
+                    if (Imaccookies == true)
+                    {
+                        ImacCookiesYesNo = "yes";
+                    }
+                    else
+                    {
+                        ImacCookiesYesNo = "no";
+                    }
+
                     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                     //Sistema de Nuevo en Mikrotik
                     MK mikrotik = new MK(ip);
@@ -196,7 +220,8 @@ namespace NexxtVoucher.Controllers
                         mikrotik.Send("=shared-users=" + planTicket.ShareUser);
                         mikrotik.Send("=idle-timeout=" + inactivo);
                         mikrotik.Send("=status-autorefresh=" + refrescar);
-                        mikrotik.Send("=add-mac-cookie=no");
+                        mikrotik.Send("=add-mac-cookie=" + ImacCookiesYesNo);
+                        mikrotik.Send("=transparent-proxy=" + IproxyYesNo);
                         mikrotik.Send("/ip/hotspot/user/profile/print", true);
 
                         int total = 0;
@@ -340,6 +365,30 @@ namespace NexxtVoucher.Controllers
                     db8.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
+                    bool Iproxy = planTicket.proxy;
+                    bool Imaccookies = planTicket.macCookies;
+
+                    string IproxyYesNo = null;
+                    string ImacCookiesYesNo = null;
+
+                    if (Iproxy == true)
+                    {
+                        IproxyYesNo = "yes";
+                    }
+                    else
+                    {
+                        IproxyYesNo = "no";
+                    }
+
+                    if (Imaccookies == true)
+                    {
+                        ImacCookiesYesNo = "yes";
+                    }
+                    else
+                    {
+                        ImacCookiesYesNo = "no";
+                    }
+
                     MK mikrotik = new MK(ip);
                     if (!mikrotik.Login(us, pss))
                     {
@@ -358,6 +407,8 @@ namespace NexxtVoucher.Controllers
                         mikrotik.Send("=shared-users=" + planTicket.ShareUser);
                         mikrotik.Send("=idle-timeout=" + inactivo);
                         mikrotik.Send("=status-autorefresh=" + refrescar);
+                        mikrotik.Send("=add-mac-cookie=" + ImacCookiesYesNo);
+                        mikrotik.Send("=transparent-proxy=" + IproxyYesNo);
                         mikrotik.Send("/ip/hotspot/user/profile/print", true);
 
                         int total = 0;

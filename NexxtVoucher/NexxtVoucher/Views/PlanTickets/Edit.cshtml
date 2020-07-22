@@ -113,6 +113,28 @@
                             </div>
                         </div>
                     </div>
+                    <hr />
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            @Html.LabelFor(model => model.proxy, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.proxy)
+                                    @Html.ValidationMessageFor(model => model.proxy, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            @Html.LabelFor(model => model.macCookies, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.macCookies)
+                                    @Html.ValidationMessageFor(model => model.macCookies, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <p></p>
                 </div>
             </div>
@@ -146,6 +168,7 @@
                             </div>
                         </div>
                     </div>
+
                     <p></p>
                 </div>
             </div>
