@@ -228,6 +228,7 @@
     <Compile Include="Controllers\PlanCategoriesController.cs" />
     <Compile Include="Controllers\PlanTicketsController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
+    <Compile Include="Controllers\ScriptContinuesController.cs" />
     <Compile Include="Controllers\SellTicketOneCachiersController.cs" />
     <Compile Include="Controllers\SellTicketOneCachiersRepController.cs" />
     <Compile Include="Controllers\SellTicketOnesController.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="Models\PrintReportDate.cs" />
     <Compile Include="Models\PrintViewCachier.cs" />
     <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\ScriptContinue.cs" />
     <Compile Include="Models\SellTicket.cs" />
     <Compile Include="Models\SellTicketDetail.cs" />
     <Compile Include="Models\SellTicketOne.cs" />
@@ -614,6 +616,11 @@
     <Content Include="Views\SellTicketOneCachiers\CreateMulti.cshtml" />
     <Content Include="Views\OrderTickets\PrintReportDate.cshtml" />
     <Content Include="Views\OrderTickets\PrintReport.cshtml" />
+    <Content Include="Views\ScriptContinues\Create.cshtml" />
+    <Content Include="Views\ScriptContinues\Delete.cshtml" />
+    <Content Include="Views\ScriptContinues\Details.cshtml" />
+    <Content Include="Views\ScriptContinues\Edit.cshtml" />
+    <Content Include="Views\ScriptContinues\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

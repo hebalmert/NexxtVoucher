@@ -19,7 +19,7 @@ namespace NexxtVoucher.Controllers
         // GET: TicketTimes
         public ActionResult Index()
         {
-            return View(db.TicketTimes.ToList());
+            return View(db.TicketTimes.OrderBy(o=> o.Orden).ToList());
         }
 
         // GET: TicketTimes/Details/5

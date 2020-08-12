@@ -4,50 +4,55 @@
 @{
     ViewBag.Title = @Resources.Resource.PlanTicket_Model_Titulo;
 }
-<p></p>
 
+<br />
 <p></p>
 <div class="row">
     <div class="col-md-6">
-        <div class="card">      
-            <p></p>
-            <div class="card-body">
-                <h2>@Resources.Resource.PlanTicket_Model_Titulo</h2>
-                <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
-                    <i class="fa fa-plus"></i>
-                    @Resources.Resource.ButtonNew
-                </button>
+        <div class="shadow mb-1 bg-white rounded">
+            <div class="card">
+                <p></p>
+                <div class="card-body">
+                    <h2>@Resources.Resource.PlanTicket_Model_Titulo</h2>
+                    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+                        <i class="fa fa-plus"></i>
+                        @Resources.Resource.ButtonNew
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                @using (Html.BeginForm("Index", "PlanTickets"))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="row">
-                        <p></p>
-                        <div class="col-md-8 mb-2">
-                            <div class="form-horizontal">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder="Lista por Servidor" />
-                                        <input type="hidden" id="item_list" name="servidorid" /><br />
 
+    <div class="col-md-6">
+        <div class="shadow mb-1 bg-white rounded">
+            <div class="card">
+                <div class="card-body">
+                    @using (Html.BeginForm("Index", "PlanTickets"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <p></p>
+                            <div class="col-md-8 mb-2">
+                                <div class="form-horizontal">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder="Lista por Servidor" />
+                                            <input type="hidden" id="item_list" name="servidorid" /><br />
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-4 mb-2">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                    @Resources.Resource.ButtonSearch
+                                </button>
+                            </div>
                         </div>
-                        <div class="col-md-4 mb-2">
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                <i class="fa fa-search"></i>
-                                @Resources.Resource.ButtonSearch
-                            </button>
-                        </div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </div>
     </div>

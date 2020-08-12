@@ -13,51 +13,52 @@
         <div class="col-md-4">
             <h2>@Resources.Resource.ViewCreate</h2>
             <h4>@Resources.Resource.PlanCategory_ViewIndex_Titulo1</h4>
-            <p></p>
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.CompanyId)
-            <div class="shadow p-1 mb-1 bg-white rounded">
-                <div class="card bg-light col-md-12">
-                    <p></p>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ServerId, htmlAttributes: new { @class = "control-label col-md-12" })
-                        <div class="col-md-12">
-                            @Html.DropDownList("ServerId", null, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.ServerId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Categoria, htmlAttributes: new { @class = "control-label col-md-12" })
-                        <div class="col-md-12">
-                            @Html.EditorFor(model => model.Categoria, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Categoria, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Detalle, htmlAttributes: new { @class = "control-label col-md-12" })
-                        <div class="col-md-12">
-                            @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <p></p>
-                </div>
-            </div>
             <br />
-            <p></p>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
-                        <i class="fa fa-backspace"></i>
-                        @Resources.Resource.ButtonBack
-                    </button>
+            <div class="shadow mb-1 bg-white rounded">
+                <div class="card">
+                    <p></p>
+                    <div class="card-body">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.CompanyId)
 
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fa fa-save"></i>
-                        @Resources.Resource.ButtonSave
-                    </button>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ServerId, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.DropDownList("ServerId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ServerId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Categoria, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Categoria, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Categoria, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Detalle, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-12">
+                                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                                    <i class="fa fa-backspace"></i>
+                                    @Resources.Resource.ButtonBack
+                                </button>
+
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-save"></i>
+                                    @Resources.Resource.ButtonSave
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

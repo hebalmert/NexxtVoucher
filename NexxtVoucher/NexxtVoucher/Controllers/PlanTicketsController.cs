@@ -98,7 +98,11 @@ namespace NexxtVoucher.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            var planetickets = new PlanTicket { CompanyId = user.CompanyId };
+            var planetickets = new PlanTicket 
+            { 
+                CompanyId = user.CompanyId,
+                ContinueTime = true
+            };
 
             ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(user.CompanyId), "PlanCategoryId", "Categoria");
             ViewBag.ServerId = new SelectList(ComboHelper.GetServer(user.CompanyId), "ServerId", "Nombre");
@@ -126,62 +130,56 @@ namespace NexxtVoucher.Controllers
                 {
                     
                     //se busca informacion del servidor
-                    var db2 = new NexxtVouContext();
                     string ip;
                     string us;
                     string pss;
-                    var servidor = db2.Servers.Find(planTicket.ServerId);
+                    var servidor = db.Servers.Find(planTicket.ServerId);
                     ip = servidor.IpServer;
                     us = servidor.Usuario;
                     pss = servidor.Clave;
-                    db2.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db3 = new NexxtVouContext();
                     string tiempo;
-                    var tickettiempo = db3.TicketTimes.Find(planTicket.TicketTimeId);
+                    string Iscript;
+                    string IscriptConsumo;
+                    var tickettiempo = db.TicketTimes.Find(planTicket.TicketTimeId);
                     tiempo = tickettiempo.TiempoTicket;
-                    db3.Dispose();
+                    Iscript = tickettiempo.ScriptTicket;
+                    IscriptConsumo = tickettiempo.ScriptTicketConsumo; 
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db4 = new NexxtVouContext();
                     string inactivo;
-                    var ticketinactivo = db4.TicketInactives.Find(planTicket.TicketInactiveId);
+                    var ticketinactivo = db.TicketInactives.Find(planTicket.TicketInactiveId);
                     inactivo = ticketinactivo.TiempoInactivo;
-                    db4.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db6 = new NexxtVouContext();
                     string refrescar;
-                    var ticketrefrescar = db6.TicketRefreshes.Find(planTicket.TicketRefreshId);
+                    var ticketrefrescar = db.TicketRefreshes.Find(planTicket.TicketRefreshId);
                     refrescar = ticketrefrescar.TiempoRefrescar;
-                    db6.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db7 = new NexxtVouContext();
                     string Vup;
-                    var velocidadup = db7.SpeedUps.Find(planTicket.SpeedUpId);
+                    var velocidadup = db.SpeedUps.Find(planTicket.SpeedUpId);
                     Vup = velocidadup.VelocidadUp;
-                    db7.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db8 = new NexxtVouContext();
                     string Vdown;
-                    var velocidaddown = db8.SpeedDowns.Find(planTicket.SpeedDownId);
+                    var velocidaddown = db.SpeedDowns.Find(planTicket.SpeedDownId);
                     Vdown = velocidaddown.VelocidadDown;
-                    db8.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     bool Iproxy = planTicket.proxy;
                     bool Imaccookies = planTicket.macCookies;
+                    bool Icontinuetime = planTicket.ContinueTime;
 
                     string IproxyYesNo = null;
                     string ImacCookiesYesNo = null;
+
 
                     if (Iproxy == true)
                     {
@@ -212,6 +210,19 @@ namespace NexxtVoucher.Controllers
                     {
                         db.SaveChanges();
 
+                        if (Icontinuetime == false)
+                        {
+                            Iscript = "";
+                            mikrotik.Send("/system/scheduler/add");
+                            mikrotik.Send("=name=" + planTicket.Plan);
+                            mikrotik.Send("=interval=" + "30s");
+                            mikrotik.Send("=policy=" + "ftp,reboot,read,write,policy,test,password,sniff,sensitive,romo");
+                            mikrotik.Send("=start-time=" + "startup");
+                            mikrotik.Send("=on-event=" + IscriptConsumo);
+                            mikrotik.Send("/system/scheduler/print", true);
+
+                        }
+
                         mikrotik.Send("/ip/hotspot/user/profile/add");
                         mikrotik.Send("=name=" + planTicket.Plan);
                         mikrotik.Send("=session-timeout=" + tiempo);
@@ -221,7 +232,9 @@ namespace NexxtVoucher.Controllers
                         mikrotik.Send("=idle-timeout=" + inactivo);
                         mikrotik.Send("=status-autorefresh=" + refrescar);
                         mikrotik.Send("=add-mac-cookie=" + ImacCookiesYesNo);
+                        mikrotik.Send("=mac-cookie-timeout=" + tiempo);
                         mikrotik.Send("=transparent-proxy=" + IproxyYesNo);
+                        mikrotik.Send("=on-login=" + Iscript);
                         mikrotik.Send("/ip/hotspot/user/profile/print", true);
 
                         int total = 0;
@@ -314,59 +327,52 @@ namespace NexxtVoucher.Controllers
                 try
                 {
                     //se busca informacion del servidor
-                    var db2 = new NexxtVouContext();
                     string ip;
                     string us;
                     string pss;
-                    var servidor = db2.Servers.Find(planTicket.ServerId);
+                    var servidor = db.Servers.Find(planTicket.ServerId);
                     ip = servidor.IpServer;
                     us = servidor.Usuario;
                     pss = servidor.Clave;
-                    db2.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db3 = new NexxtVouContext();
                     string tiempo;
-                    var tickettiempo = db3.TicketTimes.Find(planTicket.TicketTimeId);
+                    string Iscript;
+                    string IscriptConsumo;
+                    var tickettiempo = db.TicketTimes.Find(planTicket.TicketTimeId);
                     tiempo = tickettiempo.TiempoTicket;
-                    db3.Dispose();
+                    Iscript = tickettiempo.ScriptTicket;
+                    IscriptConsumo = tickettiempo.ScriptTicketConsumo;
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db4 = new NexxtVouContext();
                     string inactivo;
-                    var ticketinactivo = db4.TicketInactives.Find(planTicket.TicketInactiveId);
+                    var ticketinactivo = db.TicketInactives.Find(planTicket.TicketInactiveId);
                     inactivo = ticketinactivo.TiempoInactivo;
-                    db4.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db6 = new NexxtVouContext();
                     string refrescar;
-                    var ticketrefrescar = db6.TicketRefreshes.Find(planTicket.TicketRefreshId);
+                    var ticketrefrescar = db.TicketRefreshes.Find(planTicket.TicketRefreshId);
                     refrescar = ticketrefrescar.TiempoRefrescar;
-                    db6.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db7 = new NexxtVouContext();
                     string Vup;
-                    var velocidadup = db7.SpeedUps.Find(planTicket.SpeedUpId);
+                    var velocidadup = db.SpeedUps.Find(planTicket.SpeedUpId);
                     Vup = velocidadup.VelocidadUp;
-                    db7.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
-                    var db8 = new NexxtVouContext();
                     string Vdown;
-                    var velocidaddown = db8.SpeedDowns.Find(planTicket.SpeedDownId);
+                    var velocidaddown = db.SpeedDowns.Find(planTicket.SpeedDownId);
                     Vdown = velocidaddown.VelocidadDown;
-                    db8.Dispose();
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     bool Iproxy = planTicket.proxy;
                     bool Imaccookies = planTicket.macCookies;
+                    bool Icontinuetime = planTicket.ContinueTime;
 
                     string IproxyYesNo = null;
                     string ImacCookiesYesNo = null;
@@ -397,6 +403,18 @@ namespace NexxtVoucher.Controllers
                     else
                     {
                         db.SaveChanges();
+                        if (Icontinuetime == false)
+                        {
+                            Iscript = "";
+                            mikrotik.Send("/system/scheduler/add");
+                            mikrotik.Send("=name=" + planTicket.Plan);
+                            mikrotik.Send("=interval=" + "30s");
+                            mikrotik.Send("=policy=" + "ftp,reboot,read,write,policy,test,password,sniff,sensitive,romo");
+                            mikrotik.Send("=start-time=" + "startup");
+                            mikrotik.Send("=on-event=" + IscriptConsumo);
+                            mikrotik.Send("/system/scheduler/print", true);
+
+                        }
 
                         mikrotik.Send("/ip/hotspot/user/profile/set");
                         mikrotik.Send("=.id=" + planTicket.MikrotikId);
@@ -408,7 +426,9 @@ namespace NexxtVoucher.Controllers
                         mikrotik.Send("=idle-timeout=" + inactivo);
                         mikrotik.Send("=status-autorefresh=" + refrescar);
                         mikrotik.Send("=add-mac-cookie=" + ImacCookiesYesNo);
+                        mikrotik.Send("=mac-cookie-timeout=" + tiempo);
                         mikrotik.Send("=transparent-proxy=" + IproxyYesNo);
+                        mikrotik.Send("=on-login=" + Iscript);
                         mikrotik.Send("/ip/hotspot/user/profile/print", true);
 
                         int total = 0;

@@ -790,6 +790,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Script Continuo.
+        /// </summary>
+        public static string MenuData_ScriptContinue {
+            get {
+                return ResourceManager.GetString("MenuData_ScriptContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tiempo Inactivo.
         /// </summary>
         public static string MenuData_TiempoInactivo {
@@ -1015,6 +1024,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Script.
+        /// </summary>
+        public static string Model_ScriptContinue_ScriptTciket {
+            get {
+                return ResourceManager.GetString("Model_ScriptContinue_ScriptTciket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Por Consumo.
+        /// </summary>
+        public static string Model_ScriptContinue_ScriptTciketConsumo {
+            get {
+                return ResourceManager.GetString("Model_ScriptContinue_ScriptTciketConsumo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Donwload.
         /// </summary>
         public static string Model_SpeedDown_Velocidad {
@@ -1047,6 +1074,15 @@ namespace Resources {
         public static string Model_TicketRefresh {
             get {
                 return ResourceManager.GetString("Model_TicketRefresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orden.
+        /// </summary>
+        public static string Model_TicketTime_Orden {
+            get {
+                return ResourceManager.GetString("Model_TicketTime_Orden", resourceCulture);
             }
         }
         
@@ -1335,6 +1371,15 @@ namespace Resources {
         public static string PlanCateogry_Model_Detail {
             get {
                 return ResourceManager.GetString("PlanCateogry_Model_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiempo Continuo.
+        /// </summary>
+        public static string PlanTicket_Model_ContinueTime {
+            get {
+                return ResourceManager.GetString("PlanTicket_Model_ContinueTime", resourceCulture);
             }
         }
         

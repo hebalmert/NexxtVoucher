@@ -115,7 +115,7 @@ namespace NexxtVoucher.Classes
                 TicketTimeId = 0,
                 TiempoTicket = @Resources.Resource.ComboSelect,
             });
-            return tickettimes.OrderBy(o=> o.TicketTimeId).ToList();
+            return tickettimes.OrderBy(o=> o.Orden).ToList();
         }
 
         //Combos de Zonas

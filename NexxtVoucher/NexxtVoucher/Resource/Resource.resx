@@ -360,6 +360,9 @@
   <data name="MenuData_Download" xml:space="preserve">
     <value>Velocidad Bajada</value>
   </data>
+  <data name="MenuData_ScriptContinue" xml:space="preserve">
+    <value>Script Continuo</value>
+  </data>
   <data name="MenuData_TiempoInactivo" xml:space="preserve">
     <value>Tiempo Inactivo</value>
   </data>
@@ -435,6 +438,12 @@
   <data name="MikrotikSuccess" xml:space="preserve">
     <value>Conexion Exitosa</value>
   </data>
+  <data name="Model_ScriptContinue_ScriptTciket" xml:space="preserve">
+    <value>Script</value>
+  </data>
+  <data name="Model_ScriptContinue_ScriptTciketConsumo" xml:space="preserve">
+    <value>Por Consumo</value>
+  </data>
   <data name="Model_SpeedDown_Velocidad" xml:space="preserve">
     <value>Donwload</value>
   </data>
@@ -446,6 +455,9 @@
   </data>
   <data name="Model_TicketRefresh" xml:space="preserve">
     <value>Tiempo Refrescar</value>
+  </data>
+  <data name="Model_TicketTime_Orden" xml:space="preserve">
+    <value>Orden</value>
   </data>
   <data name="Model_TicketTime_Tiempo" xml:space="preserve">
     <value>Tiempo Ticket</value>
@@ -548,6 +560,9 @@
   </data>
   <data name="PlanTicket_Modelo_upDown" xml:space="preserve">
     <value>Subida / Bajada</value>
+  </data>
+  <data name="PlanTicket_Model_ContinueTime" xml:space="preserve">
+    <value>Tiempo Continuo</value>
   </data>
   <data name="PlanTicket_Model_Detalle" xml:space="preserve">
     <value>Detalle</value>

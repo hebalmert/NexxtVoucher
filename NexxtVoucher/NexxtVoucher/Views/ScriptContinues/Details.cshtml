@@ -1,0 +1,26 @@
+﻿@model NexxtVoucher.Models.ScriptContinue
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ScriptContinue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ScriptTicket)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.ScriptTicket, new { htmlAttributes = new { @readonly = "True", @class = "form-control", @style = "height: 750px;max-width:700px" } })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ScriptContinueId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
