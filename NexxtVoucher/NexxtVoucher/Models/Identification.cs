@@ -28,5 +28,7 @@ namespace NexxtVoucher.Models
         public virtual Company Company { get; set; }
 
         public virtual ICollection<Cachier> Cachiers { get; set; }
+
+        public virtual ICollection<Client> Clients { get; set; }
     }
 }

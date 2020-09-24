@@ -376,6 +376,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clientes.
+        /// </summary>
+        public static string Client_views_Titulo {
+            get {
+                return ResourceManager.GetString("Client_views_Titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Seleccionar...].
         /// </summary>
         public static string ComboSelect {
@@ -732,6 +741,15 @@ namespace Resources {
         public static string MenuArchivo_Ciudad {
             get {
                 return ResourceManager.GetString("MenuArchivo_Ciudad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes.
+        /// </summary>
+        public static string MenuArchivo_Clients {
+            get {
+                return ResourceManager.GetString("MenuArchivo_Clients", resourceCulture);
             }
         }
         

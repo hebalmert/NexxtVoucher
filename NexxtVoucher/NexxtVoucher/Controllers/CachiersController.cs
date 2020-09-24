@@ -54,7 +54,8 @@ namespace NexxtVoucher.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cachier cachier = db.Cachiers.Find(id);
+            var cachier = db.Cachiers.Find(id);
+
             if (cachier == null)
             {
                 return HttpNotFound();

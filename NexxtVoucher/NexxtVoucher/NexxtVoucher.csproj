@@ -216,9 +216,11 @@
     <Compile Include="Classes\MK.cs" />
     <Compile Include="Classes\UsersHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\UsersController.cs" />
     <Compile Include="Controllers\CachiersController.cs" />
     <Compile Include="Controllers\ChainCodesController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HeadTextsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -247,9 +249,11 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\API\UserResponse.cs" />
     <Compile Include="Models\Cachier.cs" />
     <Compile Include="Models\ChainCode.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\HeadText.cs" />
     <Compile Include="Models\Identification.cs" />
@@ -299,6 +303,7 @@
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
     <Content Include="Content\Imagen\NexxtLink.png" />
+    <Content Include="Content\Imagen\SiteLogo.png" />
     <Content Include="Content\ImgCarrusel\banner1.svg" />
     <Content Include="Content\ImgCarrusel\banner2.svg" />
     <Content Include="Content\ImgCarrusel\banner3.svg" />
@@ -621,6 +626,11 @@
     <Content Include="Views\ScriptContinues\Details.cshtml" />
     <Content Include="Views\ScriptContinues\Edit.cshtml" />
     <Content Include="Views\ScriptContinues\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

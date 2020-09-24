@@ -7,12 +7,12 @@
     <meta name="Description" content="Software para Venta de Tickets en Zona WIFI usando Servidores Mikrotik, cuenta con modulos de Cajeros y Modulo Para Instalar en PC">
     <meta name="Robots" content="all">
 
-    <script data-ad-client="ca-pub-2841371472791682" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <link rel="icon" href="~/Content/Imagen/SiteLogo.png" type="image/png" />
 
     <link href="~/Content/all.min.css" rel="stylesheet" />
     <link href="~/Content/fontawesome.min.css" rel="stylesheet" />
 
-    <title>@ViewBag.Title - Nexxt Voucher</title>
+    <title>Tickets WIFI - Nexxtplanet</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -77,6 +77,8 @@
                             <div class="dropdown-divider"></div>
                             @Html.ActionLink(@Resources.Resource.MenuArchivo_CategoriaPlan, "Index", "PlanCategories", new { }, new { @class = "dropdown-item" })
                             @Html.ActionLink(@Resources.Resource.MenuArchivo_Plan, "Index", "PlanTickets", new { }, new { @class = "dropdown-item" })
+                            @*<div class="dropdown-divider"></div>
+                            @Html.ActionLink(@Resources.Resource.MenuArchivo_Clients, "Index", "Clients", new { }, new { @class = "dropdown-item" })*@
                         </div>
                     </li>
                 }

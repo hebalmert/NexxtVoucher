@@ -1,0 +1,82 @@
+﻿@model NexxtVoucher.Models.Client
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+<br />
+<p></p>
+<h2>@Resources.Resource.ViewDetail</h2>
+
+<div>
+    <h4>@Resources.Resource.Client_views_Titulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Compania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Compania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identification.TipoDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identification.TipoDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdentificationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdentificationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movil)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+        <i class="fa fa-backspace"></i>
+        @Resources.Resource.ButtonBack
+    </button>
+
+    <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.ClientId })'">
+        <i class="fa fa-pencil-alt"></i>
+        @Resources.Resource.ButtonEdit
+    </button>
+</p>

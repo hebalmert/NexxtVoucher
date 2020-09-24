@@ -222,6 +222,9 @@
   <data name="City_ViewIndex_Titulo1" xml:space="preserve">
     <value>City</value>
   </data>
+  <data name="Client_views_Titulo" xml:space="preserve">
+    <value>Clients</value>
+  </data>
   <data name="ComboSelect" xml:space="preserve">
     <value>[Select Item...]</value>
   </data>
@@ -341,6 +344,9 @@
   </data>
   <data name="MenuArchivo_Ciudad" xml:space="preserve">
     <value>City</value>
+  </data>
+  <data name="MenuArchivo_Clients" xml:space="preserve">
+    <value>Clients</value>
   </data>
   <data name="MenuArchivo_Plan" xml:space="preserve">
     <value>Plan</value>

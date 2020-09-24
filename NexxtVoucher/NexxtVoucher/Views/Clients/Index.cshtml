@@ -1,0 +1,164 @@
+﻿@model IEnumerable<NexxtVoucher.Models.Client>
+
+@{
+    ViewBag.Title = @Resources.Resource.Client_views_Titulo;
+}
+<br />
+<p></p>
+@*<h2>@Resources.Resource.Client_views_Titulo</h2>*@
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="shadow  mb-1 bg-white rounded">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Clientes</h2>
+                    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+                        <i class="fa fa-plus"></i>
+                        Nuevo
+                    </button>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="shadow  mb-1 bg-white rounded">
+            <div class="card">
+                <div class="card-body">
+                    @using (Html.BeginForm("Index", "Clients"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-8 mb-2">
+                                <div class="form-horizontal">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder="Por Nombre" />
+                                            <input type="hidden" id="item_list" name="clienteid" /><br />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+@*<p>
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+            <i class="fa fa-plus"></i>
+            @Resources.Resource.ButtonNew
+        </button>
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Identification.TipoDocumento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdentificationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movil)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identification.TipoDocumento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentificationNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movil)
+            </td>
+            <td>
+                <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.ClientId})'">
+                    <i class="fa fa-pencil-alt"></i>
+                </button>
+
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.ClientId})'">
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
+
+                <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.ClientId})'">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<link href="~/Content/JquerySearch/jquery-ui.css" rel="stylesheet" />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Content/JquerySearch/jquery-1.12.4.js"></script>
+    <script src="~/Content/JquerySearch/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txt_search").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Clients/Search/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#item_list").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+    </script>
+}

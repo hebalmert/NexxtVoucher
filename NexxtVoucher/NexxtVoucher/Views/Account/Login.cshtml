@@ -3,17 +3,23 @@
 @{
     ViewBag.Title = @Resources.Resource.MenuLogin;
 }
+
 <br />
 <p></p>
+<br />
 
 @*<h2 style="width: 400px; margin-left: auto; margin-right:auto;">@ViewBag.Title.</h2>*@
-<div class="row" style="width: 400px; margin-left: auto; margin-right:auto;">
+<div class="row" style="width: 500px; margin-left: auto; margin-right:auto;">
     <div class="col-md-12">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded">
             <div class="card-body">
                 <div class="row" style="width: 400px; margin-left: auto; margin-right:auto; ">
                     <img src="@Url.Content("~/Content/Imagen/NexxtLink.png")" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+
                 </div>
+                <p>
+                    <h2><strong><text style="color:Highlight"> Nexxtplanet Voucher</text></strong> </h2>
+                </p>
                 <section id="loginForm">
                     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
@@ -49,12 +55,12 @@
                             </div>
                         </div>
                         @*<p>
-                                @Html.ActionLink("Registrarse como usuario nuevo", "Register")
-                            </p>*@
+                    @Html.ActionLink("Registrarse como usuario nuevo", "Register")
+                </p>*@
                         @* Habilite esta opción una vez tenga la confirmación de la cuenta habilitada para la funcionalidad de restablecimiento de contraseña
-                            <p>
-                                @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                            </p>*@
+                <p>
+                    @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                </p>*@
                     }
                 </section>
             </div>
