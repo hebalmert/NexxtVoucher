@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NexxtVoucher.Models;
@@ -14,12 +15,12 @@ namespace NexxtVoucher.Controllers
 
     public class SpeedUpsController : Controller
     {
-        private NexxtVouContext db = new NexxtVouContext();
+        private readonly NexxtVouContext db = new NexxtVouContext();
 
         // GET: SpeedUps
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.SpeedUps.ToList());
+            return View(await db.SpeedUps.OrderBy(o=> o.Orden).ToListAsync());
         }
 
         // GET: SpeedUps/Details/5

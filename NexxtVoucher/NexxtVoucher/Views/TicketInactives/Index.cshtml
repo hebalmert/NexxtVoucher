@@ -3,47 +3,53 @@
 @{
     ViewBag.Title = @Resources.Resource.Model_TicketInactive;
 }
-    <p></p>
-    <h2>@Resources.Resource.Model_TicketInactive</h2>
+<p></p>
+<h2>@Resources.Resource.Model_TicketInactive</h2>
 
-    <p>
-        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
-            <i class="fa fa-plus"></i>
-            @Resources.Resource.ButtonNew
-        </button>
-    </p>
-    <table class="table table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.TiempoInactivo)
-                </th>
-                <th></th>
-            </tr>
-            </thead>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TiempoInactivo)
-                    </td>
-                    <td>
-                        <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+<p>
+    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <i class="fa fa-plus"></i>
+        @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Orden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TiempoInactivo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Orden)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TiempoInactivo)
+    </td>
+    <td>
+        <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
                    '@Url.Action("Edit", new { id = item.TicketInactiveId})'">
-                            <i class="fa fa-pencil-alt"></i>
-                        </button>
+            <i class="fa fa-pencil-alt"></i>
+        </button>
 
-                        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
                    '@Url.Action("Details", new { id = item.TicketInactiveId})'">
-                            <i class="fa fa-clipboard-list"></i>
-                        </button>
+            <i class="fa fa-clipboard-list"></i>
+        </button>
 
-                        <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+        <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
                     '@Url.Action("Delete", new { id = item.TicketInactiveId})'">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            }
+            <i class="fa fa-trash"></i>
+        </button>
+    </td>
+</tr>
+    }
 
-    </table>
+</table>

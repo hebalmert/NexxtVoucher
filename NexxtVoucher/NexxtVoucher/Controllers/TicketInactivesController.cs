@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NexxtVoucher.Models;
@@ -14,12 +15,12 @@ namespace NexxtVoucher.Controllers
 
     public class TicketInactivesController : Controller
     {
-        private NexxtVouContext db = new NexxtVouContext();
+        private readonly NexxtVouContext db = new NexxtVouContext();
 
         // GET: TicketInactives
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.TicketInactives.ToList());
+            return View(await db.TicketInactives.OrderBy(o=> o.Orden).ToListAsync());
         }
 
         // GET: TicketInactives/Details/5
@@ -29,7 +30,7 @@ namespace NexxtVoucher.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketInactive ticketInactive = db.TicketInactives.Find(id);
+            var ticketInactive = db.TicketInactives.Find(id);
             if (ticketInactive == null)
             {
                 return HttpNotFound();

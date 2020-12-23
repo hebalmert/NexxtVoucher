@@ -16,7 +16,7 @@ namespace NexxtVoucher.Controllers
 
     public class CachiersController : Controller
     {
-        private NexxtVouContext db = new NexxtVouContext();
+        private readonly NexxtVouContext db = new NexxtVouContext();
 
         // GET: Cachiers
         public ActionResult Index(string searchString, int? page = null)

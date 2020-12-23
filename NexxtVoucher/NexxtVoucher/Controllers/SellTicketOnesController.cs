@@ -16,7 +16,7 @@ namespace NexxtVoucher.Controllers
 
     public class SellTicketOnesController : Controller
     {
-        private NexxtVouContext db = new NexxtVouContext();
+        private readonly NexxtVouContext db = new NexxtVouContext();
 
         // GET: SellTicketOnes/Edit/5
         public ActionResult PrintTicket(int? id)
@@ -99,10 +99,10 @@ namespace NexxtVoucher.Controllers
         public ActionResult Create(SellTicketOne sellTicketOne)
         {
             if (ModelState.IsValid)
-            {
-                db.SellTicketOnes.Add(sellTicketOne);
+            {                
                 try
                 {
+                    db.SellTicketOnes.Add(sellTicketOne);
                     db.SaveChanges();
 
                     var db2 = new NexxtVouContext();

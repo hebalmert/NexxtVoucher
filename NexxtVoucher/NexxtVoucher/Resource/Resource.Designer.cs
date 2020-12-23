@@ -313,6 +313,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comision.
+        /// </summary>
+        public static string Cachier_Model_Porcentaje {
+            get {
+                return ResourceManager.GetString("Cachier_Model_Porcentaje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zona.
         /// </summary>
         public static string Cachier_Model_Zona {

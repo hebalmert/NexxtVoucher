@@ -86,6 +86,12 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "Cachier_Model_MultiServer")]
         public bool MultiServer { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
+        [Range(0, 1, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Tax_Model_RangeMsg")]  //Porcentaje entre 0 y 1, 12%= 0.12
+        [DisplayFormat(DataFormatString = "{0:P2}", ApplyFormatInEditMode = false)] //Formato Porcentaje con 2 decimales
+        [Display(ResourceType = typeof(Resource), Name = "Cachier_Model_Porcentaje")]
+        public double Porcentaje { get; set; }
+
         [Display(ResourceType = typeof(Resource), Name = "Cachier_Model_Activo")]
         public bool Activo { get; set; }
 

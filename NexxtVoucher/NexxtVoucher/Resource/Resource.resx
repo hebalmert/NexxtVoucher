@@ -201,6 +201,9 @@
   <data name="Cachier_Model_Phone" xml:space="preserve">
     <value>Telefono</value>
   </data>
+  <data name="Cachier_Model_Porcentaje" xml:space="preserve">
+    <value>Comision</value>
+  </data>
   <data name="Cachier_Model_Zona" xml:space="preserve">
     <value>Zona</value>
   </data>

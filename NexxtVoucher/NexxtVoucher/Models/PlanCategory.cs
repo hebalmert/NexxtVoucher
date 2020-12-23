@@ -19,14 +19,15 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "Company_Model_Compania")]
         public int CompanyId { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Index("PlanCategory_Company_Categoria_Index", 2, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "Server_Index_Titulo")]
         public int ServerId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
-        [Index("PlanCategory_Company_Categoria_Index", 2, IsUnique = true)]
+        [Index("PlanCategory_Company_Categoria_Index", 3, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "PlanCategory_Model_Categoria")]
         public string Categoria { get; set; }
 

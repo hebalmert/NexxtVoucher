@@ -4,38 +4,47 @@
     ViewBag.Title = @Resources.Resource.ViewDelete;
 }
 
-    <h2>@Resources.Resource.ViewDelete</h2>
+<h2>@Resources.Resource.ViewDelete</h2>
 
-    <h3>@Resources.Resource.MsgDelete</h3>
-    <div>
-        <h4>@Resources.Resource.Model_TicketInactive</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.TiempoInactivo)
-            </dt>
+<h3>@Resources.Resource.MsgDelete</h3>
+<div>
+    <h4>@Resources.Resource.Model_TicketInactive</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <dl class="dl-horizontal">
 
-            <dd>
-                @Html.DisplayFor(model => model.TiempoInactivo)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Orden)
+        </dt>
 
-        </dl>
+        <dd>
+            @Html.DisplayFor(model => model.Orden)
+        </dd>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+        <dt>
+            @Html.DisplayNameFor(model => model.TiempoInactivo)
+        </dt>
 
-    <div class="form-actions no-color">
-        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
-            <i class="fa fa-backspace"></i>
-            @Resources.Resource.ButtonBack
-        </button>
+        <dd>
+            @Html.DisplayFor(model => model.TiempoInactivo)
+        </dd>
 
-        <button type="submit" class="btn btn-danger btn-sm">
-            <i class="fa fa-trash"></i>
-            @Resources.Resource.ButtonDelete
-        </button>
-    </div>
-        }
-    </div>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                <i class="fa fa-backspace"></i>
+                @Resources.Resource.ButtonBack
+            </button>
+
+            <button type="submit" class="btn btn-danger btn-sm">
+                <i class="fa fa-trash"></i>
+                @Resources.Resource.ButtonDelete
+            </button>
+        </div>
+    }
+</div>
