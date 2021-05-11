@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using NexxtVoucher.Classes;
-using NexxtVoucher.Models;
-using PagedList;
-
+﻿
 namespace NexxtVoucher.Controllers
 {
+    using NexxtVoucher.Classes;
+    using NexxtVoucher.Models;
+    using PagedList;
+    using System;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
     [Authorize(Roles = "User")]
     public class PlanTicketsController : Controller
     {
-        private NexxtVouContext db = new NexxtVouContext();
+        private readonly NexxtVouContext db = new NexxtVouContext();
 
 
         [HttpPost]
@@ -37,9 +37,9 @@ namespace NexxtVoucher.Controllers
         }
 
         // GET: PlanTickets
-        public ActionResult Index(int? servidorid, int? page = null)
+        public async Task<ActionResult> Index(int? servidorid, int? page = null)
         {
-            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            var user =await db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefaultAsync();
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -49,7 +49,7 @@ namespace NexxtVoucher.Controllers
 
             if (servidorid != null)
             {
-                var planTickets = db.PlanTickets.Where(c => c.CompanyId == user.CompanyId && c.ServerId == servidorid)
+                var planTickets =db.PlanTickets.Where(c => c.CompanyId == user.CompanyId && c.ServerId == servidorid)
                     .Include(p => p.SpeedDown)
                     .Include(p => p.SpeedUp)
                     .Include(p => p.Tax)
@@ -91,9 +91,9 @@ namespace NexxtVoucher.Controllers
         }
 
         // GET: PlanTickets/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            var user =await db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefaultAsync();
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -121,7 +121,7 @@ namespace NexxtVoucher.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PlanTicket planTicket)
+        public async Task<ActionResult> Create(PlanTicket planTicket)
         {
             if (ModelState.IsValid)
             {
@@ -133,17 +133,20 @@ namespace NexxtVoucher.Controllers
                     string ip;
                     string us;
                     string pss;
-                    var servidor = db.Servers.Find(planTicket.ServerId);
+                    var servidor =await db.Servers.FindAsync(planTicket.ServerId);
                     ip = servidor.IpServer;
                     us = servidor.Usuario;
                     pss = servidor.Clave;
+
+                    var puertos =await db.MikrotikControls.Where(p => p.ServerId == servidor.ServerId).FirstOrDefaultAsync();
+                    int port = puertos.PuertoApi;
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
                     string tiempo;
                     string Iscript;
                     string IscriptConsumo;
-                    var tickettiempo = db.TicketTimes.Find(planTicket.TicketTimeId);
+                    var tickettiempo = await db.TicketTimes.FindAsync(planTicket.TicketTimeId);
                     tiempo = tickettiempo.TiempoTicket;
                     Iscript = tickettiempo.ScriptTicket;
                     IscriptConsumo = tickettiempo.ScriptTicketConsumo; 
@@ -151,25 +154,25 @@ namespace NexxtVoucher.Controllers
 
                     //se busca informacion del servidor
                     string inactivo;
-                    var ticketinactivo = db.TicketInactives.Find(planTicket.TicketInactiveId);
+                    var ticketinactivo = await db.TicketInactives.FindAsync(planTicket.TicketInactiveId);
                     inactivo = ticketinactivo.TiempoInactivo;
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
                     string refrescar;
-                    var ticketrefrescar = db.TicketRefreshes.Find(planTicket.TicketRefreshId);
+                    var ticketrefrescar = await db.TicketRefreshes.FindAsync(planTicket.TicketRefreshId);
                     refrescar = ticketrefrescar.TiempoRefrescar;
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
                     string Vup;
-                    var velocidadup = db.SpeedUps.Find(planTicket.SpeedUpId);
+                    var velocidadup = await db.SpeedUps.FindAsync(planTicket.SpeedUpId);
                     Vup = velocidadup.VelocidadUp;
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
                     string Vdown;
-                    var velocidaddown = db.SpeedDowns.Find(planTicket.SpeedDownId);
+                    var velocidaddown =await db.SpeedDowns.FindAsync(planTicket.SpeedDownId);
                     Vdown = velocidaddown.VelocidadDown;
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
@@ -201,14 +204,14 @@ namespace NexxtVoucher.Controllers
 
                     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                     //Sistema de Nuevo en Mikrotik
-                    MK mikrotik = new MK(ip);
+                    MK mikrotik = new MK(ip, port);
                     if (!mikrotik.Login(us, pss))
                     {                      
                         //ModelState.AddModelError(string.Empty, @Resources.Resource.MikrotikFailed);
                     }
                     else
                     {
-                        db.SaveChanges();
+                        await db.SaveChangesAsync();
 
                         if (Icontinuetime == false)
                         {
@@ -250,10 +253,10 @@ namespace NexxtVoucher.Controllers
                             mikrotiIndex = idmk.Substring(10, rest);
 
                             var db5 = new NexxtVouContext();
-                            var planticketUp = db5.PlanTickets.Find(planTicket.PlanTicketId);
+                            var planticketUp = await db5.PlanTickets.FindAsync(planTicket.PlanTicketId);
                             planticketUp.MikrotikId = mikrotiIndex;
                             db5.Entry(planticketUp).State = EntityState.Modified;
-                            db5.SaveChanges();
+                            await db5.SaveChangesAsync();
                             db5.Dispose();
                         }
                         mikrotik.Close();
@@ -334,6 +337,9 @@ namespace NexxtVoucher.Controllers
                     ip = servidor.IpServer;
                     us = servidor.Usuario;
                     pss = servidor.Clave;
+
+                    var puertos = db.MikrotikControls.Where(p => p.ServerId == servidor.ServerId).FirstOrDefault();
+                    int port = puertos.PuertoApi;
                     //:::::::::::::::::::::::::::::::::::::::::::::
 
                     //se busca informacion del servidor
@@ -395,7 +401,7 @@ namespace NexxtVoucher.Controllers
                         ImacCookiesYesNo = "no";
                     }
 
-                    MK mikrotik = new MK(ip);
+                    MK mikrotik = new MK(ip, port);
                     if (!mikrotik.Login(us, pss))
                     {
                         //ModelState.AddModelError(string.Empty, @Resources.Resource.MikrotikFailed);
@@ -507,10 +513,14 @@ namespace NexxtVoucher.Controllers
                 ip = servidor.IpServer;
                 us = servidor.Usuario;
                 pss = servidor.Clave;
+
+                var puertos = db2.MikrotikControls.Where(p => p.ServerId == servidor.ServerId).FirstOrDefault();
+                int port = puertos.PuertoApi;
+
                 db2.Dispose();
                 //:::::::::::::::::::::::::::::::::::::::::::::
 
-                MK mikrotik = new MK(ip);
+                MK mikrotik = new MK(ip, port);
                 if (!mikrotik.Login(us, pss))
                 {
                     //ModelState.AddModelError(string.Empty, @Resources.Resource.MikrotikFailed);
@@ -555,13 +565,14 @@ namespace NexxtVoucher.Controllers
             return View(planTicket);
         }
 
-        public JsonResult GetCategory(int ServerId)
-        {
-            db.Configuration.ProxyCreationEnabled = false;
-            var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
+        //TODO:Arreglar el listado Cateogira sin Servidor
+        //public JsonResult GetCategory(int ServerId)
+        //{
+        //    db.Configuration.ProxyCreationEnabled = false;
+        //    var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
 
-            return Json(categories);
-        }
+        //    return Json(categories);
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -123,7 +123,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         $(document).ready(function () {
             $("#ServerId").change(function ()
             {
@@ -149,12 +149,13 @@
                 return false;
             })
         });
-    </script>
+    </script>*@
 
     <script type="text/javascript">
         $(document).ready(function () {
             $("#PlanCategoryId").change(function () {
                 $("#PlanTicketId").empty();
+                $("#Precio").val("0");
                 $("#PlanTicketId").append('<option value="0">[Select Item...]</option>');
                 $.ajax({
                     type: 'POST',
@@ -180,7 +181,7 @@
     <script type="text/javascript">
             $(document).ready(function () {
                 $("#PlanTicketId").change(function () {
-                    $("#Precio").empty();
+                    $("#Precio").empty("0");
                     $.ajax({
                         type: 'POST',
                         url: '@Url.Action("GetPrecio")',

@@ -103,5 +103,7 @@ namespace NexxtVoucher.Models
         public virtual ICollection<SellTicketOneCachier> SellTicketOneCachiers { get; set; }
 
         public virtual ICollection<Client> Clients { get; set; }
+
+        public virtual ICollection<MikrotikControl> MikrotikControls { get; set; }
     }
 }

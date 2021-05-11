@@ -988,6 +988,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mikrotik Control.
+        /// </summary>
+        public static string MenuSystem_MikrotikControl {
+            get {
+                return ResourceManager.GetString("MenuSystem_MikrotikControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sistema.
         /// </summary>
         public static string MenuSystem_System {
@@ -1029,6 +1038,24 @@ namespace Resources {
         public static string MikrotikConnection {
             get {
                 return ResourceManager.GetString("MikrotikConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Puerto API.
+        /// </summary>
+        public static string MikrotikControl_Model_PuertoApi {
+            get {
+                return ResourceManager.GetString("MikrotikControl_Model_PuertoApi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Control Mikrotik.
+        /// </summary>
+        public static string MikrotikControl_View_Titulo {
+            get {
+                return ResourceManager.GetString("MikrotikControl_View_Titulo", resourceCulture);
             }
         }
         
@@ -1425,6 +1452,15 @@ namespace Resources {
         public static string PlanTicket_Model_Impuesto {
             get {
                 return ResourceManager.GetString("PlanTicket_Model_Impuesto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activo.
+        /// </summary>
+        public static string PlanTicket_Model_IsActive {
+            get {
+                return ResourceManager.GetString("PlanTicket_Model_IsActive", resourceCulture);
             }
         }
         

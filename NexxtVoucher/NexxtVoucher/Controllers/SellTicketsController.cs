@@ -329,13 +329,14 @@ namespace NexxtVoucher.Controllers
             return Json(precio);
         }
 
-        public JsonResult GetCategory(int ServerId)
-        {
-            db.Configuration.ProxyCreationEnabled = false;
-            var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
+        //TODOL: Categorias sin Servidor
+        //public JsonResult GetCategory(int ServerId)
+        //{
+        //    db.Configuration.ProxyCreationEnabled = false;
+        //    var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
 
-            return Json(categories);
-        }
+        //    return Json(categories);
+        //}
 
         protected override void Dispose(bool disposing)
         {

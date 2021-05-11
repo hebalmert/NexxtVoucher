@@ -184,7 +184,9 @@ namespace NexxtVoucher.Controllers
             }
             //var db2 = new NexxtVouContext();
             var cachiers = db.Cachiers.Where(c => c.CompanyId == user.CompanyId && c.UserName == User.Identity.Name).FirstOrDefault();
-            var categoria = db.PlanCategories.Where(t => t.CompanyId == user.CompanyId && t.ServerId == cachiers.ServerId).FirstOrDefault();
+            //TODO:Resolver lo categoria sin Servidor
+            var categoria = db.PlanCategories.Where(t => t.CompanyId == user.CompanyId).FirstOrDefault();
+            //var categoria = db.PlanCategories.Where(t => t.CompanyId == user.CompanyId && t.ServerId == cachiers.ServerId).FirstOrDefault();
 
             var centaXCajero = new SellTicketOneCachier
             {
@@ -405,13 +407,14 @@ namespace NexxtVoucher.Controllers
             return Json(precio);
         }
 
-        public JsonResult GetCategory(int ServerId)
-        {
-            db.Configuration.ProxyCreationEnabled = false;
-            var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
+        //TODO:Categorias sin Servidor
+        //public JsonResult GetCategory(int ServerId)
+        //{
+        //    db.Configuration.ProxyCreationEnabled = false;
+        //    var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
 
-            return Json(categories);
-        }
+        //    return Json(categories);
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -13,10 +13,10 @@ namespace NexxtVoucher.Classes
         Stream connection;
         TcpClient con;
 
-        public MK(string ip)
+        public MK(string ip, int port)
         {
             con = new TcpClient();
-            con.Connect(ip, 8728);
+            con.Connect(ip, port);
             connection = (Stream)con.GetStream();
         }
         public void Close()

@@ -15,9 +15,9 @@
     <table class="table table-striped">
         <thead class="thead-light">
             <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Server.Nombre)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Categoria)
                 </th>
@@ -30,9 +30,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Server.Nombre)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Categoria)
                 </td>

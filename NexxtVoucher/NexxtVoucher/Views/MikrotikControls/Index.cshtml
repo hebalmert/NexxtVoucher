@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NexxtVoucher.Models.MikrotikControl>
+
+@{
+    ViewBag.Title = @Resources.Resource.MikrotikControl_View_Titulo;
+}
+
+<br />
+
+<h2>@Resources.Resource.MikrotikControl_View_Titulo</h2>
+
+<p>
+    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <i class="fa fa-plus"></i>
+        @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Server.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PuertoApi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Server.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PuertoApi)
+            </td>
+            <td>
+                <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.MikrotikControlId})'">
+                    <i class="fa fa-pencil-alt"></i>
+                </button>
+
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.MikrotikControlId})'">
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
+
+                <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.MikrotikControlId})'">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -40,6 +40,14 @@
         <dd>
             @Html.EditorFor(model => model.ScriptTicket, new { htmlAttributes = new { @readonly = "True", @class = "form-control", @style = "height: 750px;max-width:700px" } })
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
     </dl>
 </div>
 <p>

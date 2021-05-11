@@ -15,7 +15,7 @@ namespace NexxtVoucher.Models
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Index("OrderTicketDetail_TicketNumero_Company_Index", 1, IsUnique = true)]
+        [Index("OrderTicketDetail_TicketNumero_Server_Company_Index", 1, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "Company_Model_Compania")]
         public int CompanyId { get; set; }
 
@@ -25,11 +25,12 @@ namespace NexxtVoucher.Models
         public int OrderTicketId { get; set; }
 
         [Display(ResourceType = typeof(Resource), Name = "OrderTicketDetail_Model_TicketNumero")]
-        [Index("OrderTicketDetail_TicketNumero_Company_Index", 2, IsUnique = true)]
+        [Index("OrderTicketDetail_TicketNumero_Server_Company_Index", 2, IsUnique = true)]
         public int TicketNumero { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Index("OrderTicketDetail_TicketNumero_Server_Company_Index", 3, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "OrderTicket_Model_ServerId")]
         public int ServerId { get; set; }
 

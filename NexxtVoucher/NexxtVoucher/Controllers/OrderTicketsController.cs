@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Web;
-using System.Web.Mvc;
-using NexxtVoucher.Classes;
-using NexxtVoucher.Models;
-using PagedList;
-
-namespace NexxtVoucher.Controllers
+﻿namespace NexxtVoucher.Controllers
 {
+    using NexxtVoucher.Classes;
+    using NexxtVoucher.Models;
+    using PagedList;
+    using System;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
     public class OrderTicketsController : Controller
     {
-        private NexxtVouContext db = new NexxtVouContext();
+        private readonly NexxtVouContext db = new NexxtVouContext();
 
 
-        public ActionResult PrintReportDate()
+        public async Task<ActionResult> PrintReportDate()
         {
-            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            var user = await db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefaultAsync();
 
             var printviewcajero = new PrintReportDate
             {
@@ -42,9 +40,9 @@ namespace NexxtVoucher.Controllers
         }
 
         // GET: PaymentChachiers
-        public ActionResult PrintReport(DateTime fechaInicio, DateTime fechafin)
+        public async Task<ActionResult> PrintReport(DateTime fechaInicio, DateTime fechafin)
         {
-            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            var user = await db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefaultAsync();
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -80,9 +78,9 @@ namespace NexxtVoucher.Controllers
 
 
         // GET: OrderTickets
-        public ActionResult AddTicket(int id, string up, string down) //id = OrderTicketId
+        public async Task<ActionResult> AddTicket(int id, string up, string down) //id = OrderTicketId
         {
-            var ordenticket = db.OrderTickets.Find(id);
+            var ordenticket = await db.OrderTickets.FindAsync(id);
             int can = ordenticket.Cantidad;
             int planid = ordenticket.PlanTicketId;
             string plan =ordenticket.Plan;
@@ -93,27 +91,28 @@ namespace NexxtVoucher.Controllers
             decimal prec = ordenticket.Precio;
             int conteo = 0;
 
-            var db12 = new NexxtVouContext();
-            var servidordata = db12.Servers.Find(Serv);
+            var db2 = new NexxtVouContext();
+            var servidordata = await db2.Servers.FindAsync(Serv);
             string us = servidordata.Usuario;
             string pss = servidordata.Clave;
-            db12.Dispose();
+
+            var puertos = await db2.MikrotikControls.Where(p => p.ServerId == Serv).FirstOrDefaultAsync();
+            int port = puertos.PuertoApi;
+
+            var cadenas = await db2.ChainCodes.Where(c => c.CompanyId == ordenticket.CompanyId).FirstOrDefaultAsync();
+            int largocadena = cadenas.Largo;
+            string caracteres = cadenas.Cadena;
+            string codigoTicket;
+            db2.Dispose();
 
             //Se hace con conexion a la Mikroti y se deja abierto
             ////////////////////////////////////////////////////////////
-            MK mikrotik = new MK(ip);
+            MK mikrotik = new MK(ip, port);
             if (!mikrotik.Login(us, pss))
             {
                 return RedirectToAction("Index");
             }
             ///////////////////////////////////////////////////////////////////////////////////
-            
-            var db2 = new NexxtVouContext();
-            var cadenas = db2.ChainCodes.Where(c => c.CompanyId == ordenticket.CompanyId).FirstOrDefault();
-            int largocadena = cadenas.Largo;
-            string caracteres = cadenas.Cadena;
-            string codigoTicket;
-            db2.Dispose();
 
             var db3 = new NexxtVouContext();
             var db4 = new NexxtVouContext();
@@ -134,7 +133,7 @@ namespace NexxtVoucher.Controllers
                 int sum = 0;
                 int Recep = 0;
 
-                var register = db3.Registers.Where(c => c.CompanyId == ordenticket.CompanyId).FirstOrDefault();
+                var register = await db3.Registers.Where(c => c.CompanyId == ordenticket.CompanyId).FirstOrDefaultAsync();
                 Recep = register.Tickets;
                 sum = Recep + 1;
                 register.Tickets = sum;
@@ -177,25 +176,31 @@ namespace NexxtVoucher.Controllers
                         MikrotikId = mikrotiIndex
                     };
                     db4.OrderTicketDetails.Add(orderticketdetails);
-                    db4.SaveChanges();
+                    
                 }
-
-                db3.SaveChanges();
+                await db4.SaveChangesAsync();
+                await db3.SaveChangesAsync();
                 conteo += 1;
             }
+
             mikrotik.Close();
 
             db3.Dispose();  //conexion para el Registro de Consecutivos
             db4.Dispose();  //Se cierra la crecion del ticket en el OrderTicketDetail
             db11.Dispose();  //Se cierra la crecion del ticket en el OrderTicketDetail
 
-            var db10 = new NexxtVouContext();
-            var orderticketup = db10.OrderTickets.Find(id);
-            orderticketup.Creados = conteo;
-            orderticketup.Mikrotik = true;
-            db10.Entry(orderticketup).State = EntityState.Modified;
-            db10.SaveChanges();
-            db10.Dispose();
+            ordenticket.Creados = conteo;
+            ordenticket.Mikrotik = true;
+
+            db.Entry(ordenticket).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            //var db10 = new NexxtVouContext();
+            //var orderticketup = db10.OrderTickets.Find(id);
+            //orderticketup.Creados = conteo;
+            //orderticketup.Mikrotik = true;
+            //db10.Entry(orderticketup).State = EntityState.Modified;
+            //db10.SaveChanges();
+            //db10.Dispose();
 
             return RedirectToAction("Details", new { id = ordenticket.OrderTicketId });
         }
@@ -526,13 +531,14 @@ namespace NexxtVoucher.Controllers
             return Json(precio);
         }
 
-        public JsonResult GetCategory(int ServerId)
-        {
-            db.Configuration.ProxyCreationEnabled = false;
-            var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
+        //TODO: Arreglar el listado de categoria sin  Servidor 
+        //public JsonResult GetCategory(int ServerId)
+        //{
+        //    db.Configuration.ProxyCreationEnabled = false;
+        //    var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
 
-            return Json(categories);
-        }
+        //    return Json(categories);
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -21,8 +21,10 @@ namespace NexxtVoucher.Controllers
         // GET: Servers/Connect
         public ActionResult MikroSuccess(string ip, string us, string pss, int idserver)
         {
-            
-            MK mikrotik = new MK(ip);
+            var puertos = db.MikrotikControls.Where(p => p.ServerId == idserver).FirstOrDefault();
+            int port = puertos.PuertoApi;
+
+            MK mikrotik = new MK(ip, port);
             if (!mikrotik.Login(us, pss))
             {
                 mikrotik.Close();

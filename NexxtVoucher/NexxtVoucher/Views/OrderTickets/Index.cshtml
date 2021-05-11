@@ -4,54 +4,52 @@
 @{
     ViewBag.Title = @Resources.Resource.OrderTicket_Index_Titulo;
 }
-    <br />
+<br />
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <p></p>
-            <div class="card-body">
-                <h2>@Resources.Resource.OrderTicket_Index_Titulo</h2>
-                <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
-                    <i class="fa fa-plus"></i>
-                    @Resources.Resource.ButtonNew
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                @using (Html.BeginForm("Index", "OrderTickets"))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="row">
-                        <p></p>
-                        <div class="col-md-8 mb-2">
-                            <div class="form-horizontal">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder="Lista por Servidor" />
-                                        <input type="hidden" id="item_list" name="servidorid" /><br />
+<div class="shadow  bg-white rounded">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <p>
+                        <h2>Contratos Suspendidos</h2>
+                    </p>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new  {})'">
+                        <i class="fa fa-plus"></i>
+                        Nuevo
+                    </button>
+                    <p></p>
+                </div>
+                <div class="col-md-6">
+                    @using (Html.BeginForm("Index", "OrderTickets"))
+                    {
+                        @Html.AntiForgeryToken()
 
-                                    </div>
-                                </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-1">
+                                <p></p>
+                                <p>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger " })
+                                    <input type="text" name="txt_search" id="txt_search" class="form-control col-md-10" placeholder="Buscar por Nombre" />
+                                    <input type="hidden" id="item_list" name="servidorid" /><br />
+                                </p>
+                                <p>
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i>
+                                        Buscar
+                                    </button>
+                                </p>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-2">
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                <i class="fa fa-search"></i>
-                                @Resources.Resource.ButtonSearch
-                            </button>
-                        </div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </div>
     </div>
 </div>
-<p></p>
+
+<br />
+
 <table class="table table-striped">
     <thead class="thead-light">
         <tr>

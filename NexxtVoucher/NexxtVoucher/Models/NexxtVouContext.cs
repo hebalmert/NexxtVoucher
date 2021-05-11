@@ -69,5 +69,7 @@ namespace NexxtVoucher.Models
         public System.Data.Entity.DbSet<NexxtVoucher.Models.ScriptContinue> ScriptContinues { get; set; }
 
         public System.Data.Entity.DbSet<NexxtVoucher.Models.Client> Clients { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtVoucher.Models.MikrotikControl> MikrotikControls { get; set; }
     }
 }

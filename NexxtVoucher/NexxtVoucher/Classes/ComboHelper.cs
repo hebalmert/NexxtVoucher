@@ -67,7 +67,7 @@ namespace NexxtVoucher.Classes
                 SpeedDownId = 0,
                 VelocidadDown = @Resources.Resource.ComboSelect,
             });
-            return speeddowns.OrderBy(o=> o.SpeedDownId).ToList();
+            return speeddowns.OrderBy(o=> o.Orden).ToList();
         }
 
         //Combos de SpeedUp
@@ -79,7 +79,7 @@ namespace NexxtVoucher.Classes
                 SpeedUpId = 0,
                 VelocidadUp = @Resources.Resource.ComboSelect,
             });
-            return speedups.OrderBy(o=> o.SpeedUpId).ToList();
+            return speedups.OrderBy(o=> o.Orden).ToList();
         }
 
         //Combos de Tiempo Inactivo
@@ -91,7 +91,7 @@ namespace NexxtVoucher.Classes
                 TicketInactiveId = 0,
                 TiempoInactivo = @Resources.Resource.ComboSelect,
             });
-            return ticketinactives.OrderBy(o=> o.TicketInactiveId).ToList();
+            return ticketinactives.OrderBy(o=> o.Orden).ToList();
         }
 
         //Combos de Tiempo Refrescar
@@ -103,13 +103,13 @@ namespace NexxtVoucher.Classes
                 TicketRefreshId = 0,
                 TiempoRefrescar = @Resources.Resource.ComboSelect,
             });
-            return ticketrefreshs.OrderBy(o=> o.TicketRefreshId).ToList();
+            return ticketrefreshs.OrderBy(o=> o.Orden).ToList();
         }
 
         //Combos de Tiempo del Ticket
         public static List<TicketTime> GetTicketime()
         {
-            var tickettimes = db.TicketTimes.ToList();
+            var tickettimes = db.TicketTimes.Where(a=> a.IsActive == true).ToList();
             tickettimes.Add(new TicketTime
             {
                 TicketTimeId = 0,

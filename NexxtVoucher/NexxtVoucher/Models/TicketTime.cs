@@ -35,6 +35,9 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "Model_ScriptContinue_ScriptTciket")]
         public string ScriptTicket { get; set; }
 
+        [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_IsActive")]
+        public bool IsActive { get; set; }
+
         public virtual ICollection<PlanTicket> PlanTickets { get; set; }
     }
 }

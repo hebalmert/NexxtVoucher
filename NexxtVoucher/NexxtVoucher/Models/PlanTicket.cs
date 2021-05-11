@@ -98,6 +98,9 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Modelo_Mikrotik")]
         public string MikrotikId { get; set; }
 
+        [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_IsActive")]
+        public bool IsActive { get; set; }
+
         public virtual Company Company { get; set; }
 
         public virtual PlanCategory PlanCategory { get; set; }

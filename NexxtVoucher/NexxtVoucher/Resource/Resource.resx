@@ -426,6 +426,9 @@
   <data name="MenuSystem_Impuesto" xml:space="preserve">
     <value>Impuesto</value>
   </data>
+  <data name="MenuSystem_MikrotikControl" xml:space="preserve">
+    <value>Mikrotik Control</value>
+  </data>
   <data name="MenuSystem_System" xml:space="preserve">
     <value>Sistema</value>
   </data>
@@ -440,6 +443,12 @@
   </data>
   <data name="MikrotikConnection" xml:space="preserve">
     <value>Conexion Mikrotik</value>
+  </data>
+  <data name="MikrotikControl_Model_PuertoApi" xml:space="preserve">
+    <value>Puerto API</value>
+  </data>
+  <data name="MikrotikControl_View_Titulo" xml:space="preserve">
+    <value>Control Mikrotik</value>
   </data>
   <data name="MikrotikFailed" xml:space="preserve">
     <value>Conexion Fallida</value>
@@ -578,6 +587,9 @@
   </data>
   <data name="PlanTicket_Model_Impuesto" xml:space="preserve">
     <value>Impuesto</value>
+  </data>
+  <data name="PlanTicket_Model_IsActive" xml:space="preserve">
+    <value>Activo</value>
   </data>
   <data name="PlanTicket_Model_macCookies" xml:space="preserve">
     <value>Mac Cookies</value>

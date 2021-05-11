@@ -78,10 +78,12 @@ namespace NexxtVoucher.Models
 
         public virtual ICollection<SellTicket> SellTickets { get; set; }
 
-        public virtual ICollection<PlanCategory> PlanCategories { get; set; }
+        //public virtual ICollection<PlanCategory> PlanCategories { get; set; }
 
         public virtual ICollection<SellTicketOneCachier> SellTicketOneCachiers { get; set; }
 
         public virtual ICollection<Cachier> Cachiers { get; set; }
+
+        public virtual ICollection<MikrotikControl> MikrotikControls { get; set; }
     }
 }

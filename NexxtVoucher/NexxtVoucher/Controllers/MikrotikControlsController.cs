@@ -1,50 +1,50 @@
 ﻿namespace NexxtVoucher.Controllers
 {
-    using NexxtVoucher.Models;
     using System;
-    using System.Data;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
     using System.Web.Mvc;
+    using NexxtVoucher.Classes;
+    using NexxtVoucher.Models;
 
     [Authorize(Roles = "User")]
-
-    public class PlanCategoriesController : Controller
+    public class MikrotikControlsController : Controller
     {
         private readonly NexxtVouContext db = new NexxtVouContext();
 
-        // GET: PlanCategories
+        // GET: MikrotikControls
         public async Task<ActionResult> Index()
         {
-            var user = await db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefaultAsync();
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            var planCategories = db.PlanCategories.Where(c=> c.CompanyId == user.CompanyId);
+            var mikrotikControls = db.MikrotikControls.Where(c => c.CompanyId == user.CompanyId)
+                .Include(m => m.Server);
 
-            return View(planCategories.OrderBy(o => o.Categoria).ToList());
+            return View(await mikrotikControls.ToListAsync());
         }
 
-        // GET: PlanCategories/Details/5
+        // GET: MikrotikControls/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var planCategory =await db.PlanCategories.FindAsync(id);
-            if (planCategory == null)
+            var mikrotikControl = await db.MikrotikControls.FindAsync(id);
+            if (mikrotikControl == null)
             {
                 return HttpNotFound();
             }
-            return View(planCategory);
+            return View(mikrotikControl);
         }
 
-        // GET: PlanCategories/Create
+        // GET: MikrotikControls/Create
         public ActionResult Create()
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
@@ -52,23 +52,28 @@
             {
                 return RedirectToAction("Index", "Home");
             }
-            var plancategories = new PlanCategory { CompanyId = user.CompanyId };
+            var mikrotikcontrol = new MikrotikControl
+            {
+                CompanyId = user.CompanyId
+            };
 
-            return View(plancategories);
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(user.CompanyId), "ServerId", "Nombre");
+
+            return View(mikrotikcontrol);
         }
 
-        // POST: PlanCategories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // POST: MikrotikControls/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(PlanCategory planCategory)
+        public async Task<ActionResult> Create(MikrotikControl mikrotikControl)
         {
             if (ModelState.IsValid)
             {
-                db.PlanCategories.Add(planCategory);
                 try
                 {
+                    db.MikrotikControls.Add(mikrotikControl);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -87,39 +92,38 @@
                 }
             }
 
-            //ViewBag.ServerId = new SelectList(ComboHelper.GetServer(planCategory.CompanyId), "ServerId", "Nombre", planCategory.ServerId);
-            return View(planCategory);
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(mikrotikControl.CompanyId), "ServerId", "Nombre", mikrotikControl.ServerId);
+            return View(mikrotikControl);
         }
 
-        // GET: PlanCategories/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: MikrotikControls/Edit/5
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var planCategory = db.PlanCategories.Find(id);
-            if (planCategory == null)
+            var mikrotikControl = await db.MikrotikControls.FindAsync(id);
+            if (mikrotikControl == null)
             {
                 return HttpNotFound();
             }
-
-            //ViewBag.ServerId = new SelectList(ComboHelper.GetServer(planCategory.CompanyId), "ServerId", "Nombre", planCategory.ServerId);
-            return View(planCategory);
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(mikrotikControl.CompanyId), "ServerId", "Nombre", mikrotikControl.ServerId);
+            return View(mikrotikControl);
         }
 
-        // POST: PlanCategories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // POST: MikrotikControls/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(PlanCategory planCategory)
+        public async Task<ActionResult> Edit(MikrotikControl mikrotikControl)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(planCategory).State = EntityState.Modified;
                 try
                 {
+                    db.Entry(mikrotikControl).State = EntityState.Modified;
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -137,35 +141,35 @@
                     }
                 }
             }
-
-            //ViewBag.ServerId = new SelectList(ComboHelper.GetServer(planCategory.CompanyId), "ServerId", "Nombre", planCategory.ServerId);
-            return View(planCategory);
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(mikrotikControl.CompanyId), "ServerId", "Nombre", mikrotikControl.ServerId);
+            return View(mikrotikControl);
         }
 
-        // GET: PlanCategories/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: MikrotikControls/Delete/5
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var planCategory = db.PlanCategories.Find(id);
-            if (planCategory == null)
+            var mikrotikControl = await db.MikrotikControls.FindAsync(id);
+            if (mikrotikControl == null)
             {
                 return HttpNotFound();
             }
-            return View(planCategory);
+            return View(mikrotikControl);
         }
 
-        // POST: PlanCategories/Delete/5
+        // POST: MikrotikControls/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            PlanCategory planCategory =await db.PlanCategories.FindAsync(id);
-            db.PlanCategories.Remove(planCategory);
+            var mikrotikControl = await db.MikrotikControls.FindAsync(id);
+
             try
             {
+                db.MikrotikControls.Remove(mikrotikControl);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -182,7 +186,7 @@
                     ModelState.AddModelError(string.Empty, ex.Message);
                 }
             }
-            return View(planCategory);
+            return View(mikrotikControl);
         }
 
         protected override void Dispose(bool disposing)
