@@ -41,10 +41,25 @@
             <div class="form-row">
                 <div class="col-md-10 mb-2">
                     <strong>@Html.DisplayNameFor(model => model.Precio)</strong>
-                    @Html.DisplayFor(model => model.Precio)
+                    <strong>@Html.DisplayFor(model => model.Precio)</strong>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-10 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.TotalTicket)</strong>
+                    <strong>: @Model.TotalTicket</strong>
+                    @*@string.Format("{0:c}", Html.DisplayFor(model => model.TotalVenta))*@
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-10 mb-2">
+                    <strong>@Html.DisplayNameFor(model => model.TotalVenta)</strong>
+                    <strong>: @string.Format("{0:c}", Model.TotalVenta)</strong>
+                    @*@string.Format("{0:c}", Html.DisplayFor(model => model.TotalVenta))*@
                 </div>
             </div>
         </div>
+        @*<strong>@string.Format("{0:c}", model.TotalVenta)</strong>*@
         <hr />
         <p></p>
         <p>
@@ -54,32 +69,32 @@
             </button>
 
             @if (Model.SellTicketDetails.Count == 0)
-                            {
+            {
                 <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.SellTicketId })'">
                     <i class="fa fa-pencil-alt"></i>
                     @Resources.Resource.ButtonEdit
                 </button>
-                        }
-                        @if (Model.SellTicketDetails.Count == 0)
-                        {
+            }
+            @if (Model.SellTicketDetails.Count == 0)
+            {
                 <button type="submit" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("AddTicket", new { planid = Model.PlanTicketId, serid = Model.ServerId, ventaN = Model.VentaOne, sellid = Model.SellTicketId, com = Model.CompanyId })'">
                     <i class="fa fa-pencil-alt"></i>
                     @Resources.Resource.ButtonAdd
                 </button>
-                    }
-                    @if (Model.SellTicketDetails.Count != 0)
-                    {
+            }
+            @if (Model.SellTicketDetails.Count != 0)
+            {
                 <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("ExportToExcel", new { seid = Model.SellTicketId })'">
                     <i class="fa fa-file-excel"></i>
                     @Resources.Resource.ButtonExcel
                 </button>
             }
             @*@Html.ActionLink(@Resources.Resource.ButtonDetail, "Edit", new { id = Model.SellTicketId }, new { @class = "btn btn-primary btn-sm" }) |
-            @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
-            @if (Model.SellTicketDetails.Count == 0)
-            {
-                @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { planid = Model.PlanTicketId, serid = Model.ServerId, ventaN = Model.VentaOne, sellid = Model.SellTicketId, com = Model.CompanyId }, new { @class = "btn btn-warning btn-sm" })}
-            @Html.ActionLink(@Resources.Resource.ButtonExcel, "ExportToExcel", new { seid = Model.SellTicketId }, new { @class = "btn btn-warning btn-sm" }) |*@
+                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
+                @if (Model.SellTicketDetails.Count == 0)
+                {
+                    @Html.ActionLink(@Resources.Resource.ButtonAdd, "AddTicket", new { planid = Model.PlanTicketId, serid = Model.ServerId, ventaN = Model.VentaOne, sellid = Model.SellTicketId, com = Model.CompanyId }, new { @class = "btn btn-warning btn-sm" })}
+                @Html.ActionLink(@Resources.Resource.ButtonExcel, "ExportToExcel", new { seid = Model.SellTicketId }, new { @class = "btn btn-warning btn-sm" }) |*@
 
         </p>
     </div>

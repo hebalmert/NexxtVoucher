@@ -49,6 +49,10 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "OderTiket_Model_Precio")]
         public decimal Precio { get; set; }
 
+        public int TotalTicket => SellTicketDetails == null ? 0 : SellTicketDetails.Count;
+
+        public decimal TotalVenta => SellTicketDetails == null ? 0 : SellTicketDetails.Sum(s => s.Precio);
+
         public virtual Company Company { get; set; }
 
         public virtual Server Server { get; set; }
