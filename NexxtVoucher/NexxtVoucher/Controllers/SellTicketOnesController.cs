@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using NexxtVoucher.Classes;
-using NexxtVoucher.Models;
-using PagedList;
-
-namespace NexxtVoucher.Controllers
+﻿namespace NexxtVoucher.Controllers
 {
+    using NexxtVoucher.Classes;
+    using NexxtVoucher.Models;
+    using PagedList;
+    using System;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
+
     [Authorize(Roles = "User")]
 
     public class SellTicketOnesController : Controller
@@ -35,9 +35,9 @@ namespace NexxtVoucher.Controllers
         }
 
         // GET: SellTicketOnes
-        public ActionResult Index(int? page = null)
+        public async Task<ActionResult> Index(int? page = null)
         {
-            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            var user =await db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefaultAsync();
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -96,43 +96,39 @@ namespace NexxtVoucher.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(SellTicketOne sellTicketOne)
+        public async Task<ActionResult> Create(SellTicketOne sellTicketOne)
         {
             if (ModelState.IsValid)
             {                
                 try
                 {
                     db.SellTicketOnes.Add(sellTicketOne);
-                    db.SaveChanges();
+                    await db.SaveChangesAsync();
 
                     var db2 = new NexxtVouContext();
-                    var db3 = new NexxtVouContext();
-                    var db4 = new NexxtVouContext();
                     int sum = 0;
                     int Recep = 0;
 
-                    var register = db2.Registers.Where(c => c.CompanyId == sellTicketOne.CompanyId).FirstOrDefault();
+                    var register = await db2.Registers.Where(c => c.CompanyId == sellTicketOne.CompanyId).FirstOrDefaultAsync();
                     Recep = register.VentaOne;
                     sum = Recep + 1;
                     register.VentaOne = sum;
                     db2.Entry(register).State = EntityState.Modified;
-                    db2.SaveChanges();
+                    await db2.SaveChangesAsync();
                     
-                    var sellticket = db3.SellTicketOnes.Find(sellTicketOne.SellTicketOneId);
+                    var sellticket = await db2.SellTicketOnes.FindAsync(sellTicketOne.SellTicketOneId);
                     sellticket.VentaOne = sum;
-                    db3.Entry(sellticket).State = EntityState.Modified;
-                    db3.SaveChanges();
+                    db2.Entry(sellticket).State = EntityState.Modified;
+                    await db2.SaveChangesAsync();
                     
-                    var orderticketdetail = db4.OrderTicketDetails.Find(sellTicketOne.OrderTicketDetailId);
+                    var orderticketdetail = await db2.OrderTicketDetails.FindAsync(sellTicketOne.OrderTicketDetailId);
                     orderticketdetail.Vendido = true;
                     orderticketdetail.Date = DateTime.Today;
                     orderticketdetail.VentaNumero = Convert.ToString(sum);
-                    db4.Entry(orderticketdetail).State = EntityState.Modified;
-                    db4.SaveChanges();
+                    db2.Entry(orderticketdetail).State = EntityState.Modified;
+                    await db2.SaveChangesAsync();
 
-                    db4.Dispose();
                     db2.Dispose();
-                    db3.Dispose();
 
                     return RedirectToAction("Details", new { id = sellTicketOne.SellTicketOneId});
                 }
@@ -267,13 +263,15 @@ namespace NexxtVoucher.Controllers
             return Json(planticket);
         }
 
+
         public JsonResult GetTickets(int PlanTicketId, int servidorId)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var orderticketdeatil = db.OrderTicketDetails.Where(o => o.ServerId == servidorId && o.PlanTicketId == PlanTicketId && o.Vendido == false).ToList();
+            var orderticketdeatil = db.OrderTicketDetails.Where(o => o.ServerId == servidorId && o.PlanTicketId == PlanTicketId && o.Vendido == false).FirstOrDefault();
 
             return Json(orderticketdeatil);
         }
+
 
         public JsonResult GetPrecio(int orderTicketdetailId)
         {
