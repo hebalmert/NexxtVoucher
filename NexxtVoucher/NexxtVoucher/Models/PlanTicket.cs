@@ -98,6 +98,10 @@ namespace NexxtVoucher.Models
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Modelo_Mikrotik")]
         public string MikrotikId { get; set; }
 
+        [MaxLength(15, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "MaxLength")]
+        [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Modelo_Mikrotik")]
+        public string MikrotikIdContinuo { get; set; }
+
         [Display(ResourceType = typeof(Resource), Name = "PlanTicket_Model_IsActive")]
         public bool IsActive { get; set; }
 

@@ -101,7 +101,8 @@ namespace NexxtVoucher.Controllers
             var planetickets = new PlanTicket 
             { 
                 CompanyId = user.CompanyId,
-                ContinueTime = true
+                ContinueTime = true,
+                IsActive = true
             };
 
             ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(user.CompanyId), "PlanCategoryId", "Categoria");
@@ -213,6 +214,8 @@ namespace NexxtVoucher.Controllers
                     {
                         await db.SaveChangesAsync();
 
+                        var db5 = new NexxtVouContext();
+
                         if (Icontinuetime == false)
                         {
                             Iscript = "";
@@ -224,6 +227,23 @@ namespace NexxtVoucher.Controllers
                             mikrotik.Send("=on-event=" + IscriptConsumo);
                             mikrotik.Send("/system/scheduler/print", true);
 
+                            int ITimetotal = 0;
+                            int ITimeRest = 0;
+                            string ITimeIdmk;
+                            string ITimeMikrotiIndex;
+
+                            foreach (var item in mikrotik.Read())
+                            {
+                                ITimeIdmk = item;
+                                ITimetotal = ITimeIdmk.Length;
+                                ITimeRest = ITimetotal - 10;
+                                ITimeMikrotiIndex = ITimeIdmk.Substring(10, ITimeRest);
+
+                                var planticketUp = await db5.PlanTickets.FindAsync(planTicket.PlanTicketId);
+                                planticketUp.MikrotikIdContinuo = ITimeMikrotiIndex;
+                                db5.Entry(planticketUp).State = EntityState.Modified;
+                                await db5.SaveChangesAsync();
+                            }
                         }
 
                         mikrotik.Send("/ip/hotspot/user/profile/add");
@@ -235,7 +255,14 @@ namespace NexxtVoucher.Controllers
                         mikrotik.Send("=idle-timeout=" + inactivo);
                         mikrotik.Send("=status-autorefresh=" + refrescar);
                         mikrotik.Send("=add-mac-cookie=" + ImacCookiesYesNo);
-                        mikrotik.Send("=mac-cookie-timeout=" + tiempo);
+                        if (Imaccookies == false)
+                        {
+                            mikrotik.Send("=!mac-cookie-timeout=");
+                        }
+                        else
+                        {
+                            mikrotik.Send("=mac-cookie-timeout=" + tiempo);
+                        }
                         mikrotik.Send("=transparent-proxy=" + IproxyYesNo);
                         mikrotik.Send("=on-login=" + Iscript);
                         mikrotik.Send("/ip/hotspot/user/profile/print", true);
@@ -252,7 +279,6 @@ namespace NexxtVoucher.Controllers
                             rest = total - 10;
                             mikrotiIndex = idmk.Substring(10, rest);
 
-                            var db5 = new NexxtVouContext();
                             var planticketUp = await db5.PlanTickets.FindAsync(planTicket.PlanTicketId);
                             planticketUp.MikrotikId = mikrotiIndex;
                             db5.Entry(planticketUp).State = EntityState.Modified;
@@ -412,7 +438,8 @@ namespace NexxtVoucher.Controllers
                         if (Icontinuetime == false)
                         {
                             Iscript = "";
-                            mikrotik.Send("/system/scheduler/add");
+                            mikrotik.Send("/system/scheduler/set");
+                            mikrotik.Send("=.id=" + planTicket.MikrotikIdContinuo);
                             mikrotik.Send("=name=" + planTicket.Plan);
                             mikrotik.Send("=interval=" + "30s");
                             mikrotik.Send("=policy=" + "ftp,reboot,read,write,policy,test,password,sniff,sensitive,romo");
@@ -420,6 +447,16 @@ namespace NexxtVoucher.Controllers
                             mikrotik.Send("=on-event=" + IscriptConsumo);
                             mikrotik.Send("/system/scheduler/print", true);
 
+                            int ITimetotal = 0;
+                            int ITimeRest = 0;
+                            string ITimeIdmk;
+
+                            foreach (var item in mikrotik.Read())
+                            {
+                                ITimeIdmk = item;
+                                ITimetotal = ITimeIdmk.Length;
+                                ITimeRest = ITimetotal - 10;
+                            }
                         }
 
                         mikrotik.Send("/ip/hotspot/user/profile/set");
@@ -432,7 +469,14 @@ namespace NexxtVoucher.Controllers
                         mikrotik.Send("=idle-timeout=" + inactivo);
                         mikrotik.Send("=status-autorefresh=" + refrescar);
                         mikrotik.Send("=add-mac-cookie=" + ImacCookiesYesNo);
-                        mikrotik.Send("=mac-cookie-timeout=" + tiempo);
+                        if (Imaccookies == false)
+                        {
+                            mikrotik.Send("=!mac-cookie-timeout=");
+                        }
+                        else
+                        {
+                            mikrotik.Send("=mac-cookie-timeout=" + tiempo);
+                        }
                         mikrotik.Send("=transparent-proxy=" + IproxyYesNo);
                         mikrotik.Send("=on-login=" + Iscript);
                         mikrotik.Send("/ip/hotspot/user/profile/print", true);
@@ -446,7 +490,6 @@ namespace NexxtVoucher.Controllers
                             idmk = item;
                             total = idmk.Length;
                             rest = total - 10;
-
                         }
                         mikrotik.Close();
 
