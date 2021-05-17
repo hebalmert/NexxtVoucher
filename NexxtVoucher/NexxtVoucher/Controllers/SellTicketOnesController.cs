@@ -267,7 +267,7 @@
         public JsonResult GetTickets(int PlanTicketId, int servidorId)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var orderticketdeatil = db.OrderTicketDetails.Where(o => o.ServerId == servidorId && o.PlanTicketId == PlanTicketId && o.Vendido == false).FirstOrDefault();
+            var orderticketdeatil = db.OrderTicketDetails.Where(o => o.ServerId == servidorId && o.PlanTicketId == PlanTicketId && o.Vendido == false).ToList();
 
             return Json(orderticketdeatil);
         }
