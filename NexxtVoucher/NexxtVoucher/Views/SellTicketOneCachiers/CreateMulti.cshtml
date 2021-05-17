@@ -1,4 +1,4 @@
-﻿@model NexxtVoucher.Models.SellTicketOneCachier
+﻿@model NexxtVoucher.Models.SellTicketOneCachierView
 
 @{
     ViewBag.Title = @Resources.Resource.ViewCreate;
@@ -22,6 +22,7 @@
                         @Html.HiddenFor(model => model.CompanyId)
                         @Html.HiddenFor(model => model.Date)
                         @Html.HiddenFor(model => model.CachierId)
+                        @Html.HiddenFor(model => model.OrderTicketDetailId)
 
                         <div class="col-md-6 mb-2">
                             @Html.LabelFor(model => model.VentaCachier, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -65,10 +66,10 @@
                         </div>
 
                         <div class="col-md-6 mb-2">
-                            @Html.LabelFor(model => model.OrderTicketDetailId, htmlAttributes: new { @class = "control-label col-md-12" })
+                            @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-12" })
                             <div class="col-md-12">
-                                @Html.DropDownList("OrderTicketDetailId", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.OrderTicketDetailId, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @readonly = "true", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -114,34 +115,6 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    @*<script type="text/javascript">
-        $(document).ready(function () {
-            $("#ServerId").change(function ()
-            {
-                $("#PlanCategoryId").empty();
-                $("#PlanCategoryId").append('<option value="0">[Select Item...]</option>');
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Action("GetCategory")',
-                    dataType: 'json',
-                    data: { ServerId: $("#ServerId").val() },
-                    success: function (data)
-                    {
-                        $.each(data, function (i, data) {
-                            $("#PlanCategoryId").append('<option value="'
-                             + data.PlanCategoryId + '">'
-                             + data.Categoria + '</option>');
-                        });
-                    },
-                    error: function (ex) {
-                        alert('Error de Lectura de Relacion' + ex);
-                    }
-                });
-                return false;
-            })
-        });
-    </script>*@
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#PlanCategoryId").change(function () {
@@ -172,22 +145,19 @@
     <script type="text/javascript">
             $(document).ready(function () {
                 $("#PlanTicketId").change(function () {
-                    $("#OrderTicketDetailId").empty();
-                    $("#OrderTicketDetailId").append('<option value="0">[Select Item...]</option>');
                     $.ajax({
                         type: 'POST',
                         url: '@Url.Action("GetTickets")',
                         dataType: 'json',
                         data: { PlanTicketId: $("#PlanTicketId").val(), servidorId: $("#ServerId").val() },
-                        success: function (data) {
-                            $.each(data, function (i, data) {
-                                $("#OrderTicketDetailId").append('<option value="'
-                                 + data.OrderTicketDetailId + '">'
-                                 + data.Usuario + '</option>');
-                            });
+                        success: function (data)
+                        {
+                            $("#Usuario").val(data.Usuario);
+                            $("#OrderTicketDetailId").val(data.OrderTicketDetailId);
+                            $("#Precio").val(data.Precio);
                         },
                         error: function (ex) {
-                            alert('Error de Lectura de Relacion' + ex);
+                            alert('El Plan no tiene Ticket en Inventario' + ex);
                         }
                     });
                     return false;
@@ -195,7 +165,7 @@
             });
     </script>
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
                 $(document).ready(function () {
                     $("#OrderTicketDetailId").change(function () {
                         $("#Precio").empty();
@@ -216,5 +186,5 @@
                         return false;
                     })
                 });
-    </script>
+    </script>*@
 }

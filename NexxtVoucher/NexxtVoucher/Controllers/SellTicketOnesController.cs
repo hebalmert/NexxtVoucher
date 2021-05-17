@@ -77,13 +77,13 @@
             {
                 return RedirectToAction("Index", "Home");
             }
-            var sellticketone = new SellTicketOne 
+            var sellticketone = new SellTicketOneView 
             { 
                 CompanyId = user.CompanyId,
                 Date = DateTime.Today
             };
 
-            ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(user.CompanyId), "OrderTicketDetailId", "Usuario");
+            //ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(user.CompanyId), "OrderTicketDetailId", "Usuario");
             ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(user.CompanyId), "PlanCategoryId", "Categoria");
             ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicket(user.CompanyId), "PlanTicketId", "Plan");
             ViewBag.ServerId = new SelectList(ComboHelper.GetServer(user.CompanyId), "ServerId", "Nombre");
@@ -96,12 +96,23 @@
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(SellTicketOne sellTicketOne)
+        public async Task<ActionResult> Create(SellTicketOneView sellTicketOneview)
         {
             if (ModelState.IsValid)
             {                
                 try
                 {
+                    var sellTicketOne = new SellTicketOne
+                    { 
+                        CompanyId = sellTicketOneview.CompanyId,
+                        Date = sellTicketOneview.Date,
+                        VentaOne = sellTicketOneview.VentaOne,
+                        ServerId = sellTicketOneview.ServerId,
+                        PlanCategoryId = sellTicketOneview.PlanCategoryId,
+                        PlanTicketId = sellTicketOneview.PlanTicketId,
+                        OrderTicketDetailId = sellTicketOneview.OrderTicketDetailId,
+                        Precio = sellTicketOneview.Precio
+                    };
                     db.SellTicketOnes.Add(sellTicketOne);
                     await db.SaveChangesAsync();
 
@@ -148,11 +159,11 @@
             }
 
 
-            ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOne.CompanyId), "OrderTicketDetailId", "Usuario", sellTicketOne.OrderTicketDetailId);
-            ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(sellTicketOne.CompanyId), "PlanCategoryId", "Categoria", sellTicketOne.PlanCategoryId);
-            ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicket(sellTicketOne.CompanyId), "PlanTicketId", "Plan", sellTicketOne.PlanTicketId);
-            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(sellTicketOne.CompanyId), "ServerId", "Nombre", sellTicketOne.ServerId);
-            return View(sellTicketOne);
+            //ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOne.CompanyId), "OrderTicketDetailId", "Usuario", sellTicketOne.OrderTicketDetailId);
+            ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(sellTicketOneview.CompanyId), "PlanCategoryId", "Categoria", sellTicketOneview.PlanCategoryId);
+            ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicket(sellTicketOneview.CompanyId), "PlanTicketId", "Plan", sellTicketOneview.PlanTicketId);
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(sellTicketOneview.CompanyId), "ServerId", "Nombre", sellTicketOneview.ServerId);
+            return View(sellTicketOneview);
         }
 
         // GET: SellTicketOnes/Edit/5
@@ -267,7 +278,7 @@
         public JsonResult GetTickets(int PlanTicketId, int servidorId)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var orderticketdeatil = db.OrderTicketDetails.Where(o => o.ServerId == servidorId && o.PlanTicketId == PlanTicketId && o.Vendido == false).ToList();
+            var orderticketdeatil = db.OrderTicketDetails.Where(o => o.ServerId == servidorId && o.PlanTicketId == PlanTicketId && o.Vendido == false).FirstOrDefault();
 
             return Json(orderticketdeatil);
         }

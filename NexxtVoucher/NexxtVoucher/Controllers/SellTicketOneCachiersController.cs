@@ -82,7 +82,7 @@ namespace NexxtVoucher.Controllers
             //var db2 = new NexxtVouContext();
             var cachiers = db.Cachiers.Where(c => c.CompanyId == user.CompanyId && c.UserName == User.Identity.Name).FirstOrDefault();
 
-            var centaXCajero = new SellTicketOneCachier
+            var centaXCajero = new SellTicketOneCachierView
             {
                 CompanyId = user.CompanyId,
                 CachierId = cachiers.CachierId,
@@ -90,7 +90,7 @@ namespace NexxtVoucher.Controllers
             };
 
             //ViewBag.CachierId = new SelectList(ComboHelper.GetCachier(user.CompanyId), "CachierId", "FirstName");
-            ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(user.CompanyId), "OrderTicketDetailId", "Usuario");
+            //ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(user.CompanyId), "OrderTicketDetailId", "Usuario");
             ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(user.CompanyId), "PlanCategoryId", "Categoria");
             ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(user.CompanyId, cachiers.ServerId), "PlanTicketId", "Plan");
             ViewBag.ServerId = new SelectList(ComboHelper.GetServer(user.CompanyId), "ServerId", "Nombre");
@@ -104,19 +104,32 @@ namespace NexxtVoucher.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateMulti(SellTicketOneCachier sellTicketOneCachier)
+        public ActionResult CreateMulti(SellTicketOneCachierView sellTicketOneCachierview)
         {
-            if (sellTicketOneCachier.Precio == 0)
+            if (sellTicketOneCachierview.Precio == 0)
             {
-                ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOneCachier.CompanyId), "OrderTicketDetailId", "Usuario", sellTicketOneCachier.OrderTicketDetailId);
-                ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachier.CompanyId, sellTicketOneCachier.ServerId), "PlanTicketId", "Plan", sellTicketOneCachier.PlanTicketId);
-                ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(sellTicketOneCachier.CompanyId), "PlanCategoryId", "Categoria", sellTicketOneCachier.PlanCategoryId);
-                ViewBag.ServerId = new SelectList(ComboHelper.GetServer(sellTicketOneCachier.CompanyId), "ServerId", "Nombre", sellTicketOneCachier.ServerId);
+                ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachierview.CompanyId, sellTicketOneCachierview.ServerId), "PlanTicketId", "Plan", sellTicketOneCachierview.PlanTicketId);
+                ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(sellTicketOneCachierview.CompanyId), "PlanCategoryId", "Categoria", sellTicketOneCachierview.PlanCategoryId);
+                ViewBag.ServerId = new SelectList(ComboHelper.GetServer(sellTicketOneCachierview.CompanyId), "ServerId", "Nombre", sellTicketOneCachierview.ServerId);
 
-                return View(sellTicketOneCachier);
+                return View(sellTicketOneCachierview);
             }
             if (ModelState.IsValid)
             {
+                var sellTicketOneCachier = new SellTicketOneCachier
+                { 
+                    CompanyId = sellTicketOneCachierview.CompanyId,
+                    Date = sellTicketOneCachierview.Date,
+                    VentaCachier = sellTicketOneCachierview.VentaCachier,
+                    CachierId = sellTicketOneCachierview.CachierId,
+                    ServerId = sellTicketOneCachierview.ServerId,
+                    PlanCategoryId = sellTicketOneCachierview.PlanCategoryId,
+                    PlanTicketId = sellTicketOneCachierview.PlanTicketId,
+                    OrderTicketDetailId = sellTicketOneCachierview.OrderTicketDetailId,
+                    Precio = sellTicketOneCachierview.Precio
+                };
+
+
                 db.SellTicketOneCachiers.Add(sellTicketOneCachier);
                 try
                 {
@@ -165,12 +178,12 @@ namespace NexxtVoucher.Controllers
                 }
             }
 
-            ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOneCachier.CompanyId), "OrderTicketDetailId", "Usuario", sellTicketOneCachier.OrderTicketDetailId);
-            ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachier.CompanyId, sellTicketOneCachier.ServerId), "PlanTicketId", "Plan", sellTicketOneCachier.PlanTicketId);
-            ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(sellTicketOneCachier.CompanyId), "PlanCategoryId", "Categoria", sellTicketOneCachier.PlanCategoryId);
-            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(sellTicketOneCachier.CompanyId), "ServerId", "Nombre", sellTicketOneCachier.ServerId);
+            //ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOneCachierview.CompanyId), "OrderTicketDetailId", "Usuario", sellTicketOneCachierview.OrderTicketDetailId);
+            ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachierview.CompanyId, sellTicketOneCachierview.ServerId), "PlanTicketId", "Plan", sellTicketOneCachierview.PlanTicketId);
+            ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(sellTicketOneCachierview.CompanyId), "PlanCategoryId", "Categoria", sellTicketOneCachierview.PlanCategoryId);
+            ViewBag.ServerId = new SelectList(ComboHelper.GetServer(sellTicketOneCachierview.CompanyId), "ServerId", "Nombre", sellTicketOneCachierview.ServerId);
 
-            return View(sellTicketOneCachier);
+            return View(sellTicketOneCachierview);
         }
 
         [Authorize(Roles = "Cobros")]
@@ -188,18 +201,17 @@ namespace NexxtVoucher.Controllers
             var categoria = db.PlanCategories.Where(t => t.CompanyId == user.CompanyId).FirstOrDefault();
             //var categoria = db.PlanCategories.Where(t => t.CompanyId == user.CompanyId && t.ServerId == cachiers.ServerId).FirstOrDefault();
 
-            var centaXCajero = new SellTicketOneCachier
+            var centaXCajero = new SellTicketOneCachierView
             {
                 CompanyId = user.CompanyId,
                 CachierId = cachiers.CachierId,
-                PlanCategoryId = categoria.PlanCategoryId,
                 ServerId = cachiers.ServerId,
                 Date = DateTime.Today
             };
 
             //ViewBag.CachierId = new SelectList(ComboHelper.GetCachier(user.CompanyId), "CachierId", "FirstName");
-            ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(user.CompanyId), "OrderTicketDetailId", "Usuario");
-            //ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(user.CompanyId), "PlanCategoryId", "Categoria");
+            //ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(user.CompanyId), "OrderTicketDetailId", "Usuario");
+            ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(user.CompanyId), "PlanCategoryId", "Categoria");
             ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(user.CompanyId, cachiers.ServerId), "PlanTicketId", "Plan");
             //ViewBag.ServerId = new SelectList(db.Servers.Where(c => c.CompanyId == user.CompanyId && c.ServerId == cachiers.ServerId), "ServerId", "Nombre");
 
@@ -212,17 +224,31 @@ namespace NexxtVoucher.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(SellTicketOneCachier sellTicketOneCachier)
+        public ActionResult Create(SellTicketOneCachierView sellTicketOneCachierview)
         {
-            if (sellTicketOneCachier.Precio == 0)
+            if (sellTicketOneCachierview.Precio == 0)
             {
-                ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOneCachier.CompanyId), "OrderTicketDetailId", "Usuario", sellTicketOneCachier.OrderTicketDetailId);
-                ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachier.CompanyId, sellTicketOneCachier.ServerId), "PlanTicketId", "Plan", sellTicketOneCachier.PlanTicketId);
+                ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(sellTicketOneCachierview.CompanyId), "PlanCategoryId", "Categoria", sellTicketOneCachierview.PlanCategoryId);
+                //ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOneCachierview.CompanyId), "OrderTicketDetailId", "Usuario", sellTicketOneCachierview.OrderTicketDetailId);
+                ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachierview.CompanyId, sellTicketOneCachierview.ServerId), "PlanTicketId", "Plan", sellTicketOneCachierview.PlanTicketId);
 
-                return View(sellTicketOneCachier);
+                return View(sellTicketOneCachierview);
             }
             if (ModelState.IsValid)
             {
+                var sellTicketOneCachier = new SellTicketOneCachier
+                {
+                    CompanyId = sellTicketOneCachierview.CompanyId,
+                    Date = sellTicketOneCachierview.Date,
+                    VentaCachier = sellTicketOneCachierview.VentaCachier,
+                    CachierId = sellTicketOneCachierview.CachierId,
+                    ServerId = sellTicketOneCachierview.ServerId,
+                    PlanCategoryId = sellTicketOneCachierview.PlanCategoryId,
+                    PlanTicketId = sellTicketOneCachierview.PlanTicketId,
+                    OrderTicketDetailId = sellTicketOneCachierview.OrderTicketDetailId,
+                    Precio = sellTicketOneCachierview.Precio
+                };
+
                 db.SellTicketOneCachiers.Add(sellTicketOneCachier);
                 try
                 {
@@ -271,9 +297,10 @@ namespace NexxtVoucher.Controllers
                 }
             }
 
-            ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOneCachier.CompanyId), "OrderTicketDetailId", "Velocidad", sellTicketOneCachier.OrderTicketDetailId);
-            ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachier.CompanyId, sellTicketOneCachier.ServerId), "PlanTicketId", "Plan", sellTicketOneCachier.PlanTicketId);
-            return View(sellTicketOneCachier);
+            ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(sellTicketOneCachierview.CompanyId), "PlanCategoryId", "Categoria", sellTicketOneCachierview.PlanCategoryId);
+            //ViewBag.OrderTicketDetailId = new SelectList(ComboHelper.GetOrderticketdetail(sellTicketOneCachierview.CompanyId), "OrderTicketDetailId", "Usuario", sellTicketOneCachierview.OrderTicketDetailId);
+            ViewBag.PlanTicketId = new SelectList(ComboHelper.GetPlanTicketCajero(sellTicketOneCachierview.CompanyId, sellTicketOneCachierview.ServerId), "PlanTicketId", "Plan", sellTicketOneCachierview.PlanTicketId);
+            return View(sellTicketOneCachierview);
         }
 
         // GET: SellTicketOneCachiers/Edit/5
@@ -387,12 +414,12 @@ namespace NexxtVoucher.Controllers
             var cajero = db.Cachiers.Where(f => f.UserName == User.Identity.Name).FirstOrDefault();
             if (cajero.MultiServer == true)
             {
-                var orderticketdeatil = db.OrderTicketDetails.Where(o => o.PlanTicketId == PlanTicketId && o.Vendido == false);
+                var orderticketdeatil = db.OrderTicketDetails.Where(o => o.PlanTicketId == PlanTicketId && o.Vendido == false).FirstOrDefault();
                 return Json(orderticketdeatil);
             }
             else
             {
-                var orderticketdeatil = db.OrderTicketDetails.Where(o => o.PlanTicketId == PlanTicketId && o.ServerId == cajero.ServerId && o.Vendido == false);
+                var orderticketdeatil = db.OrderTicketDetails.Where(o => o.PlanTicketId == PlanTicketId && o.ServerId == cajero.ServerId && o.Vendido == false).FirstOrDefault();
                 return Json(orderticketdeatil);
             }
             
@@ -406,15 +433,6 @@ namespace NexxtVoucher.Controllers
 
             return Json(precio);
         }
-
-        //TODO:Categorias sin Servidor
-        //public JsonResult GetCategory(int ServerId)
-        //{
-        //    db.Configuration.ProxyCreationEnabled = false;
-        //    var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
-
-        //    return Json(categories);
-        //}
 
         protected override void Dispose(bool disposing)
         {

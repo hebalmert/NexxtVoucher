@@ -274,6 +274,8 @@
     <Compile Include="Models\SellTicketDetail.cs" />
     <Compile Include="Models\SellTicketOne.cs" />
     <Compile Include="Models\SellTicketOneCachier.cs" />
+    <Compile Include="Models\SellTicketOneCachierView.cs" />
+    <Compile Include="Models\SellTicketOneView.cs" />
     <Compile Include="Models\Server.cs" />
     <Compile Include="Models\SpeedDown.cs" />
     <Compile Include="Models\SpeedUp.cs" />
