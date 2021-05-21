@@ -306,11 +306,17 @@
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\Imagen\home1.jpg" />
+    <Content Include="Content\Imagen\home2.jpg" />
+    <Content Include="Content\Imagen\home3.jpg" />
     <Content Include="Content\Imagen\NexxtLink.png" />
+    <Content Include="Content\Imagen\NoPhoto.gif" />
+    <Content Include="Content\Imagen\NoProduct.gif" />
     <Content Include="Content\Imagen\SiteLogo.png" />
     <Content Include="Content\ImgCarrusel\banner1.svg" />
     <Content Include="Content\ImgCarrusel\banner2.svg" />
     <Content Include="Content\ImgCarrusel\banner3.svg" />
+    <Content Include="Content\ImgHomePage\business_user.png" />
     <Content Include="Content\ImgHomePage\ImgConfiguracion.gif" />
     <Content Include="Content\ImgHomePage\ImgMercadoPago.gif" />
     <Content Include="Content\ImgHomePage\ImgMikrotik.gif" />
@@ -319,6 +325,8 @@
     <Content Include="Content\ImgHomePage\ImgPlanes.gif" />
     <Content Include="Content\ImgHomePage\ImgService.gif" />
     <Content Include="Content\ImgHomePage\ImgTicket.gif" />
+    <Content Include="Content\ImgHomePage\mail.png" />
+    <Content Include="Content\ImgHomePage\phone.png" />
     <Content Include="Content\JquerySearch\jquery-1.12.4.js" />
     <Content Include="Content\JquerySearch\jquery-ui.css" />
     <Content Include="Content\JquerySearch\jquery-ui.js" />

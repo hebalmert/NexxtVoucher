@@ -1,17 +1,154 @@
-﻿@{
+﻿@model NexxtVoucher.Models.User
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@*<address>
+        Miami, FLorida<br />
+        90 Terrance, Fl 33118<br />
+        <abbr title="Whattps">WhatApps:</abbr>
+        <a href="https://api.whatsapp.com/send?phone=+573136984997">Nuestro Soporte por WhatsApp</a>
+    </address>*@
+<style>
+    .jumbotron1 {
+        background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("../Content/ImgCarrusel/banner1.svg");
+        background-size: 100%, 100%;
+        color: white;
+    }
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    .jumbotron2 {
+        background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("../Content/ImgCarrusel/banner2.svg");
+        background-size: 100%, 100%;
+        color: white;
+    }
+
+    .jumbotron3 {
+        background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("../Content/ImgCarrusel/banner3.svg");
+        background-size: 100%, 100%;
+        color: white;
+    }
+</style>
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="jumbotron jumbotron-fluid jumbotron1">
+                <div class="container">
+                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                    {
+                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                    }
+                    @if (Model != null)
+                    {<h1 class="display-4"><strong>@Html.DisplayFor(model => model.Company.Compania)</strong></h1>
+                    <p class="lead">Software Ticket Zona WIFI</p>
+                }
+                else
+                {
+                    <img src="~/Content/Imagen/NexxtLink.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+                    <h1 class="display-4"><strong>Nexxtplanet</strong></h1>}
+
+                    @if (Model == null)
+                    {
+                <p class="lead">Software Ticket Zona WIFI</p>}
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="jumbotron jumbotron-fluid jumbotron2">
+                <div class="container">
+                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                    {
+                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                    }
+                    @if (Model != null)
+                    {<h1 class="display-4"><strong>@Html.DisplayFor(model => model.Company.Compania)</strong></h1>
+                     <p class="lead">Software Ticket Zona WIFI</p>
+                }
+                else
+                {
+                    <img src="~/Content/Imagen/NexxtLink.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+                    <h1 class="display-4"><strong>Nexxtplanet</strong></h1>}
+
+                    @if (Model == null)
+                    {
+                <p class="lead">Software Ticket Zona WIFI</p>}
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="jumbotron jumbotron-fluid jumbotron3">
+                <div class="container">
+                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                    {
+                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                    }
+                    @if (Model != null)
+                    {<h1 class="display-4"><strong>@Html.DisplayFor(model => model.Company.Compania)</strong></h1>
+                    <p class="lead">Software Internet/TV Providers</p>
+                }
+                else
+                {
+                    <img src="~/Content/Imagen/NexxtLink.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+                    <h1 class="display-4"><strong>Nexxtplanet</strong></h1>}
+
+                    @if (Model == null)
+                    {
+                        <p class="lead">Software Internet/TV Providers</p>}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<p></p>
+
+<h2>@Resources.Resource.Contactanos_Titulo</h2>
+
+<br />
+<p></p>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/business_user.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Nuestros Sitios</h5>
+                <p class="card-text"></p>
+
+                <p><a href="http://nexxtplanet.net">Web</a></p>
+                <p><a href="https://www.instagram.com/nexxtplanet_net/">Instagram</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/mail.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Correo</h5>
+                <p class="card-text"></p>
+                <p><a href="mailto:info@nexxtplanet.net">info@nexxtplanet</a><br /></p>
+                <p><a href="mailto:soporte@nexxtplanet.net">soporte@nexxtplanet</a><br /></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/phone.png" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Contactanos</h5>
+                <p class="card-text"></p>
+                <p><a href="https://api.whatsapp.com/send?phone=+573136984997">WhatApps</a></p>
+                <p><a href="https://www.facebook.com/Nexxtplanet.net/inbox">Face MSN</a></p>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -195,11 +195,8 @@ namespace NexxtVoucher.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            //var db2 = new NexxtVouContext();
             var cachiers = db.Cachiers.Where(c => c.CompanyId == user.CompanyId && c.UserName == User.Identity.Name).FirstOrDefault();
-            //TODO:Resolver lo categoria sin Servidor
             var categoria = db.PlanCategories.Where(t => t.CompanyId == user.CompanyId).FirstOrDefault();
-            //var categoria = db.PlanCategories.Where(t => t.CompanyId == user.CompanyId && t.ServerId == cachiers.ServerId).FirstOrDefault();
 
             var centaXCajero = new SellTicketOneCachierView
             {
@@ -407,14 +404,14 @@ namespace NexxtVoucher.Controllers
             return Json(planticket);
         }
 
-        public JsonResult GetTickets(int PlanTicketId)
+        public JsonResult GetTickets(int PlanTicketId, int servidorId)
         {
             db.Configuration.ProxyCreationEnabled = false;
 
             var cajero = db.Cachiers.Where(f => f.UserName == User.Identity.Name).FirstOrDefault();
             if (cajero.MultiServer == true)
             {
-                var orderticketdeatil = db.OrderTicketDetails.Where(o => o.PlanTicketId == PlanTicketId && o.Vendido == false).FirstOrDefault();
+                var orderticketdeatil = db.OrderTicketDetails.Where(o => o.PlanTicketId == PlanTicketId && o.Vendido == false && o.ServerId == servidorId).FirstOrDefault();
                 return Json(orderticketdeatil);
             }
             else

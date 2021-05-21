@@ -58,7 +58,7 @@ namespace NexxtVoucher.Controllers
                     .Include(p => p.TicketTime)
                     .Include(p => p.PlanCategory);
 
-                return View(planTickets.OrderByDescending(o => o.PlanCategory.Categoria).ThenByDescending(o2 => o2.Plan).ToList().ToPagedList((int)page, 20));
+                return View(planTickets.OrderByDescending(o => o.PlanCategory.Categoria).ThenByDescending(o2 => o2.Plan).ToList().ToPagedList((int)page, 30));
             }
             else
             {
@@ -71,7 +71,7 @@ namespace NexxtVoucher.Controllers
                     .Include(p => p.TicketTime)
                     .Include(p => p.PlanCategory);
 
-                return View(planTickets.OrderByDescending(o => o.PlanCategory.Categoria).ThenByDescending(o2 => o2.Plan).ToList().ToPagedList((int)page, 20));
+                return View(planTickets.OrderByDescending(o => o.PlanCategory.Categoria).ThenByDescending(o2 => o2.Plan).ToList().ToPagedList((int)page, 30));
             }
         }
 
@@ -126,6 +126,27 @@ namespace NexxtVoucher.Controllers
         {
             if (ModelState.IsValid)
             {
+                var current = await db.PlanTickets
+                    .Where(c => c.CompanyId == planTicket.CompanyId
+                    && c.ServerId == planTicket.ServerId 
+                    && c.Plan == planTicket.Plan)
+                    .FirstOrDefaultAsync();
+
+                if (current != null)
+                {
+                    ModelState.AddModelError(string.Empty, (@Resources.Resource.Msg_DoubleData));
+                    ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(planTicket.CompanyId), "PlanCategoryId", "Categoria", planTicket.PlanCategoryId);
+                    ViewBag.ServerId = new SelectList(ComboHelper.GetServer(planTicket.CompanyId), "ServerId", "Nombre", planTicket.ServerId);
+                    ViewBag.SpeedDownId = new SelectList(ComboHelper.GetSpeedown(), "SpeedDownId", "VelocidadDown", planTicket.SpeedDownId);
+                    ViewBag.SpeedUpId = new SelectList(ComboHelper.GetSpeeUp(), "SpeedUpId", "VelocidadUp", planTicket.SpeedUpId);
+                    ViewBag.TaxId = new SelectList(ComboHelper.GetTax(planTicket.CompanyId), "TaxId", "Impuesto", planTicket.TaxId);
+                    ViewBag.TicketInactiveId = new SelectList(ComboHelper.GetTicketinactive(), "TicketInactiveId", "TiempoInactivo", planTicket.TicketInactiveId);
+                    ViewBag.TicketRefreshId = new SelectList(ComboHelper.GetTicketrefresh(), "TicketRefreshId", "TiempoRefrescar", planTicket.TicketRefreshId);
+                    ViewBag.TicketTimeId = new SelectList(ComboHelper.GetTicketime(), "TicketTimeId", "TiempoTicket", planTicket.TicketTimeId);
+
+                    return View(planTicket);
+                }
+
                 db.PlanTickets.Add(planTicket);
                 try
                 {
@@ -352,6 +373,27 @@ namespace NexxtVoucher.Controllers
         {
             if (ModelState.IsValid)
             {
+                var current = db.PlanTickets
+                    .Where(c => c.CompanyId == planTicket.CompanyId
+                    && c.ServerId == planTicket.ServerId
+                    && c.Plan == planTicket.Plan)
+                    .FirstOrDefault();
+
+                if (current != null)
+                {
+                    ModelState.AddModelError(string.Empty, (@Resources.Resource.Msg_DoubleData));
+                    ViewBag.PlanCategoryId = new SelectList(ComboHelper.GetPlancategory(planTicket.CompanyId), "PlanCategoryId", "Categoria", planTicket.PlanCategoryId);
+                    ViewBag.ServerId = new SelectList(ComboHelper.GetServer(planTicket.CompanyId), "ServerId", "Nombre", planTicket.ServerId);
+                    ViewBag.SpeedDownId = new SelectList(ComboHelper.GetSpeedown(), "SpeedDownId", "VelocidadDown", planTicket.SpeedDownId);
+                    ViewBag.SpeedUpId = new SelectList(ComboHelper.GetSpeeUp(), "SpeedUpId", "VelocidadUp", planTicket.SpeedUpId);
+                    ViewBag.TaxId = new SelectList(ComboHelper.GetTax(planTicket.CompanyId), "TaxId", "Impuesto", planTicket.TaxId);
+                    ViewBag.TicketInactiveId = new SelectList(ComboHelper.GetTicketinactive(), "TicketInactiveId", "TiempoInactivo", planTicket.TicketInactiveId);
+                    ViewBag.TicketRefreshId = new SelectList(ComboHelper.GetTicketrefresh(), "TicketRefreshId", "TiempoRefrescar", planTicket.TicketRefreshId);
+                    ViewBag.TicketTimeId = new SelectList(ComboHelper.GetTicketime(), "TicketTimeId", "TiempoTicket", planTicket.TicketTimeId);
+
+                    return View(planTicket);
+                }
+
                 db.Entry(planTicket).State = EntityState.Modified;
                 try
                 {
@@ -608,14 +650,7 @@ namespace NexxtVoucher.Controllers
             return View(planTicket);
         }
 
-        //TODO:Arreglar el listado Cateogira sin Servidor
-        //public JsonResult GetCategory(int ServerId)
-        //{
-        //    db.Configuration.ProxyCreationEnabled = false;
-        //    var categories = db.PlanCategories.Where(c => c.ServerId == ServerId).ToList();
 
-        //    return Json(categories);
-        //}
 
         protected override void Dispose(bool disposing)
         {

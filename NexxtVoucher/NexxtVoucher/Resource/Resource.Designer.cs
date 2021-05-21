@@ -511,6 +511,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contactenos.
+        /// </summary>
+        public static string Contactanos_Titulo {
+            get {
+                return ResourceManager.GetString("Contactanos_Titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exportar Excel.
         /// </summary>
         public static string ExportExcel_Titulo {
@@ -592,7 +601,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maneja Multiples Servidores Mikrotik.  Servicios de Creacion de Ticket para redes Privadas y Manejo Individual si cuenta con IP Publicas..
+        ///   Looks up a localized string similar to Creacion de Ticket para Zonas WIFI en Multiples Servidores Mikrotik. Sistema Hibrido de creacion de ticket, para olvidarte de VPN o Depender de Direccion IP Publicas para acceder a tus Mikrotik..
         /// </summary>
         public static string Link1Text {
             get {
@@ -601,7 +610,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Planes.
+        ///   Looks up a localized string similar to Categorias y Planes.
         /// </summary>
         public static string Link2 {
             get {
@@ -628,7 +637,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Puedes crear Planes diferentes para cada servidor registrado en el software.  Organizarlos por Categorias que definen cada Servidor. .
+        ///   Looks up a localized string similar to Agrupa tus planes por Categorias y los planes seran asignados por Servidor.  Los planes puden ser configurados, continuos o por consumo, el sistema ya cuenta con los script para cada configuracion..
         /// </summary>
         public static string Link2Text {
             get {
@@ -664,7 +673,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Crea Pool de Ticket en un solo acceso y crea cajeros para vendan estos tickets.  Los cajeros solo venderan los tickets que el sistema tiene disponibles..
+        ///   Looks up a localized string similar to Podras crear Ticket en cualquier punto sin VPN o sin IP publica, ademas todos los tickets y ventas podras hacerlas desde la Nube, lo que permitira manejar vendedores por Servidor.  Controlar los ingresos por Dia de cada Vendedor..
         /// </summary>
         public static string Link3Text {
             get {
@@ -1065,6 +1074,15 @@ namespace Resources {
         public static string MikrotikFailed {
             get {
                 return ResourceManager.GetString("MikrotikFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conexion Fallida Verificar Puertos en Sistema/Mikrotik Control.
+        /// </summary>
+        public static string MikrotikFailedPort {
+            get {
+                return ResourceManager.GetString("MikrotikFailedPort", resourceCulture);
             }
         }
         

@@ -21,8 +21,19 @@ namespace NexxtVoucher.Controllers
         // GET: Servers/Connect
         public ActionResult MikroSuccess(string ip, string us, string pss, int idserver)
         {
+            int port = 0;
+            var server = new Server { ServerId = idserver };
+
             var puertos = db.MikrotikControls.Where(p => p.ServerId == idserver).FirstOrDefault();
-            int port = puertos.PuertoApi;
+            if (puertos != null)
+            {
+                port = puertos.PuertoApi;
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, @Resources.Resource.MikrotikFailedPort);               
+                return PartialView(server);
+            }
 
             MK mikrotik = new MK(ip, port);
             if (!mikrotik.Login(us, pss))
@@ -36,7 +47,6 @@ namespace NexxtVoucher.Controllers
                 ModelState.AddModelError(string.Empty, @Resources.Resource.MikrotikSuccess);
             }
 
-            var server = new Server { ServerId = idserver };
             return PartialView(server);
         }
 
