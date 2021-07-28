@@ -396,10 +396,10 @@ namespace NexxtVoucher.Controllers
             return View(sellTicketOneCachier);
         }
 
-        public JsonResult GetPlanes(int categoryid)
+        public JsonResult GetPlanes(int categoryid, int servidorId)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var planticket = db.PlanTickets.Where(c => c.PlanCategoryId == categoryid);
+            var planticket = db.PlanTickets.Where(c => c.PlanCategoryId == categoryid && c.ServerId == servidorId);
 
             return Json(planticket);
         }

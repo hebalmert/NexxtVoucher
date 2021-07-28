@@ -124,7 +124,7 @@
                     type: 'POST',
                     url: '@Url.Action("GetPlanes")',
                     dataType: 'json',
-                    data: { categoryid: $("#PlanCategoryId").val() },
+                    data: { categoryid: $("#PlanCategoryId").val(), servidorId: $("#ServerId").val() },
                     success: function (data) {
                         $.each(data, function (i, data) {
                             $("#PlanTicketId").append('<option value="'
