@@ -151,8 +151,32 @@
         });
     </script>*@
 
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function () {
+            $("#ServerId").change(function () {
+                $("#PlanCategoryId").empty();
+                $("#PlanTicketId").empty();
+                $("#Precio").val("0");
+                $("#PlanCategoryId").append('<option value="0">[Select Item...]</option>');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCategories")',
+                    dataType: 'json',
+                    data: { companyid: $("#CompanyId").val()},
+                    success: function (data) {
+                        $.each(data, function (i, data) {
+                            $("#PlanCategoryId").append('<option value="'
+                                + data.PlanCategoryId + '">'
+                                + data.Categoria + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Error de Lectura de Relacion' + ex);
+                    }
+                });
+                return false;
+            })
+
             $("#PlanCategoryId").change(function () {
                 $("#PlanTicketId").empty();
                 $("#Precio").val("0");
@@ -176,7 +200,7 @@
                 return false;
             })
         });
-    </script>
+</script>
 
     <script type="text/javascript">
             $(document).ready(function () {

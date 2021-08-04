@@ -514,6 +514,14 @@
         }
 
 
+        public JsonResult GetCategories(int companyid)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var categoria = db.PlanCategories.Where(c => c.CompanyId == companyid);
+           
+            return Json(categoria);
+        }
+
         public JsonResult GetPlanes(int categoryid, int serverid)
         {
             db.Configuration.ProxyCreationEnabled = false;
